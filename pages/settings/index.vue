@@ -1,13 +1,14 @@
 <template>
-  <div class="container">
+  <div class="container mt-5">
     
     
     <b-breadcrumb :items="breadcrumbs"/>
 
     <div>
   <b-button-group vertical>
-    <b-button variant="secondary" to="/settings/databases">Databases</b-button>
-    
+    <b-button class="mt-1" variant="secondary" to="/settings/databases">Remote databases</b-button>
+    <b-button class="mt-1" variant="secondary" to="/settings/export/mappings">Products export mappings</b-button>
+    <b-button class="mt-1" variant="secondary" to="/settings/export/products">Products export</b-button>
   </b-button-group>
 </div>
 

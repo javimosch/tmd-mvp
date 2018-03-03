@@ -37,7 +37,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 	.nav{
-		max-width:300px
+		max-width:800px
 	}
 	img{
 		max-width:200px;

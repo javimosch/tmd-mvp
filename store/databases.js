@@ -1,4 +1,4 @@
-import {fetchAll, save, fetch} from '@/plugins/database';
+import {fetchAll, save, fetch, remove} from '@/plugins/database';
 
 export const state = () => ({
   items: [],
@@ -11,6 +11,24 @@ export const mutations = {
   },
   setItem (state, item) {
     state.item = item;
+  },
+  updateListItem(state,item){
+    state.items.forEach(i=>{
+      if(i._id.toString() == item._id){
+        Object.assign(i, item);
+      }
+    })
+  },
+  removeListItem(state,id){
+    let rta = null;
+    state.items.forEach((i,k)=>{
+      if(i._id.toString() == id.toString()){
+        rta = k;
+      }
+    });
+    if(rta!==null){
+      state.items.splice(rta,1);
+    }
   }
 };
 
@@ -21,7 +39,8 @@ export const actions = {
   },
   async fetch ({commit}, id) {
   	if(!id) return;
-    commit('setItem', await fetch(id));
+    let doc = await fetch(id);
+    commit('setItem', doc);
   },
   async draft({commit}, data){
   	if(typeof window.localStorage !== 'undefined'){
@@ -29,7 +48,13 @@ export const actions = {
   	}
   },
   async save({commit}, data){
-    return await save(data);
+    let doc = await save(data);
+    commit('updateListItem',doc);
+    return doc;
+  },
+  async delete({commit}, id){
+    await remove(id);
+    commit('removeListItem',id);
   }
 };
 

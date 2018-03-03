@@ -1,66 +1,77 @@
 <template>
-  <div class="container">
+  <div class="container mt-5">
     <b-breadcrumb :items="breadcrumbs"/>
 
-    <b-list-group >
-      <b-list-group-item v-for="item in items" :key="item._id" v-html="item.type"></b-list-group-item>
-    </b-list-group>
+  
 
-    <crud-form :data="selectedItem" :options="formOptions"></crud-form>
+    <b-table striped hover :items="transformedItems" :fields="fields" responsive stacked="lg" small>
+      
+    <template slot="mysql" slot-scope="data">
+      <span v-html='JSON.stringify(transformMysqlConfig(data.value))'></span>  
+    </template>
+
+    <template slot="show_details" slot-scope="row">
+      <b-button size="sm" @click.stop="row.toggleDetails" class="mr-2">
+       {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
+      </b-button>
+    </template>
+    <template slot="row-details" slot-scope="row">
+      <b-card>
+          <record-details 
+          :showId="false" :data="row.item" :cancelBtn="false"
+          @delete="row.toggleDetails"
+          @onSave="onRowSave()"
+          ></record-details>
+      </b-card>
+    </template>
+
+    </b-table>
+
+    <record-details 
+          v-show="isFormVisible"
+          :showId="true" :data="selectedItem" 
+          :cancelBtn="true"
+          @onSave="toggleCrud()"
+          @onCancel="toggleCrud()"
+          ></record-details>
+
+    <b-button 
+    v-show="!isFormVisible"
+    @click="toggleCrud()" class="mt-5" variant="primary" size="lg">New</b-button>
+
+    
 
   </div>
 </template>
 
 <script>
-import CrudForm from '@/components/Form';
+
+import RecordDetails from '@/components/DatabaseRecordDetails';
 export default {
   layout: 'app',
   computed:{
     selectedItem(){
-      return this.$store.state.databases.item
+      return {}; //this.$store.state.databases.item
+    },
+    items(){
+      return this.$store.state.databases.items
+    }
+  },
+  mounted(){
+    this.transformItems();
+  },
+  watch:{
+    items(){
+      this.transformItems();
     }
   },
   data () {
     let self = this;
     return {
+      isFormVisible:false,
+      transformedItems:[],
+      fields: [{key:'_id',label:'Id'},'name', 'type', { key: 'mysql', label: 'Config' }, 'show_details'],
       mode: "list", //new edit
-      formOptions:{
-        fetch: ()=> this.$store.dispatch('databases/fetch', this.$store.state.route.params.id),
-        draft: (p)=> this.$store.dispatch('databases/draft',p),
-        save:{
-          label:"Guardar",
-          handler:async()=> {
-            let doc = await this.$store.dispatch('databases/save');
-            self.$router.push({
-              name:"settings-databases-id",
-              params:{
-                id: doc._id
-              }
-            })
-          }
-        },
-        fields:{
-          type:{
-            type:'select',
-            in:['MYSQL'],
-            default:'Select one',
-            required:true
-          },
-          mysql:{
-            visible:(model)=>model.type==='MYSQL',
-            type:'subform',
-            options:{
-              fields:{
-                host:{
-                  type:'string'
-                }
-              }
-            }
-          }
-          
-        }
-      },
-      items:[],
       breadcrumbs:[{
         text:'Dashboard',
         to:'/dashboard'
@@ -80,10 +91,30 @@ export default {
    store.dispatch('databases/update').catch(error);
   },
   methods: {
-   
+    onRowSave(){
+      this.transformItems();
+    },
+    toggleCrud(){
+      this.isFormVisible = !this.isFormVisible;
+    },
+    transformItems(){
+      let arr = [];
+      this.items.forEach(i=>arr.push(Object.assign({},i)));
+      this.transformedItems = arr;
+    },
+    transformMysqlConfig(v){
+      return {
+        host:v.host,
+        database:v.database,
+        user:v.user
+      }
+    },
+    stacked(){
+      return window && window.innerWidth < 768;
+    }
   },
   components: {
-    CrudForm
+    RecordDetails
   }
 }
 </script>

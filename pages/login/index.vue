@@ -2,10 +2,10 @@
   <section class="center-content">
     <div>
       <form autocomplete="off">
-      <b-form-input v-model="email" autocomplete="off"
+      <b-form-input v-model="email" 
                   type="text"
                   placeholder="Same as Desktop app"></b-form-input>
-       <b-form-input v-model="pwd" autocomplete="off"
+       <b-form-input v-model="pwd" 
                   type="password"
                   placeholder="Same as Desktop app"></b-form-input>
       <button type="button" class="mt-2 btn btn-primary" @click="login()">Login</button>

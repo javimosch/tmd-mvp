@@ -18,6 +18,9 @@ module.exports = {
       rel: 'icon',
       type: 'image/x-icon',
       href: '/favicon.ico?v2'
+    },{
+      rel:'stylesheet',
+      href:'https://use.fontawesome.com/releases/v5.0.8/css/all.css'
     }]
   },
   /*
@@ -28,7 +31,8 @@ module.exports = {
   },
   modules: [
     '@nuxtjs/pwa',
-    'bootstrap-vue/nuxt'
+    'bootstrap-vue/nuxt',
+    '@nuxtjs/font-awesome'
   ],
   env: {
     loginSalt: '$2a$10$67Bn8fXfK0peYFBhAKCctequ/QSkwtX4DWE5UmG0DQOieGdGysR8S',
@@ -40,7 +44,7 @@ module.exports = {
   {src: '@/plugins/vue-disable-autocomplete'},
   {src: '@/plugins/vuejs-noty', ssr: false},
   {src: '@/plugins/vuex-router-sync.js', ssr: false},
-  {src: '@/plugins/vue-cookie', ssr: false}
+  {src: '@/plugins/vue-cookie', ssr: false},
   ],
   css: [
     'vuejs-noty/dist/vuejs-noty.css'
