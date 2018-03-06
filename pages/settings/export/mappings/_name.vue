@@ -34,7 +34,7 @@
 			    defaultValue="75010"
 			    :formatFunction="formatProductSelectRow"
 			    :parseInt="true"
-			    @onChange="((p)=>product=p)"
+			    @onChange="onProductSelectChange"
 			    @onClear="(()=>product=null)"
 			    ></remote-select>
 	    	</div>
@@ -154,6 +154,9 @@
 			
 		},
 		methods:{
+			onProductSelectChange(item){
+				this.product = item;
+			},
 			onDragEnd(arr){
 				let columns =  arr.map(item => {
 					return {

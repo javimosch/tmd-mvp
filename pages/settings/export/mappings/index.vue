@@ -4,24 +4,20 @@
 		    <div class="col-md-12 m-0 p-0">
 		    	<b-breadcrumb :items="breadcrumbs"/>
 			</div>
-			<div class="col-md-12 m-0 p-0 mb-2">
+			<div class="col-md-12 m-0 p-0 mb-2 mt-5">
 				<b-button-group class="d-block">
 			      <b-btn  @click="details()" size="lg" variant="primary">New</b-btn>
+			      <b-button class="ml-2" variant="primary" size="lg" to="/settings/export/products">Export Products</b-button>
 		    	</b-button-group>
 		    </div>
 			<div class="col-md-12 m-0 p-0">
+				<p class="title_block">Mappings</p>
 		    	<b-table striped hover :items="transformedItems" :fields="fields" responsive stacked="lg" small
 		    	@row-clicked="rowClick"
 		    	>
 		    	</b-table>
 			</div>
 		</div>
-
-
-		    
-	   
-    
-		    
 	</div>
 </template>
 <script>

@@ -40,6 +40,12 @@ export async function remove(url, data) {
 
 function catchHandler(reject) {
 	return err => {
+		if(!err.response){
+			err.response = {
+				status: 500,
+				data: err.toString()
+			};
+		}
 		console.warn(err.response.status, err.response.data);
 		reject({
 			statusCode: err.response.status,

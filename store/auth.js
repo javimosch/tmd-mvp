@@ -32,7 +32,9 @@ export const actions = {
     email,
     pwd
   }) {
-    commit('setUser', await login(email, pwd));
+    let user = await login(email, pwd)
+    commit('setUser', user);
+    return user;
   },
 
 

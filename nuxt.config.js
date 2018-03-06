@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   /*
    ** Headers of the page
@@ -32,7 +34,10 @@ module.exports = {
   modules: [
     '@nuxtjs/pwa',
     'bootstrap-vue/nuxt',
-    '@nuxtjs/font-awesome'
+    '@nuxtjs/font-awesome',
+    ['nuxt-sass-resources-loader', {
+        resources: path.join(process.cwd(), 'assets/scss/main.scss')
+    }],
   ],
   env: {
     loginSalt: '$2a$10$67Bn8fXfK0peYFBhAKCctequ/QSkwtX4DWE5UmG0DQOieGdGysR8S',
@@ -45,9 +50,16 @@ module.exports = {
   {src: '@/plugins/vuejs-noty', ssr: false},
   {src: '@/plugins/vuex-router-sync.js', ssr: false},
   {src: '@/plugins/vue-cookie', ssr: false},
+  { src: '@/plugins/codemirror', ssr: false }
   ],
   css: [
-    'vuejs-noty/dist/vuejs-noty.css'
+    'vuejs-noty/dist/vuejs-noty.css',
+    // lib css
+    'codemirror/lib/codemirror.css',
+    // merge css
+    'codemirror/addon/merge/merge.css',
+    // theme css
+    'codemirror/theme/base16-dark.css'
   ],
   workbox: {
     runtimeCaching: [{

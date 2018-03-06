@@ -4,10 +4,13 @@ import {
 } from '@/plugins/configApi'
 import _ from 'lodash';
 
+const FIELDS = ['query','database','mode','name','columns','script'];
+
 export const state = () => ({
 	mappings: [],
-	databases:[],
-	databasesSelection:[] 
+	databases: [],
+	databasesSelection: [],
+	mappingsSelection: []
 });
 
 export const mutations = {
@@ -17,18 +20,20 @@ export const mutations = {
 		}));
 	},
 	updateMapping(state, record) {
-		if(!record.newName) record.newName = record.name;
+		if (!record.newName) record.newName = record.name;
 		for (var x = 0; x < state.mappings.length; x++) {
 			if (state.mappings[x].name === record.newName) {
-				state.mappings[x].name = record.name;
-				if(record.columns){
-					state.mappings[x].columns = record.columns;
-				}
+				delete record.newName;
+				FIELDS.forEach(f=>{
+					if(typeof record[f]!=='undefined'){
+						state.mappings[x][f] = record[f];
+					}
+				})
 				return;
 			}
 		}
 		delete record.newName;
-		if(!record.name) throw new Error('Mapping record name required');
+		if (!record.name) throw new Error('Mapping record name required');
 		state.mappings.push(record);
 	},
 	removeMappingFromList(state, name) {
@@ -38,11 +43,14 @@ export const mutations = {
 			}
 		}
 	},
-	removeMappingColumn(state, {mappingName, columnName}){
+	removeMappingColumn(state, {
+		mappingName,
+		columnName
+	}) {
 		let m = findByName(state.mappings, mappingName);
 		if (!m) throw new Error('mappingName mistmatch');
 		let index = getIndexByName(m.columns, columnName);
-		if(index){
+		if (index) {
 			m.columns.splice(index, 1);
 		}
 	},
@@ -64,12 +72,19 @@ export const mutations = {
 			});
 		}
 	},
-	setDatabasesSelection(state, v){
-		if(!v){
+	setDatabasesSelection(state, v) {
+		if (!v) {
 			state.databasesSelection = state.databases;
-		}else{
-			state.databasesSelection = state.databases.filter(d=> d.name.indexOf(v)!==-1||d.type.indexOf(v)!==-1)
+		} else {
+			state.databasesSelection = state.databases.filter(d => {
+				return d._id.indexOf(v) !== -1 ||d.name.indexOf(v) !== -1 || d.type.indexOf(v) !== -1
+			})
 		}
+	},
+	setMappingsSelection(state, v) {
+		state.mappingsSelection = state.mappings.filter(d => {
+			return d._id.indexOf(v) !== -1||d.name.indexOf(v) !== -1;
+		})
 	}
 };
 
@@ -84,12 +99,12 @@ export const actions = {
 		state
 	}) {
 		return await update(_.clone({
-			name:state.name,
-			mappings:state.mappings,
-			databases:state.databases
-		},true));
+			name: state.name,
+			mappings: state.mappings,
+			databases: state.databases
+		}, true));
 	},
-	
+
 	async saveMapping({
 		commit,
 		dispatch
@@ -116,15 +131,18 @@ export const actions = {
 		store.commit('removeMappingColumn', data)
 		//return await store.dispatch('save');
 	},
-	async searchDatabases(store, opts){
+	async searchDatabases(store, opts) {
 		store.commit('setDatabasesSelection', opts.value);
+	},
+	async searchMappings(store, opts) {
+		store.commit('setMappingsSelection', opts.value);
 	}
 };
 
 export const getters = {
-  getMapping(state) {
-    return (n)=>findByName(state.mappings,n)
-  },
+	getMapping(state) {
+		return (n) => findByName(state.mappings, n)
+	},
 }
 
 function findByName(arr, name) {
@@ -135,6 +153,7 @@ function findByName(arr, name) {
 	}
 	return null;
 }
+
 function getIndexByName(arr, name) {
 	for (var x = 0; x < arr.length; x++) {
 		if (arr[x].name === name) {

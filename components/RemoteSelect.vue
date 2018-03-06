@@ -1,7 +1,9 @@
 <template>
 	<div class="row align-items-center p-0 m-0">
 		
-		<input :placeholder="ph"
+		<input 
+		ref="input"
+		:placeholder="ph"
 		:disabled="isSelected"
 		class="form-control d-inline-block" v-model="value" />
 		
@@ -30,15 +32,21 @@
 	</div>
 </template>
 <script>
+	import _ from 'lodash';
+	import LodashMixin from '@/mixins/Lodash';
 	export default{
+		mixins:[LodashMixin],
 		props:['placeholder','source','dispatch','formatFunction','defaultValue','parseInt','cache',"id"],
 		created(){
 			if(this.cache&& !this.id){
 				throw new Error('Cache needs id prop'+new Error().stack);
 			}
-			
 		},
-		
+		watch:{
+			defaultValue(val){
+				this.searchById(val);
+			}
+		},
 		data(){
 			return{
 				shouldDisplayResults:true,
@@ -57,17 +65,24 @@
 			}
 		},
 		async mounted(){
-			let _id = localStorage.getItem(this.getCacheId());
-			if(this.cache && !!_id){
-				await this.search(false)
-				this.getResults.forEach(r=>{
-					if(r._id == _id){
-						this.selectItem(r);
-					}
-				});
+			let value = localStorage.getItem(this.getCacheId());
+			if(this.cache && !!value){
+				this.searchById(value);
 			}
 		},
 		methods:{
+			focus(){
+				this.$refs.input.focus();
+			},
+			async searchById(value){
+				this.value = value;
+				await this.search(false)
+				this.getResults.forEach(r=>{
+					if(r._id == value){
+						this.selectItem(r);
+					}
+				});
+			},
 			getCacheId(){
 				return 'remoteselect_'+this.id+'_at_'+location.href.replace(location.origin,'').replace(new RegExp('/','g'),'_');
 			},
@@ -80,12 +95,15 @@
 				this.isSelected=false;
 				this.value='';
 				this.$emit('onClear');
+				this._id = null;
 			},
 			selectItem(i){
-				console.log('selectItem',i)
-				this.$emit('onChange',i);
-				this.selectedItem = i;
-				this.value=this.formatItem(i);
+				var item = i;//this.makeNonReactiveCopy(i);
+
+				console.log('selectItem',item)
+				this.$emit('onChange',item);
+				this.selectedItem = item;
+				this.value=this.formatItem(item);
 				this.isSelected=true;
 				this.shouldDisplayResults=false;
 				this.saveToCache()

@@ -1,7 +1,8 @@
-import {remoteSelectFetch} from '@/plugins/product';
+import {remoteSelectFetch, countExportQuery, fetchMappedProducts, runMappingScript} from '@/plugins/product';
 
 export const state = () => ({
-  searchSelection:[]
+  searchSelection:[],
+  mappedProducts: []
 });
 
 export const mutations = {
@@ -14,6 +15,15 @@ export const actions = {
   async remoteSelectFetch ({commit}, opts) {
     let docs = await remoteSelectFetch(opts);
     commit('setSearchSelection', docs);
+  },
+  async countExportQuery(store, data){
+  	return await countExportQuery(data);
+  },
+  async fetchMappedList(store, mappingId){
+    return await fetchMappedProducts(mappingId);
+  },
+  async runMappingScript(store, opts){
+    return await runMappingScript(opts);
   }
 };
 
