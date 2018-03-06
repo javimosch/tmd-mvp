@@ -43,16 +43,22 @@ export const actions = {
     state
   }) {
 
-    let isLogged = await getIsLoggedFromCache();
+    let isLogged =  getIsLoggedFromCache();
 
-    let user = state.user;
-    if (isLogged && !user) {
-      console.log('Fetching user')
-      user = await getCurrentUser();
-      console.log(JSON.stringify(user));
+    if (!!isLogged) {
+      let user = state.user;
+      if (!user) {
+        console.log('Fetching user')
+        user = await getCurrentUser();
+        console.log(JSON.stringify(user));
+      }
+      commit('setUser', user);
+      return;
+    } else {
+      commit('setUser', null);
     }
 
-    commit('setUser', user);
+
 
   },
 

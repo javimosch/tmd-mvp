@@ -41,11 +41,11 @@ export async function logout() {
 
 export async function setIsLoggedInCache(val) {
 	if (typeof window !== 'undefined') {
-		window.localStorage.setItem('isLogged', 1);
+		window.localStorage.setItem('isLogged', !!val?'1':'0');
 	}
 }
 
-export async function getIsLoggedFromCache(val) {
+export function getIsLoggedFromCache(val) {
 	if (typeof window === 'undefined') {
 		return false;
 	}

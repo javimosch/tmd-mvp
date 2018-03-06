@@ -64,7 +64,9 @@
 	    		<json-viewer minHeight="600"  :data="product"></json-viewer>
 	    	</div>
 	    	
-	    	<div class="col-md-12 mt-5 m-0 p-0 pl-2" v-show="product">
+	    	<div class="col-md-12 mt-5 m-0 p-0 pl-2" v-show="product && isEdit"
+
+	    	>
 	    		<p>
 			    	Now, you can add remote columns and map them using basic javascript.
 				    </p>
@@ -95,8 +97,12 @@
 		    		</b-table>
 		    		<b-button @click="addColumn">Add</b-button>
 	    	</div>
+
+	    	<div class="col-lg-12 col-md-12 mt-5 m-0 p-0 pl-2" v-show="product && !isEdit">
+	    		<p>Before preceding, save the changes.</p>
+	    	</div>
 	    	
-	    	<div class="col-lg-6 col-md-12 mt-5 m-0 p-0 pl-2" v-show="product">
+	    	<div class="col-lg-6 col-md-12 mt-5 m-0 p-0 pl-2" v-show="product && isEdit">
 	    		<h3>Ordering</h3>
 	    		<ordenable-list 
 	    			:data="columns" 
@@ -107,7 +113,7 @@
 
 	    	</div>
 
-	    	<div class="col-lg-6 col-md-12 mt-5 m-0 p-0 pl-2" v-show="product">
+	    	<div class="col-lg-6 col-md-12 mt-5 m-0 p-0 pl-2" v-show="product && isEdit">
 	    		<h3>Result</h3>
 	    		<b-table striped hover :items="getMappingTableItems()" :fields="getMappingColumnsTableFields()" stacked small></b-table>
 

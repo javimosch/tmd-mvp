@@ -4,9 +4,12 @@ export default async function({
 	client
 }) {
 
-	if(!client) return;
+	console.log('Middleware auth',client)
+	if(client!==undefined && client===false) return;
 
-	await store.dispatch('auth/update');
+	try{
+		await store.dispatch('auth/update');
+	}catch(err){}
 
 	if (!store.state.auth.isLogged) {
 		error({
