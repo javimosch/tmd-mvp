@@ -316,6 +316,7 @@ import {download as downloadCSV} from '@/plugins/csv';
 						self.$noty.error('Export fail')
 						output = JSON.stringify(err.data,undefined,2);
 						self.setOutput(output);
+						self.outputQueries =err.data.results.map(r=>r.query).join('<br>')
 					});
 				}
 				return this.$noty.warning(`Mode ${this.mode} no implemented`);
