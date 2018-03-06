@@ -9,13 +9,16 @@ WORKDIR /usr/src/app
 RUN apk update && apk upgrade && apk add git
 
 COPY . /usr/src/app/
-RUN npm install
+RUN yarn
+
+ARG API_URL=http://149.202.161.204
+ENV API_URL=$API_URL
 
 # Build app
-RUN npm run build
+RUN yarn build
 
 ENV HOST 0.0.0.0
 EXPOSE 3000
 
 # start command
-CMD [ "npm", "start" ]
+CMD [ "yarn", "start" ]
