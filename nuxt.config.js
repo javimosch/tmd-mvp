@@ -1,11 +1,14 @@
 const path = require('path');
+const sander = require('sander');
+
+
 
 module.exports = {
   /*
    ** Headers of the page
    */
   head: {
-    title: 'LATOURIMMO - Admin Backoffice',
+    title: 'Tous Mes Droits',
     meta: [{
       charset: 'utf-8'
     }, {
@@ -20,9 +23,12 @@ module.exports = {
       rel: 'icon',
       type: 'image/x-icon',
       href: '/favicon.ico?v2'
-    },{
-      rel:'stylesheet',
-      href:'https://use.fontawesome.com/releases/v5.0.8/css/all.css'
+    }, {
+      rel: 'stylesheet',
+      href: 'https://use.fontawesome.com/releases/v5.0.8/css/all.css'
+    }, {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css?family=Montserrat'
     }]
   },
   /*
@@ -34,9 +40,8 @@ module.exports = {
   modules: [
     '@nuxtjs/pwa',
     'bootstrap-vue/nuxt',
-    '@nuxtjs/font-awesome',
-    ['nuxt-sass-resources-loader', {
-        resources: path.join(process.cwd(), 'assets/scss/main.scss')
+    '@nuxtjs/font-awesome', ['nuxt-sass-resources-loader', {
+      resources: path.join(process.cwd(), 'assets/scss/main.scss')
     }],
   ],
   env: {
@@ -46,11 +51,11 @@ module.exports = {
     loginPwd: process.env.NODE_ENV === 'production' ? '' : '041281aaa'
   },
   plugins: [
-  {src: '@/plugins/vue-disable-autocomplete'},
-  {src: '@/plugins/vuejs-noty', ssr: false},
-  {src: '@/plugins/vuex-router-sync.js', ssr: false},
-  {src: '@/plugins/vue-cookie', ssr: false},
-  { src: '@/plugins/codemirror', ssr: false }
+    { src: '@/plugins/vue-disable-autocomplete' },
+    { src: '@/plugins/vuejs-noty', ssr: false },
+    { src: '@/plugins/vuex-router-sync.js', ssr: false },
+    { src: '@/plugins/vue-cookie', ssr: false },
+    { src: '@/plugins/codemirror', ssr: false }
   ],
   css: [
     'vuejs-noty/dist/vuejs-noty.css',
@@ -73,11 +78,21 @@ module.exports = {
   },
   manifest: {
     display: 'standalone',
-    name: 'LaTourImmo Backoffice',
+    name: 'tous mes droits',
     lang: 'fr'
   },
-  render:{
-    ssr:false
+  render: {
+    ssr: true
+  },
+  generate:{
+    routes: function(){
+      return new Promise((resolve, reject)=>{
+        sander.readFileSync(path.join(process.cwd(),'assets','routes.json')).then((r)=>{
+          console.log('generate routes',r)
+        });
+        resolve([]);
+      })
+    }
   },
   /*
    ** Build configuration

@@ -11,7 +11,6 @@
 		  </b-nav>
 		</div>
 	</div>
-
 </template>
 <script>
 	import Logo from '@/assets/logo.jpg'
