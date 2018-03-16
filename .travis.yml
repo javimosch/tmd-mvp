@@ -5,11 +5,12 @@ script:
 - echo "Lets build artifacts and deploy"
 install:
 - nvm use 9.5
-- yarn global add firebase-tools
+#- yarn global add firebase-tools
 - yarn
 after_success:
  - yarn prod:generator
  - yarn generate
+ - mv dist public
 deploy:
   provider: firebase
   token: $FIREBASE_TOKEN
