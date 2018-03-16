@@ -6,8 +6,8 @@ script:
 install:
 - nvm use 9.5
 - yarn global add firebase-tools
-- yarn
+#- yarn
 after_success:
- - yarn prod:generator
- - yarn generate
- - firebase deploy -project tous-mes-droits -token $FIREBASE_TOKEN
+ #- yarn prod:generator
+ #- yarn generate
+ - firebase deploy --project=tous-mes-droits --token=$FIREBASE_TOKEN
