@@ -2,11 +2,11 @@ language: node_js
 node_js:
  - "9.5"
 script:
-- echo "Deploy!!"
+- echo "Lets build artifacts and deploy"
 install:
 - nvm use 9.5
-#- yarn global add firebase-tools
-#- yarn
+- yarn global add firebase-tools
+- yarn
 after_success:
  - yarn prod:generator
  - yarn generate
