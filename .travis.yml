@@ -6,7 +6,6 @@ script:
 - yarn
 - yarn prod:generator
 - yarn generate
-- mv dist public
 before_deploy:
 - ls -lrt
 deploy:
