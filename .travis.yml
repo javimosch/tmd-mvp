@@ -4,8 +4,9 @@ node_js:
 script:
 - echo "Deploy!!"
 install:
--  npm install -g firebase-tools
+- nvm use 9.5
+- yarn global add firebase-tools
 after_success:
- - "npm run dev:generator"
- - npm run generate
- -  firebase deploy -  project tous-mes-droits -  token $FIREBASE_TOKEN
+ - yarn dev:generator
+ - yarn generate
+ - firebase deploy -  project tous-mes-droits -  token $FIREBASE_TOKEN
