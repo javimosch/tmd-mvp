@@ -8,4 +8,4 @@ install:
 after_success:
  - npm run dev:generator
  - npm run generate
- — firebase deploy — project tous-mes-droits — token $FIREBASE_TOKEN.
+ — firebase deploy — project tous-mes-droits — token $FIREBASE_TOKEN
