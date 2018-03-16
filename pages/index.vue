@@ -81,12 +81,12 @@
         <h2 class="text-center">Nos partenaires</h2>
       </div>
       <div class="col-lg-auto m-0 p-0 mt-4">
-        <div class="card">
+        <div class="partner">
           <img class="parner_logo" src="~/assets/partners/logo_pantheon_sobornne.jpg"/>
         </div>
       </div>
       <div class="col-lg-auto m-0 p-0 mt-4">
-        <div class="card">
+        <div class="partner">
           <img class="parner_logo" src="~/assets/partners/logo_ministere_justice.png"/>
         </div>
       </div>
@@ -99,13 +99,19 @@
 </template>
 <script>
 import DemoChat from '@/components/tmd/landing/DemoChat'
+let props = {};
+if(Object.keys(props).length==-0){
+  props.title = 'Tous mes droits';  
+  props.description = 'fuck year'
+}
 export default {
   layout: 'tmd-landing',
+  title: props.title,
   head () {
     return {
-      title: this.title,
+      title: props.title,
       meta: [
-        { hid: 'description', name: 'description', content: 'My custom description' }
+        { hid: 'description', name: 'description', content: props.description }
       ]
     }
   },
@@ -119,7 +125,7 @@ export default {
       return new Promise((resolve,reject)=>{
           setTimeout(function(){
             resolve({
-              title:'Services'
+              
             });
           },3000);
       });
@@ -167,7 +173,10 @@ h2{
     background: $color2;
     margin: 0 auto;
 }
+
 .parner_logo{
   width: 200px;
+  margin:0 auto;
+  display:block;
 }
 </style>

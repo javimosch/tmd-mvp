@@ -11,3 +11,8 @@ npm-debug.log
 dist
 
 sw.*
+
+pages/**
+!pages/index.vue
+!pages/lti
+!pages/_*

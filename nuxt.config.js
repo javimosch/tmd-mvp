@@ -87,10 +87,13 @@ module.exports = {
   generate:{
     routes: function(){
       return new Promise((resolve, reject)=>{
-        sander.readFileSync(path.join(process.cwd(),'assets','routes.json')).then((r)=>{
-          console.log('generate routes',r)
-        });
-        resolve([]);
+        let p = path.join(process.cwd(),'assets','routes.json');
+        if(!sander.existsSync(p)){
+          throw new Error('Not found: '+p);
+        }
+        let res = sander.readFileSync(p).toString('utf-8');
+        res = JSON.parse(res);
+        resolve(res.list.map(i=>i.path));
       })
     }
   },
