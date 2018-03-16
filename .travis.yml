@@ -2,16 +2,13 @@ language: node_js
 node_js:
  - "9.5"
 script:
-- echo "Lets build artifacts and deploy"
-install:
 - nvm use 9.5
-#- yarn global add firebase-tools
 - yarn
-after_success:
- - yarn prod:generator
- - yarn generate
- - mv dist public
+- yarn prod:generator
+- yarn generate
+- mv dist public
 deploy:
+  skip_cleanup: true
   provider: firebase
   token: $FIREBASE_TOKEN
   message: "your message"
