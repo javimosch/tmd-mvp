@@ -5,9 +5,9 @@ script:
 - echo "Deploy!!"
 install:
 - nvm use 9.5
-- yarn global add firebase-tools
+#- yarn global add firebase-tools
 #- yarn
 after_success:
  #- yarn prod:generator
  #- yarn generate
- - firebase deploy --project=tous-mes-droits --token=$FIREBASE_TOKEN
+ - dpl --provider=firebase --project=tous-mes-droits --token=$FIREBASE_TOKEN
