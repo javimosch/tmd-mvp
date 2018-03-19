@@ -42,6 +42,9 @@ function writeRoutes() {
 	let template = readFile(pagePath(TEMPLATE_PAGE));
 	let res = getRoutes();
 	res.list.forEach((i, k) => {
+		if(!i.path){
+			throw new Error('Path required for route '+JSON.stringify(i));
+		}
 		writePageFile(i.path, compileTemplate(template,i));
 	});
 }

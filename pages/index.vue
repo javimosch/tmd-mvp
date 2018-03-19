@@ -1,182 +1,97 @@
 <template>
   <div>
 
+    <see-also title="See also" :questions="allQuestions"></see-also>
 
 
+    <tdm-landing v-if="props.isLanding"></tdm-landing>
 
-    <div class="row mt-3 p-5 justify-content-center">
-      <div class="col-md-auto m-0 p-0">
-        <h2 class="text-center">Vos droits expliqués simplement</h2>
-      </div>
-    </div>
-    <demo-chat></demo-chat>
-    
-    <div class="row mt-3 pt-5 justify-content-center">
-      <div class="col-md-auto m-0 p-0">
-        <h2 class="text-center" v-html="title"></h2>
-      </div>
-    </div>
-    
-    <div class="row mt-0 p-5 mb-5 justify-content-center">
-      <div class="col-md-auto m-0 p-0">
-        <div class="card">
-          <div class="circle">
-            <router-link to="/app" class="circle_text">Mon Travail</router-link>
+    <tdm-chat :title="props.title" v-if="!props.isLanding">
+      <div slot="items">
+        <tmd-chat-message>
+          <div>
+            <p v-html="props.message"></p>
           </div>
-        </div>
-      </div>
-      <div class="col-md-auto m-0 p-0">
-        <div class="card">
-          <div class="circle">
-            <router-link to="/" class="circle_text">Ma Santè</router-link>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-auto m-0 p-0">
-        <div class="card">
-          <div class="circle">
-            <router-link to="/" class="circle_text">Ma Familie</router-link>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-auto m-0 p-0">
-        <div class="card">
-          <div class="circle">
-            <router-link to="/" class="circle_text">Mon<br>Logement</router-link>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-auto m-0 p-0">
-        <div class="card">
-          <div class="circle">
-            <router-link to="/" class="circle_text">Mon Argent</router-link>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-auto m-0 p-0">
-        <div class="card">
-          <div class="circle">
-            <router-link to="/" class="circle_text">Ma Voiture</router-link>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-auto m-0 p-0">
-        <div class="card">
-          <div class="circle">
-            <router-link to="/" class="circle_text">Mes<br>Voyages</router-link>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-auto m-0 p-0">
-        <div class="card">
-          <div class="circle">
-            <router-link to="/" class="circle_text">Autres</router-link>
-          </div>
-        </div>
-      </div>
-    </div>
+        </tmd-chat-message>
 
-    <div class="row mt-5 p-5 justify-content-center">
-      <div class="col-lg-12 m-0 p-0">
-        <h2 class="text-center">Nos partenaires</h2>
-      </div>
-      <div class="col-lg-auto m-0 p-0 mt-4">
-        <div class="partner">
-          <img class="parner_logo" src="~/assets/partners/logo_pantheon_sobornne.jpg"/>
-        </div>
-      </div>
-      <div class="col-lg-auto m-0 p-0 mt-4">
-        <div class="partner">
-          <img class="parner_logo" src="~/assets/partners/logo_ministere_justice.png"/>
-        </div>
-      </div>
-    </div>
+        <chat-input v-model="chatInput" :canWrite="false">
+            <div slot="options">
+              <message-option
+                v-for="item in questions" 
+                :key="item.code" 
+                >
+                  <span slot="text" v-html="item.title"></span>
+              </message-option>
+            </div>
+        </chat-input>
 
-
-    
+      </div>
+    </tdm-chat>
 
   </div>
 </template>
 <script>
-import DemoChat from '@/components/tmd/landing/DemoChat'
+import SeeAlso from '@/components/tmd/mvp/SeeAlso';
+import TdmLanding from '@/components/tmd/landing/LandingV1';
+import TdmChat from '@/components/tmd/mvp/ChatV1';
+import TmdChatMessage from '@/components/tmd/mvp/ChatMessage';
+import MessageOption from '@/components/tmd/mvp/ChatMessageOption';
+import ChatInput from '@/components/tmd/mvp/ChatInput';
+import { mapState } from 'vuex';
 let props = {};
 if(Object.keys(props).length==-0){
-  props.title = 'Tous mes droits';  
-  props.description = 'fuck year'
+  props.code = 400;
+  props.isLanding = false;
 }
 export default {
   layout: 'tmd-landing',
-  title: props.title,
+  name:"home",
   head () {
     return {
-      title: props.title,
+      title: this.props.title,
       meta: [
-        { hid: 'description', name: 'description', content: props.description }
+        { hid: 'description', name: 'description', content: this.props.description }
       ]
     }
   },
-  data(){
+  filters: {
+    json: (value) => { return JSON.stringify(value, null, 2) }
+  },
+  async created(){
+    if(!process.server && !this.props.isLanding){
+      await this.$store.dispatch('tmdOrder/sync',this.props.code);
+      if(!this.$store.state.tmdOrder.current){
+        await this.$store.dispatch('tmdOrder/create', this.props); 
+      }
+    }
+    
+  },
+  async asyncData({store}){
+      let self = this;
+      await store.dispatch('tmdQuestions/syncRoute', props.code);
       return {
-        title:"FOO"
+        chatInput:'',
+        props: !props.isLanding?store.state.tmdQuestions.current:props
       };
   },
-  asyncData({store}){
-      let self = this;
-      return new Promise((resolve,reject)=>{
-          setTimeout(function(){
-            resolve({
-              
-            });
-          },3000);
-      });
-  },
+  computed:mapState({
+    questions: state=>state.tmdQuestions.availableItems,
+    allQuestions: state=>state.tmdQuestions.items.filter(q=>q.isMain===true)
+  }),
   components: {
-    DemoChat
+  TdmLanding,
+  TdmChat,
+  TmdChatMessage,
+  MessageOption,
+  ChatInput,
+  SeeAlso
+  },
+  methods:{
+    
   }
 }
 
 </script>
 <style lang="scss" scoped>
-.jumbotron {
-  background-image: linear-gradient(80deg, #00aeff, #3369e7);
-  color: white;
-}
-h2{
-  color: $color3;
-}
 
-.circle_text:hover,.circle_text:active,.circle_text:focus{
-  text-decoration:none;
-}
-.circle_text {
-  display: table-cell;
-  vertical-align: middle;
-  line-height: normal;
-  color: $color6;
-}
-.card{
-    width: 140px;
-    padding-left: 20px;
-    border: 0px !important;
-    padding-bottom: 20px;
-    margin: 0 auto;
-}
-.circle {
-    display:table;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    font-size: 14px;
-    
-    line-height: 14px;
-    text-align: center;
-    background: $color2;
-    margin: 0 auto;
-}
-
-.parner_logo{
-  width: 200px;
-  margin:0 auto;
-  display:block;
-}
 </style>

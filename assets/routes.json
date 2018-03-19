@@ -1,15 +1,56 @@
 {
 	"list": [{
-		"title":"Mon travail",
+		"code":300,
+		"title": "Mon travail",
 		"path": "/mon-travail",
-		"description":"nice travail nice"
+		"description": "nice travail nice",
+		"isMain":true
 	}, {
-		"title":"Ma sante",
-		"path": "/ma-sante"
-	},
-	{
-		"title":"Ma sante - question 4",
-		"metas":[],
+		"code":350,
+		"title": "Ma sante",
+		"path": "/ma-sante",
+		"isMain":true
+	}, {
+		"code":351,
+		"title": "Ma sante - question 4",
+		"metas": [],
 		"path": "/ma-sante/seguridad-social/carta-vitale"
+	}, {
+		"code":500,
+		"title": "Vehicles in France",
+		"path": "/my-vehicles",
+		"description": "Vehicles description",
+		"isMain":true
+	}, {
+		"code": 400,
+		"title": "Freelancing",
+		"path": "/freelancing",
+		"message": "So, you are looking for something in frelancing section. Can you specify?",
+		"questions": [401, 402],
+		"isMain":true
+	}, {
+		"code": 401,
+		"title": "Freelance contracts for France",
+		"path": "/freelancing/contracts",
+		"message": "Contracts!. There are many, which one are you interested in?",
+		"questions": [420, 421]
+	},{
+		"code": 402,
+		"title": "Freelance legal statuses in France",
+		"path": "/freelancing/statuses-in-france",
+		"message": "Contracts!. There are many, which one are you interested in?",
+		"questions": [420, 421]
+	}, {
+		"code": 420,		
+		"title":"Contract type X20 for Freelancers in France",
+		"path": "/freelancing/contract-x20-in-france",
+		"message": "Contracts!. There are many, which one are you interested in?",
+		"questions": []
+	}, {
+		"code": 421,		
+		"title":"Contract type X21 for Freelancers in France",
+		"path": "/freelancing/contract-x21-in-france",
+		"message": "Contracts!. There are many, which one are you interested in?",
+		"questions": []
 	}]
 }
