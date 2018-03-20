@@ -93,7 +93,7 @@ module.exports = {
         }
         let res = sander.readFileSync(p).toString('utf-8');
         res = JSON.parse(res);
-        resolve(res.nodes.filter(i=>!i.ssr||i.ssr!==false).map(i=>i.path));
+        resolve(res.nodes.filter(i=>(!i.ssr||i.ssr!==false) && i.path!=undefined).map(i=>i.path));
       })
     }
   },
