@@ -20,11 +20,11 @@ function getRoutes() {
 		process.exit(0);
 	}
 
-	if (res.list.filter(i => !i.title).length > 0) {
+	if (res.nodes.filter(i => !i.title).length > 0) {
 		console.log('title is required')
 		process.exit(0);
 	}
-	if (res.list.filter(i => i.path === '' || i.path === '/').length > 0) {
+	if (res.nodes.filter(i => i.path === '' || i.path === '/').length > 0) {
 		console.log('Path should be like /my-article-title')
 		process.exit(0);
 	}
@@ -41,7 +41,8 @@ function compileTemplate(template,route){
 function writeRoutes() {
 	let template = readFile(pagePath(TEMPLATE_PAGE));
 	let res = getRoutes();
-	res.list.forEach((i, k) => {
+	res.nodes.forEach((i, k) => {
+		if(i.ssr === false) return;
 		if(!i.path){
 			throw new Error('Path required for route '+JSON.stringify(i));
 		}

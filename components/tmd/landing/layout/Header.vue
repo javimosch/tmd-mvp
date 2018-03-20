@@ -2,8 +2,7 @@
 	<header class="container">
 		<nav class="navbar navbar-light bg-light">
 		  <router-link class="navbar-brand" to="/">
-		    <i class="fas fa-clock clock"></i>
-		    <span class="pl-3">Tous Mes Droits</span>
+		    <span class="p-0 logo"><span class="inverse">Tous</span> Mes Droits</span>
 		  </router-link>
 		</nav>
 	</header>  
@@ -17,7 +16,16 @@
 .navbar{
 	background-color:transparent!important;
 }
-.clock{
-	color: $primary-color;
+.inverse{
+	color:$color3;
+	background-color:$color1;
+	padding-right:2px;
+	padding-left:2px;
+	
+}
+.logo{
+	padding:10px 0px;
+	color:$color6;
+	background-color:$color3;
 }
 </style>

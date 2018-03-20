@@ -14,34 +14,53 @@ export const state = () => ({
     inputs: [],
     solutions: []
   }],
-  current:null,
-  
+  current: null,
+  previousMessages: [],
 });
 
 export const mutations = {
-  afterCreate(state,current){
+  afterCreate(state, current) {
     state.current = current;
   },
-  afterSync(state, {items, current}) {
+  afterSync(state, {
+    items,
+    current
+  }) {
     if (items.length > 0) {
       state.items = items;
     }
-    state.current = current||null;
+    state.current = current || null;
+    if (state.current) {
+      let q = state.current.questions;
+      state.previousMessages = q.filter((x, k) => k !== q.length - 1);
+    }
   },
-
+  afterSelectNode(state, node) {
+    state.current.questions.push(node);
+    let q = state.current.questions;
+    state.previousMessages = q.filter((x, k) => k !== q.length - 1);
+  }
 };
 
 export const actions = {
-  
-  async create({commit, state},firstQuestion){
+
+  async create({
+    commit,
+    state
+  }, firstQuestion) {
     let item = {
-      questions:[firstQuestion],
-      inputs:[],
-      solutions:[]
+      questions: [firstQuestion],
+      inputs: [],
+      solutions: []
     };
-    await localforage.setItem('current',item);
-    commit('afterCreate');
-    
+    await localforage.setItem('current', item);
+    commit('afterCreate',item);
+
+  },
+  async selectNode({
+    commit
+  }, node) {
+    commit('afterSelectNode', node);
   },
   async sync({
     commit,
@@ -49,8 +68,8 @@ export const actions = {
     dispatch
   }, questionCode) {
     let itemsFromCache = await localforage.getItem('orders');
-    var items = _.unionBy(state.items, itemsFromCache,'code');
-    let currentFromCache = (await localforage.getItem('current'))||null;
+    var items = _.unionBy(state.items, itemsFromCache, 'code');
+    let currentFromCache = (await localforage.getItem('current')) || null;
     commit('afterSync', {
       items: items || [],
       current: currentFromCache
