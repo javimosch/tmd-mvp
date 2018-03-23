@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div id="HomePage" class="container">
   <see-also v-if="false"
             title="See also"
             :questions="allNodes"></see-also>
@@ -53,11 +53,14 @@
       </chat-input>
     </div>
   </booking-view>
+
+
 </div>
 
 </template>
 
 <script>
+import '@/plugins/pdf';
 import moment from 'moment';
 import DebugScreen from '@/components/tmd/mvp/DebugScreen';
 import SeeAlso from '@/components/tmd/mvp/SeeAlso';

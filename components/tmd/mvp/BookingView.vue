@@ -2,9 +2,9 @@
 	<div class='BookingView'>
 		
     <div class="row mt-0 p-0 ml-0 mr-0 justify-content-center">
-      <div class="col-md-9 m-0 p-0 mt-4 align-self-center">
+      <div class="col-md-9 m-0 p-0 mt-4 ">
         <div class="row mt-0 p-0 justify-content-center">
-          <div class="col-md-auto m-0 p-0 w-50 align-self-center">
+          <div class="col-md-auto m-0 p-0 w-50 ">
           <h6 class="ChatTitle text-center" v-html="title"></h6>
           </div>
         </div>
@@ -42,11 +42,7 @@
           </div>
         </div>
         <div class="row mt-1 p-0 justify-content-center">
-          <b-list-group>
-            <b-list-group-item>
-              Nothing yet
-            </b-list-group-item>
-          </b-list-group>  
+          <booking-documents></booking-documents>
         </div>
       </div>
     </div>
@@ -55,6 +51,7 @@
 	</div>
 </template>
 <script>
+import BookingDocuments from '@/components/tmd/mvp/BookingDocuments';
 import ProgressBar from '@/components/ProgressBar';
 export default {
   name:"BookingView",
@@ -63,7 +60,8 @@ export default {
     
   },
 	components: {
-    ProgressBar
+    ProgressBar,
+    BookingDocuments
   }
 }	;
 </script>
