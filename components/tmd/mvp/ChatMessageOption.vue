@@ -1,6 +1,6 @@
 <template>
 	<div class="mt-1 ChatMessageOption">
-    <b-btn variant="secondary">
+    <b-btn :disabled="disabled" variant="secondary">
       <slot name="text">Option</slot>
     </b-btn>
   </div>
@@ -9,6 +9,7 @@
 
 export default {
   name:"ChatMessageOption",
+  props:['disabled'],
   data(){
     return {
       

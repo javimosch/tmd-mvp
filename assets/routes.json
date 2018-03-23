@@ -6,98 +6,72 @@
 		"code": "S1.11.2.2",
 		"message": "Seuls les salariés en CDI peuvent conclure un rupture conventionnelle. On ne peut pas mettre fin à un CDD, un contrat temporaire ou un autre type de contrat par une rupture conventionnelle.<br>Le salarié doit aussi être en contrat dans le secteur privé. La rupture conventionnelle n'est pas possible pour les agents de la fonction publique."
 	}],
+	"inputs":[
+		{
+			"code":"I:name",
+			"message":"Please, write your name",
+			"title":"Your name",
+			"type":"input:text"
+		}
+	],
 	"nodes": [{
-		"code": 50,
-		"title": "Introduction 1",
-		"message": "Votre question concerne...",
-		"afterMessage": "Et plus précisément ?",
-		"ssr": false,
-		"type": "intro"
-	}, {
-		"code": 10,
-		"title": "I'm interested in something else",
-		"message": "Est-ce qu'un autre point vous intéresse ?",
-		"responses": [301],
-		"ssr":false
-	}, {
-		"code": 300,
+		"code": "T1:Q1",
 		"title": "Mon travail",
 		"path": "/mon-travail",
 		"message":"Votre question concerne...",
 		"description": "",
 		"isMain": true,
-		"nextNodes":[301]
+		"relationships":{
+			"has_tag":["T:IS_INDEX"],
+			"parent_of":["T1:Q2", "T1:Q3"]
+		}
+	},{
+		"code": "T1:Q2",
+		"title": "No this one",
+		"path": "/mon-travail/other-one",
+		"message":"Votre question concerne...",
+		"description": "",
+		"ssr":false,
+		"disabled":true,
+		"nextNodes":[]
 	}, {
-		"code": 301,
+		"code": "T1:Q3",
 		"title": "Fin du contrat de travail",
 		"message": "Fin du contrat de travail (démission, licenciement, rupture conventionnelle...)",
 		"afterMessage": "Votre question concerne plus exactement...",
 		"ssr": false,
-		"nextNodes":[302,303]
+		"relationships":{
+			"has_tag":["T:IS_INDEX"],
+			"parent_of":["T1:Q3:R1","T1:Q3:R2"]
+		}
 	}, {
-		"code": 302,
+		"code": "T1:Q3:R1",
 		"title": "Démission",
 		"message": "Démission",
+		"disabled":true,
 		"ssr": false
 	}, {
-		"code": 303,
+		"code": "T1:Q3:R2",
 		"title": "Rupture conventionnelle",
-		"message": "Rupture conventionnelle",
-		"afterMessage": "Grâce à la rupture conventionnelle, le salarié et l'employeur peuvent se mettre d'accord pour mettre fin au contrat de travail (CDI) à l'amiable, sans démission ni licenciement. Je comprends que votre question concerne la rupture conventionnelle, mais quel point vous intéresse en particulier ?",
+		"messages": ["Rupture conventionnelle, Aha!","Grâce à la rupture conventionnelle, le salarié et l'employeur peuvent se mettre d'accord pour mettre fin au contrat de travail (CDI) à l'amiable, sans démission ni licenciement. Je comprends que votre question concerne la rupture conventionnelle, mais quel point vous intéresse en particulier ?"],
 		"ssr": false,
-		"nextNodes":[304]
+		"relationships":{
+			"parent_of":["T1:Q3:R2:Q1","T1:Q3:R2:Q2"]
+		}
 	}, {
-		"code": 304,
-		"title": "Rupture conventionnelle - Child 1",
-		"message": "Je souhaite mieux comprendre la rupture conventionnelle de manière générale",
-		"solutions": [],
+		"code": "T1:Q3:R2:Q1",
+		"title": "A solution is here",
+		"message": "I think I found a solution, lets generate a document. For that to happen, I will need some input.",
+		"relationships":{
+			"require_input":["I:name"],
+			"has_solution":["T1:Q3:R2:Q1:S"]
+		},
 		"ssr":false
-	}, {
-		"code": 350,
-		"title": "Ma sante",
-		"path": "/ma-sante",
-		"isMain": true
-	}, {
-		"code": 351,
-		"title": "Ma sante - question 4",
-		"metas": [],
-		"path": "/ma-sante/seguridad-social/carta-vitale"
-	}, {
-		"code": 500,
-		"title": "Vehicles in France",
-		"path": "/my-vehicles",
-		"description": "",
-		"isMain": true
-	}, {
-		"code": 400,
-		"title": "Freelancing",
-		"path": "/freelancing",
-		"message": "So, you are looking for something in frelancing section. Can you specify?",
-		"nextNodes": [401, 402],
-		"isMain": true
-	}, {
-		"code": 401,
-		"title": "Freelance contracts for France",
-		"path": "/freelancing/contracts",
-		"message": "Contracts!. There are many, which one are you interested in?",
-		"nextNodes": [420, 421]
-	}, {
-		"code": 402,
-		"title": "Freelance legal statuses in France",
-		"path": "/freelancing/statuses-in-france",
-		"message": "Contracts!. There are many, which one are you interested in?",
-		"nextNodes": [420, 421]
-	}, {
-		"code": 420,
-		"title": "Contract type X20 for Freelancers in France",
-		"path": "/freelancing/contract-x20-in-france",
-		"message": "Contracts!. There are many, which one are you interested in?",
-		"nextNodes": []
-	}, {
-		"code": 421,
-		"title": "Contract type X21 for Freelancers in France",
-		"path": "/freelancing/contract-x21-in-france",
-		"message": "Contracts!. There are many, which one are you interested in?",
-		"nextNodes": []
+	},{
+		"code": "T1:Q3:R2:Q2",
+		"title": "This one is disabled",
+		"message": "Je souhaite mieux comprendre la rupture conventionnelle de manière générale",
+		"disabled":true,
+		"ssr":false
 	}]
 }

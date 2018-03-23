@@ -29,7 +29,10 @@ module.exports = {
     }, {
       rel: 'stylesheet',
       href: 'https://fonts.googleapis.com/css?family=Montserrat'
-    }]
+    }],
+    script:[
+      
+    ]
   },
   /*
    ** Customize the progress bar color
@@ -46,9 +49,10 @@ module.exports = {
   ],
   env: {
     loginSalt: '$2a$10$67Bn8fXfK0peYFBhAKCctequ/QSkwtX4DWE5UmG0DQOieGdGysR8S',
-    apiUrl: process.env.API_URL || 'http://localhost:8080',
+    apiUrl: process.env.API_URL || 'http://localhost:3000',
     loginEmail: process.env.NODE_ENV === 'production' ? '' : 'pierre@diagnostical.fr',
-    loginPwd: process.env.NODE_ENV === 'production' ? '' : '041281aaa'
+    loginPwd: process.env.NODE_ENV === 'production' ? '' : '041281aaa',
+    isProduction: process.env.NODE_ENV === 'production'
   },
   plugins: [
     { src: '@/plugins/vue-disable-autocomplete' },

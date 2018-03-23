@@ -1,16 +1,16 @@
 <template>
   <b-list-group-item>
 	<div class="ChatInput">
-    <div v-show="canWrite">
-      <b-form-input 
-          :value="value"
-          @input="onInput"
+    <div v-show="inputNode">
+      <input 
+          class="form-control"
+          @keyup.enter="onSubmit"
           type="text"
-          placeholder="Enter your name"
-          >      
-      </b-form-input>   
+          :placeholder="inputNode && inputNode.placeholder||''"
+          />      
+      
     </div> 
-    <div v-show="!canWrite">
+    <div v-show="!inputNode">
         <slot name="options"></slot>
     </div>   
   </div>
@@ -20,15 +20,15 @@
 
 export default {
   name:"ChatInput",
-  props:['value', 'canWrite'],
+  props:['inputNode'],
   data(){
     return {
       
     }
   },
 	methods: {
-    onInput(val){
-      this.$emit('input',val);
+    onSubmit(e){
+      this.$emit('onSubmit',e.target.value);
     }
   }
 }	;
