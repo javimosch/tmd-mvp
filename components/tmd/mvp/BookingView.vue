@@ -9,10 +9,18 @@
           </div>
         </div>
         <div class="row mt-0 p-0 ml-0 mr-0 justify-content-center">
-          <div class="col-md-12 m-0 p-0 w-100">
-            <div class="ChatView">
+          <div class="col-md-12 m-0 p-0 w-100 ">
+            <div class="ChatView row">
                 
-                <slot name="items"></slot> 
+                  <div class="col-md-12 m-0 p-0 align-self-start">
+                    <slot name="items"></slot> 
+                  </div>
+                
+                
+                    <div class="col-md-12 m-0 p-0 align-self-end">
+                      <slot name="bottom">
+                      </slot>
+                    </div>
                 
             </div>
           </div>
@@ -38,7 +46,7 @@
         
         <div class="row mt-5 p-0 justify-content-center">
           <div class="col-md-auto m-0 p-0 w-50">
-          <h2 class="text-center" v-html="'Mon document'"></h2>
+          <h2 class="text-center" v-html="'Mes Documents'"></h2>
           </div>
         </div>
         <div class="row mt-1 p-0 justify-content-center">
@@ -75,11 +83,13 @@ export default {
   overflow: scroll;
 }
 .ChatView{
+  min-height: 450px;
   max-height: 450px; 
   @media only screen and (min-width: 992px) {
     
   }
   @media only screen and (min-height: 768px) {
+    min-height: 500px;
     max-height: 500px;  
   }
   

@@ -19,11 +19,11 @@ module.exports = {
       name: 'description',
       content: ''
     }],
-    link: [{
+    link: [/*{
       rel: 'icon',
       type: 'image/x-icon',
-      href: '/favicon.ico?v2'
-    }, {
+      href: '/favicon.ico?v3'
+    }*/ {
       rel: 'stylesheet',
       href: 'https://use.fontawesome.com/releases/v5.0.8/css/all.css'
     }, {

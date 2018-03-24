@@ -7,6 +7,7 @@
   <booking-view :statusProgress="statusProgress"
                 :title="current.title"
                 v-if="!current.isLanding">
+    
     <div slot="orderResume">
       <b-list-group-item>
         Compréhension de ma question
@@ -22,6 +23,7 @@
         </ul>
       </b-list-group-item>
     </div>
+
     <div slot="items">
       <!-- CHAT MESSAGE HISTORY -->
       <tmd-chat-message v-for="(m,k) in messages"
@@ -38,6 +40,9 @@
           <span v-html="messageTime(m.at)"> </span>
         </div>
       </tmd-chat-message>
+    </div>
+
+    <div slot="bottom">
       <chat-input :inputNode="firstUnresolvedInput"
                   @onSubmit="onSubmitInputAnswer">
         <div slot="options">
@@ -52,6 +57,7 @@
         </div>
       </chat-input>
     </div>
+
   </booking-view>
 
 
@@ -107,65 +113,45 @@ export default {
   },
   async asyncData({store}) {
     let self = this
-    await store.dispatch('tmdQuestions/syncRoute', props.code)
+    await store.dispatch('tmdNodes/syncRoute', props.code)
+    console.log(JSON.stringify(Object.keys(store.state.tmdOrder)))
     return {
       isProduction: process.env.isProduction,
-      props: !props.isLanding ? store.state.tmdQuestions.current : props
+      props: !props.isLanding ? store.state.tmdOrder.currentNode : props
     }
   },
   computed: Object.assign(mapState({
-    messages: state => state.tmdChat.messages,
+    messages: state => {
+      console.log('STATE')
+      window.s = state;
+      return state.getters['tmdOrderMessages/getAll']
+    },
     orders: state => ({
       all: state.tmdOrder.items,
       current: state.tmdOrder.current
     }),
-    previousMessages: state => state.tmdOrder.previousMessages,
-    availableInputs: state => state.tmdQuestions.availableInputs,
-    availableNodes: state => state.tmdQuestions.availableItems.map(v => {
-      if (!process.env.isProduction) {
-        v = _.cloneDeep(v)
-        v.title += ` (${v.code})`
-      }
-      v.disabled = v.disabled === true
-      return v
-    }),
-    allNodes: state => state.tmdQuestions.items.filter(q => q.isMain === true)
-
+    availableInputs: state=>state.getters['tmdOrderInputs/getAll'],
+    availableNodes: state=>state.getters['tmdOrder/getChatOptionNodes'],
+    allNodes: state => state.getters['tmdNodes/getAll'],
+    resolvedInputs: state=>state.getters['tmdOrderInputs/getResolved'],
+    firstUnresolvedInput: state=>state.getters['tmdOrderInputs/getFirstUnResolvedInput'],
+    current: state=> state.getters['tmdOrder/getCurrentNode']
   }), {
-    resolvedInputs() {
-      return this.orders.current && this.orders.current.inputs.filter(i => i.resolved === true) || []
-    },
-    firstUnresolvedInput() {
-      let state = this.$store.state
-      if (!this.orders.current) {
-        return null
-      }
-      let resolved = this.orders.current.inputs.filter(r => r.resolved).map(i => i.code)
-      if (resolved.length === 0) {
-        return state.tmdQuestions.availableInputs[0]
-      } else {
-        return state.tmdQuestions.availableInputs.filter(i => !resolved.includes(i.code))[0] || null
-      }
-    },
+    
     statusProgress() {
-      if (this.previousMessages.length >= 2) {
+      if (this.messages.length >= 2) {
         return 30
       }
-      if (this.previousMessages.length > 3) {
+      if (this.messages.length > 3) {
         return 50
       }
-      if (this.previousMessages.length > 5) {
+      if (this.messages.length > 5) {
         return 70
       }
       if (this.current.isSolution) {
         return 100
       }
       return 25
-    },
-    current() {
-      let state = this.$store.state
-      let res = state.tmdOrder.current ? (state.tmdOrder.current.questions[state.tmdOrder.current.questions.length - 1]) : this.props
-      return res
     },
     editInput() {},
     allInputsAreResolved() {
@@ -192,11 +178,11 @@ export default {
       return moment(at).format('HH:mm')
     },
     async onSubmitInputAnswer(val) {
-      await this.$store.dispatch('tmdOrder/resolveInput', {
+      await this.$store.dispatch('tmdOrderInputs/resolve', {
         input: this.firstUnresolvedInput,
         answer: val
       })
-      await this.$store.dispatch('tmdChat/addMessage', {
+      await this.$store.dispatch('tmdOrderMessages/add', {
         from: 'You',
         text: val,
         isUser: true
@@ -205,8 +191,7 @@ export default {
       this.scrollToBottom()
     },
     async selectNode(node) {
-      await this.$store.dispatch('tmdQuestions/syncRoute', node.code)
-      await this.$store.dispatch('tmdOrder/selectNode', node)
+      await this.$store.dispatch('tmdOrder/setCurrentNode', node)
       this.scrollToBottom()
       this.pushInputMessage()
     },
@@ -218,7 +203,7 @@ export default {
     },
     async pushInputMessage() {
       if (this.firstUnresolvedInput) {
-        await this.$store.dispatch('tmdChat/addMessage', {
+        await this.$store.dispatch('tmdOrderMessages/add', {
           from: 'Bot',
           text: this.firstUnresolvedInput.message
         })

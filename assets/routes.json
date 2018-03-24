@@ -1,77 +1,88 @@
 {
 	"solutions": [{
-		"code": "S1.11.2.1",
-		"message": "Si le salarié et l'employeur veulent mettre fin au CDI (contrat à durée indéterminée) à l'amiable, ils doivent conclure une rupture conventionnelle. C'est le seul moyen de rompre le contrat de travail d'un commun accord.<br>Le salarié a alors le droit au chômage, s'il en remplit les conditions. L'employeur doit également verser au salarié une indemnité de rupture conventionnelle.<br>Seuls les salariés en CDI ont droit à la rupture conventionnelle. La rupture conventionnelle est impossible pour les CDD (contrats à durée déterminée) ou les autres contrats."
-	}, {
-		"code": "S1.11.2.2",
-		"message": "Seuls les salariés en CDI peuvent conclure un rupture conventionnelle. On ne peut pas mettre fin à un CDD, un contrat temporaire ou un autre type de contrat par une rupture conventionnelle.<br>Le salarié doit aussi être en contrat dans le secteur privé. La rupture conventionnelle n'est pas possible pour les agents de la fonction publique."
-	}],
-	"inputs":[
-		{
-			"code":"I:name",
-			"message":"Please, write your name",
-			"title":"Your name",
-			"type":"input:text"
+		"code": "T1:Q3:R2:Q1:S1",
+		"messages": ["Si le salarié et l'employeur veulent mettre fin au CDI (contrat à durée indéterminée) à l'amiable, ils doivent conclure une rupture conventionnelle. C'est le seul moyen de rompre le contrat de travail d'un commun accord.<br>Le salarié a alors le droit au chômage, s'il en remplit les conditions. L'employeur doit également verser au salarié une indemnité de rupture conventionnelle.<br>Seuls les salariés en CDI ont droit à la rupture conventionnelle. La rupture conventionnelle est impossible pour les CDD (contrats à durée déterminée) ou les autres contrats."],
+		"relationships": {
 		}
-	],
+	}, {
+		"code": "T1:Q3:R2:Q1:S2",
+		"messages": ["Seuls les salariés en CDI peuvent conclure un rupture conventionnelle. On ne peut pas mettre fin à un CDD, un contrat temporaire ou un autre type de contrat par une rupture conventionnelle.<br>Le salarié doit aussi être en contrat dans le secteur privé. La rupture conventionnelle n'est pas possible pour les agents de la fonction publique."],
+		"relationships": {
+			"has_document": ["D:HelloWorld"]
+		}
+	}],
+	"documents": [{
+		"code": "D:HelloWorld",
+		"template": "Hello ${name}",
+		"relationships":{
+			"require_input": ["I:name"]
+		}
+	}],
+	"inputs": [{
+		"code": "I:name",
+		"message": "Please, write your name",
+		"title": "Your name",
+		"type": "input:text"
+	}],
 	"nodes": [{
 		"code": "T1:Q1",
 		"title": "Mon travail",
 		"path": "/mon-travail",
-		"message":"Votre question concerne...",
+		"messages": ["Votre question concerne..."],
 		"description": "",
 		"isMain": true,
-		"relationships":{
-			"has_tag":["T:IS_INDEX"],
-			"parent_of":["T1:Q2", "T1:Q3"]
+		"relationships": {
+			"has_tag": ["T:IS_INDEX"],
+			"parent_of": ["T1:Q2", "T1:Q3"]
 		}
-	},{
+	}, {
 		"code": "T1:Q2",
 		"title": "No this one",
 		"path": "/mon-travail/other-one",
-		"message":"Votre question concerne...",
+		"messages": ["Votre question concerne..."],
 		"description": "",
-		"ssr":false,
-		"disabled":true,
-		"nextNodes":[]
+		"ssr": false,
+		"disabled": true,
+		"nextNodes": []
 	}, {
 		"code": "T1:Q3",
 		"title": "Fin du contrat de travail",
-		"message": "Fin du contrat de travail (démission, licenciement, rupture conventionnelle...)",
+		"messages": ["Fin du contrat de travail (démission, licenciement, rupture conventionnelle...)"],
 		"afterMessage": "Votre question concerne plus exactement...",
 		"ssr": false,
-		"relationships":{
-			"has_tag":["T:IS_INDEX"],
-			"parent_of":["T1:Q3:R1","T1:Q3:R2"]
+		"relationships": {
+			"has_tag": ["T:IS_INDEX"],
+			"parent_of": ["T1:Q3:R1", "T1:Q3:R2"]
 		}
 	}, {
 		"code": "T1:Q3:R1",
 		"title": "Démission",
-		"message": "Démission",
-		"disabled":true,
+		"messages": ["Démission"],
+		"disabled": true,
 		"ssr": false
 	}, {
 		"code": "T1:Q3:R2",
 		"title": "Rupture conventionnelle",
-		"messages": ["Rupture conventionnelle, Aha!","Grâce à la rupture conventionnelle, le salarié et l'employeur peuvent se mettre d'accord pour mettre fin au contrat de travail (CDI) à l'amiable, sans démission ni licenciement. Je comprends que votre question concerne la rupture conventionnelle, mais quel point vous intéresse en particulier ?"],
+		"messages": ["Rupture conventionnelle, Aha!", "Grâce à la rupture conventionnelle, le salarié et l'employeur peuvent se mettre d'accord pour mettre fin au contrat de travail (CDI) à l'amiable, sans démission ni licenciement. Je comprends que votre question concerne la rupture conventionnelle, mais quel point vous intéresse en particulier ?"],
 		"ssr": false,
-		"relationships":{
-			"parent_of":["T1:Q3:R2:Q1","T1:Q3:R2:Q2"]
+		"relationships": {
+			"parent_of": ["T1:Q3:R2:Q1", "T1:Q3:R2:Q2"]
 		}
 	}, {
 		"code": "T1:Q3:R2:Q1",
 		"title": "A solution is here",
-		"message": "I think I found a solution, lets generate a document. For that to happen, I will need some input.",
-		"relationships":{
-			"require_input":["I:name"],
-			"has_solution":["T1:Q3:R2:Q1:S"]
+		"messages": ["I think I found a solution, lets generate a document. For that to happen, I will need some input."],
+		"relationships": {
+			"has_input": ["I:name"],
+			"has_solution": ["T1:Q3:R2:Q1:S2"],
+			"has_document": ["D:HelloWorld"]
 		},
-		"ssr":false
-	},{
+		"ssr": false
+	}, {
 		"code": "T1:Q3:R2:Q2",
 		"title": "This one is disabled",
-		"message": "Je souhaite mieux comprendre la rupture conventionnelle de manière générale",
-		"disabled":true,
-		"ssr":false
+		"messages": ["Je souhaite mieux comprendre la rupture conventionnelle de manière générale"],
+		"disabled": true,
+		"ssr": false
 	}]
 }
