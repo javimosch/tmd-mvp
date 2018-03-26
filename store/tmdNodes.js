@@ -15,14 +15,19 @@ export const getters = {
 };
 
 export const actions = {
-  async syncRoute({
+  async sync({state, commit}){
+    let items = await fetchAll();
+    commit('set', items)
+  },
+  async getNode({
     state,
     commit,
     dispatch
   }, code) {
-    let items = await fetchAll();
-    await dispatch('tmdOrder/sync', await fetchByCode(code),{root:true});
-    commit('set', items)
+    if(state.items.length===0){
+      await dispatch('sync');
+    }
+    return await fetchByCode(code);
   }
 };
 

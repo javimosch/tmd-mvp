@@ -1,5 +1,4 @@
-import routesJson from '@/assets/routes.json';
-import _ from 'lodash';
+import {fetchAll} from '@/plugins/tmdOrders';
 
 export const state = () => ({
   items: [],
@@ -24,10 +23,3 @@ export const actions = {
   }
 };
 
-async function fetchAll(node){
-  if(process.env.server){
-    return [];
-  }
-  let items = await localforage.getItem('orders');
-  return items;
-}

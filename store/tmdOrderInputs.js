@@ -1,40 +1,47 @@
-import routesJson from '@/assets/routes.json';
-import _ from 'lodash';
+import {getInputsFromNode} from '@/plugins/tmdNode';
+import {saveToCache} from '@/plugins/tmdOrder';
 
 export const state = () => ({
   items: [],
 });
 
-export const getters = {
-  getAll:state=>state.items,
-  getResolved:state=>state.items.filter(i=>i.resolved),
-  getFirstUnResolvedInput:state=>{
-    let r = state.items.filter(i=>!i.resolved);
-    return r.lengh>0&&r[0]||null;
-  }
-};
-
 export const mutations = {
-  updateAll(state, items) {
-    state.items = items;
-  },
-  sync:(s,i)=>s.items=i,
-  updateInput(state, input){
-    state.inputs.forEach(input=>{
-      if(input.code.toString()==input.code.toString()){
-        input.answer = input.answer;
-        input.resolved = input.resolved;
+  update:(s,i)=>s.items=i,
+  updateInput(state, params){
+    state.items.forEach(input=>{
+      if(input.code.toString()==params.code.toString()){
+        for(var x in params){
+          input[x] = params[x];
+        }
       }
     });
   }
 };
 
 export const actions = {
-  async updateAll({
+  async update({
     commit,
-    state
+    state,
+    dispatch
   }, node) {
-    commit('updateAll', await getInputsFromNode(node));
+    commit('update', await getInputsFromNode(node));
+
+    if(state.items.length>0){
+      let first = state.items[0];
+      console.log('tmdOrderInputs update ',first);
+      if(!first.rendered){
+        first.rendered = true;
+      }
+      await dispatch('tmdOrderMessages/add',{
+          text:first.message,
+          from:'Bot'
+        },{root:true});
+    }
+
+    await saveToCache({
+      inputs: state.items
+    });
+
   },
   async resolve({
     commit
@@ -42,23 +49,10 @@ export const actions = {
     input,
     answer
   }) {
-    input = _.cloneDeep(input);
-    input.answer = answer;
-    input.resolved = true;
-    commit('updateInput', input);
+    commit('updateInput', {
+      code:input.code,
+      answer: answer
+    });
   }
 };
 
-async function getInputsFromNode(currentNode){
-  if(currentNode.inputs){
-    return currentNode.inputs;
-  }else{
-    let arr = currentNode.relationships.require_input || currentNode.relationships.has_input;
-    return routesJson.inputs.filter(item => _.includes(arr, item.code));
-  }
-}
-
-async function fetchAll(){
-  let items = await localforage.getItem('tmdOrderInputs');
-  return items;
-}

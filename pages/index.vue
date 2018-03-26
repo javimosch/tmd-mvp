@@ -3,10 +3,10 @@
   <see-also v-if="false"
             title="See also"
             :questions="allNodes"></see-also>
-  <tdm-landing v-if="current.isLanding"></tdm-landing>
+  <tdm-landing v-if="isLanding"></tdm-landing>
   <booking-view :statusProgress="statusProgress"
                 :title="current.title"
-                v-if="!current.isLanding">
+                v-if="!isLanding">
     
     <div slot="orderResume">
       <b-list-group-item>
@@ -47,7 +47,7 @@
                   @onSubmit="onSubmitInputAnswer">
         <div slot="options">
           <!-- MULTIPLE CHOICE BUTTONS -->
-          <message-option v-for="item in availableNodes"
+          <message-option v-for="item in availableChatOptionsList"
                           :key="item.code"
                           :disabled="item.disabled"
                           @click.native="!item.disabled && selectNode(item)">
@@ -103,41 +103,45 @@ export default {
       return JSON.stringify(value, null, 2)
     }
   },
-  async created() {
-    if (!process.server && !this.props.isLanding) {
-      await this.$store.dispatch('tmdOrder/sync', this.props.code)
-      // if(!this.$store.state.tmdOrder.current){
-      await this.$store.dispatch('tmdOrder/create', this.props)
-    // }
-    }
-  },
   async asyncData({store}) {
     let self = this
-    await store.dispatch('tmdNodes/syncRoute', props.code)
+    let node = await store.dispatch('tmdNodes/getNode', props.code)
     console.log(JSON.stringify(Object.keys(store.state.tmdOrder)))
     return {
       isProduction: process.env.isProduction,
-      props: !props.isLanding ? store.state.tmdOrder.currentNode : props
+      currentNode: !props.isLanding ? node : props
+    }
+  },
+  async created() {
+    if (!isServer() && !this.currentNode.isLanding) {
+      await this.$store.dispatch('tmdOrder/sync', this.currentNode)
     }
   },
   computed: Object.assign(mapState({
-    messages: state => {
-      console.log('STATE')
-      window.s = state;
-      return state.getters['tmdOrderMessages/getAll']
-    },
     orders: state => ({
       all: state.tmdOrder.items,
       current: state.tmdOrder.current
     }),
-    availableInputs: state=>state.getters['tmdOrderInputs/getAll'],
-    availableNodes: state=>state.getters['tmdOrder/getChatOptionNodes'],
-    allNodes: state => state.getters['tmdNodes/getAll'],
-    resolvedInputs: state=>state.getters['tmdOrderInputs/getResolved'],
-    firstUnresolvedInput: state=>state.getters['tmdOrderInputs/getFirstUnResolvedInput'],
-    current: state=> state.getters['tmdOrder/getCurrentNode']
-  }), {
     
+    availableChatOptionsList: state=> state.tmdOrderChatOptions.items,
+    allNodes: state => state.tmdNodes.items,
+    resolvedInputs: state=>state.tmdOrderInputs.items.filter(i=>i.resolved),
+  }), {
+    availableInputs(){
+      return this.$store.state.tmdOrderInputs.items;
+    },
+    firstUnresolvedInput(){
+      return this.availableInputs[0] || null;
+    },
+    messages(){
+      return this.$store.state.tmdOrderMessages.items;
+    },
+    isLanding(){
+      this.currentNode && this.currentNode.isLanding;
+    },
+    current(){
+      return this.currentNode;
+    },
     statusProgress() {
       if (this.messages.length >= 2) {
         return 30
@@ -193,23 +197,28 @@ export default {
     async selectNode(node) {
       await this.$store.dispatch('tmdOrder/setCurrentNode', node)
       this.scrollToBottom()
-      this.pushInputMessage()
+      //this.pushInputMessage()
     },
     async scrollToBottom() {
       setTimeout(() => {
         var container = this.$el.querySelector('.ChatView')
         container.scrollTop = container.scrollHeight
       }, 500)
-    },
-    async pushInputMessage() {
+    }
+    /*
+    ,async pushInputMessage() {
       if (this.firstUnresolvedInput) {
         await this.$store.dispatch('tmdOrderMessages/add', {
           from: 'Bot',
           text: this.firstUnresolvedInput.message
         })
       }
-    }
+    }*/
   }
+}
+
+function isServer() {
+  return typeof window === 'undefined';
 }
 
 </script>

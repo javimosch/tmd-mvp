@@ -1,5 +1,4 @@
-import routesJson from '@/assets/routes.json';
-import _ from 'lodash';
+import {getDocumentsFromNode} from '@/plugins/tmdNode';
 
 export const state = () => ({
   items: [],
@@ -10,31 +9,15 @@ export const getters = {
 };
 
 export const mutations = {
-  updateAll(state, items) {
-    state.items = items;
-  },
-  sync:(s,i)=>s.items=i
+  update:(s,i)=>s.items=i
 };
 
 export const actions = {
-  async updateAll({
+  async update({
     commit,
     state
   }, node) {
-    commit('updateAll', await getDocumentsFromNode(node));
+    commit('update', await getDocumentsFromNode(node));
   }
 };
 
-async function getDocumentsFromNode(node){
-  if(node.documents){
-    return node.documents;
-  }else{
-    let arr = node.relationships.has_document;
-    return routesJson.documents.filter(item => _.includes(arr, item.code));
-  }
-}
-
-async function fetchAll(){
-  let items = await localforage.getItem('tmdOrderDocuments');
-  return items;
-}

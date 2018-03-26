@@ -1,8 +1,12 @@
-import {getSolutionsFromNode} from '@/plugins/tmdNode';
+import {getChatOptionsFromNode} from '@/plugins/tmdNode';
 
 export const state = () => ({
   items: [],
 });
+
+export const getters = {
+  documents:state=>state.items
+};
 
 export const mutations = {
   update:(s,i)=>s.items=i
@@ -13,7 +17,7 @@ export const actions = {
     commit,
     state
   }, node) {
-    commit('update', await getSolutionsFromNode(node));
+    commit('update', await getChatOptionsFromNode(node));
   }
 };
 

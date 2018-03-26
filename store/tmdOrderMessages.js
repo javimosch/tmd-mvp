@@ -1,5 +1,6 @@
-import localforage from '@/plugins/localforage';
-import _ from 'lodash';
+import {fetchOrderMessages} from '@/plugins/tmdOrder';
+import moment from 'moment';
+import {saveToCache} from '@/plugins/tmdOrder';
 
 export const state = () => ({
   items: [],
@@ -16,6 +17,9 @@ export const mutations = {
     isUser: params.isUser === true,
     at: moment()._d.toISOString()
   }),
+  removeLast(state){
+    state.items.pop();
+  },
   sync:(s,i)=>s.items=i
 };
 
@@ -24,22 +28,28 @@ export const actions = {
     commit,
     state
   }, params) {
+    commit('add', {
+      from:'Bot',
+      text:'...'
+    });
+    await wait(1);
+    commit('removeLast');
     commit('add', params);
+    console.log('tmdOrderMessages add',params)
+    await saveToCache({
+      messages: state.items
+    });
   },
   async sync({
     commit,
     state
-  }) {
-    commit('sync', await fetchAll());
+  }, orderNumber) {
+    commit('sync', await fetchOrderMessages(orderNumber));
   }
 };
 
-async function fetchAll(){
-  if(process.env.server){
-    return [];
-  }
-  let items = await localforage.getItem('tmdOrderMessages');
-  return items;
+function wait(seconds){
+  return new Promise((resolve, reject)=>{
+    setTimeout(resolve, seconds*1000);
+  });
 }
-
-

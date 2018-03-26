@@ -2,7 +2,7 @@
 	<div class='BookingView'>
 		
     <div class="row mt-0 p-0 ml-0 mr-0 justify-content-center">
-      <div class="col-md-9 m-0 p-0 mt-4 ">
+      <div class="col-md-6 m-0 p-0 mt-4 ">
         <div class="row mt-0 p-0 justify-content-center">
           <div class="col-md-auto m-0 p-0 w-50 ">
           <h6 class="ChatTitle text-center" v-html="title"></h6>
@@ -26,7 +26,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 m-0 p-4 mt-4">
+      <div class="col-md-6 m-0 p-4 mt-4">
         
         <div class="row mt-0 p-0 ml-0 mr-0 justify-content-center">
           <div class="col-md-auto m-0 p-0 w-100">

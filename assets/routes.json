@@ -47,8 +47,7 @@
 	}, {
 		"code": "T1:Q3",
 		"title": "Fin du contrat de travail",
-		"messages": ["Fin du contrat de travail (démission, licenciement, rupture conventionnelle...)"],
-		"afterMessage": "Votre question concerne plus exactement...",
+		"messages": ["Fin du contrat de travail (démission, licenciement, rupture conventionnelle...)", "Votre question concerne plus exactement..."],
 		"ssr": false,
 		"relationships": {
 			"has_tag": ["T:IS_INDEX"],

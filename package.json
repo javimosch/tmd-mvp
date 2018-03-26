@@ -48,6 +48,7 @@
     "npm-run-all": "^4.1.2",
     "nuxt": "^1.0.0",
     "nuxt-sass-resources-loader": "^1.1.1",
+    "promise-sequential": "^1.1.1",
     "safe-eval": "^0.3.0",
     "sander": "^0.6.0",
     "sass-loader": "^6.0.6",

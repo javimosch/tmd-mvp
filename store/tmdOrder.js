@@ -1,11 +1,12 @@
-import localforage from '@/plugins/localforage';
-import routesJson from '@/assets/routes.json';
-import _ from 'lodash';
-import shortid from 'shortid';
-
-function isServer() {
-  return typeof window === 'undefined';
-}
+import {
+  generateNumber,
+  saveToCache,
+  loadFromCache
+} from '@/plugins/tmdOrder';
+import {
+  isServer
+} from '@/plugins/browser';
+const sequential = require('promise-sequential');
 
 export const state = () => ({
   number: null,
@@ -14,19 +15,11 @@ export const state = () => ({
 
 export const mutations = {
   setCurrentNode(state, node) {
-    state.currentNode(node);
+    state.currentNode = node;
   },
   sync(state, item) {
     state.number = item.number || null;
     state.currentNode = item.currentNode || null;
-  }
-};
-
-export const getters = {
-  getCurrentNode: state => state.currentNode,
-  getNumber: state => state.number,
-  getChatOptionNodes: state => {
-    return [];
   }
 };
 
@@ -39,7 +32,7 @@ export const actions = {
   }, node) {
 
     let item = {
-      number: shortid.generate(),
+      number: generateNumber(),
       currentNode: node
     };
     commit('sync', item);
@@ -52,14 +45,16 @@ export const actions = {
     dispatch,
     rootGetters
   }, node) {
-    node.messages.forEach(message => {
-      dispatch('tmdOrderMessage/add', {
+    console.log('tmdOrder addMessagesFromNode',node);
+    let seq = node.messages.map(message => {
+      return ()=>dispatch('tmdOrderMessages/add', {
         from: "Bot",
         text: message
       }, {
         root: true
       });
     });
+    await sequential(seq);
   },
   async setCurrentNode({
     state,
@@ -67,27 +62,36 @@ export const actions = {
     dispatch
   }, node) {
 
+    if(!node) throw new Error('setCurrentNode: node cannot be null');
 
     if (!state.currentNode) {
-      //await dispatch('sync');
-      //if (!state.currentNode) {
-        await dispatch('create', node);
-      //}
+      await dispatch('create', node);
+    } else {
+      await saveToCache({
+        number: state.number,
+        currentNode: node
+      });
     }
 
+    commit('setCurrentNode', node);
     await dispatch('addMessagesFromNode', node);
 
-    commit('setCurrentNode', node);
 
-    await dispatch('tmdOrderInputs/updateAll', node, {
-      root: true
-    });
-    await dispatch('tmdOrderSolutions/updateAll', node, {
-      root: true
-    });
-    await dispatch('tmdOrderDocuments/updateAll', node, {
-      root: true
-    });
+    if (!isServer()) {
+      await dispatch('tmdOrderDocuments/update', node, {
+        root: true
+      });
+      await dispatch('tmdOrderSolutions/update', node, {
+        root: true
+      });
+      await dispatch('tmdOrderInputs/update', node, {
+        root: true
+      });
+      await dispatch('tmdOrderChatOptions/update', state.currentNode, {
+        root: true
+      });
+    }
+
   },
 
   async sync({
@@ -95,38 +99,13 @@ export const actions = {
     state,
     dispatch
   }, node) {
-
     commit('sync', await loadFromCache() || {});
-
-    if (!isServer()) {
-      await dispatch('tmdOrderMessages/sync', {
-        root: true
-      });
-      await dispatch('tmdOrderDocuments/sync', {
-        root: true
-      });
-      await dispatch('tmdOrderSolutions/sync', {
-        root: true
-      });
-      await dispatch('tmdOrderInputs/sync', {
+    
+    if (!isServer() && state.number) {
+      await dispatch('tmdOrderMessages/sync', state.number, {
         root: true
       });
     }
-
     await dispatch('setCurrentNode', node);
-
   }
 };
-
-async function saveToCache(item) {
-  if (!isServer()) {
-    await localforage.setItem('tmdOrder', item);
-  }
-}
-
-async function loadFromCache() {
-  if (!isServer()) {
-    return await localforage.getItem('tmdOrder');
-  }
-  return null;
-}
