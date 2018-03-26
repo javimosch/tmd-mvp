@@ -58,7 +58,7 @@ export default {
   position: absolute;
   right:0px;
   top:0px;
-  background-color: #5a52ff;
+  background-color: $color3;
   color: #212431;
   width: 50px;
   height: 100%;

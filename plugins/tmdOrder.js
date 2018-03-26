@@ -17,7 +17,7 @@ export async function fetchOrderMessages(orderNumber){
 
 export async function saveToCache(item) {
   if (!isServer()) {
-    let last = await loadFromCache();
+    let last = await loadFromCache() || {};
     for(var x in item){
       last[x] = item[x];
     }

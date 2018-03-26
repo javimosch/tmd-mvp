@@ -1,6 +1,8 @@
 <template>
 <div :class="'ChatMessage '+(isUser?'isUser':'')">
+  <img :src="robot" class="robot" v-show="!isUser"/>
   <div class="ChatMessageBox">
+    
     <div class="ChatMessageFrom">
       <slot name="from"></slot>
     </div>
@@ -16,12 +18,13 @@
 </template>
 
 <script>
+import robot from '@/assets/robot.svg';
 export default {
   name: 'ChatMessage',
   props:['isUser'],
   data() {
     return {
-
+      robot
     }
   },
   components: {
@@ -39,6 +42,7 @@ export default {
   color: $color6;
   font-size: 14px;
   padding-left: 5px;
+  border-radius: 10px 4px 0 0;
 }
 
 .ChatMessageFrom span.isUser {
@@ -48,15 +52,21 @@ export default {
   padding-right: 5px;
 }
 
+.robot{
+  width: 22px;
+  display: inline-block;
+}
+
 .ChatMessage {}
 
 .ChatMessageBox {
   padding: 0px;
   border: 1px solid #ebedf6;
-  border-radius: 0 0 5px 5px;
+  border-radius: 10px 4px 10px 5px;
   margin-bottom: 10px;
-      display: inline-block;
-    min-width: 100px;
+  display: inline-block;
+  min-width: 100px;
+  max-width: 90%;
 }
 .ChatMessage.isUser{
   text-align: right;
