@@ -10,7 +10,7 @@
         </div>
         <div class="row mt-0 p-0 ml-0 mr-0 justify-content-center">
           <div class="col-md-12 m-0 p-0 w-100 ">
-            <div class="ChatView row">
+            <div class="ChatView row scrollbar">
                 
                   <div class="col-md-12 m-0 p-0 align-self-start">
                     <slot name="items"></slot> 
@@ -95,6 +95,7 @@ export default {
   
   flex: 1;
   overflow-y: scroll;
+  padding-right:5px;
 }
 .BookingView{
   border:0px;
