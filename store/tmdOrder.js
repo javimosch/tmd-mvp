@@ -8,6 +8,8 @@ import {
 } from '@/plugins/browser';
 const sequential = require('promise-sequential');
 
+let isFirst = true;
+
 export const state = () => ({
   number: null,
   currentNode: null
@@ -49,11 +51,22 @@ export const actions = {
     let seq = node.messages.map(message => {
       return ()=>dispatch('tmdOrderMessages/add', {
         from: "Bot",
-        text: message
+        text: message,
       }, {
         root: true
       });
     });
+
+    if(!isFirst){
+      seq.unshift(()=>dispatch('tmdOrderMessages/add', {
+        from: "You",
+        text: node.title,
+        isUser:true
+      }, {
+        root: true
+      }))
+    }
+
     await sequential(seq);
   },
   async setCurrentNode({
@@ -65,6 +78,7 @@ export const actions = {
     if(!node) throw new Error('setCurrentNode: node cannot be null');
 
     if (!state.currentNode) {
+      
       await dispatch('create', node);
     } else {
       await saveToCache({
@@ -91,6 +105,8 @@ export const actions = {
         root: true
       });
     }
+
+    isFirst = false;
 
   },
 

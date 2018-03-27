@@ -51,7 +51,8 @@ export const actions = {
   }) {
     commit('updateInput', {
       code:input.code,
-      answer: answer
+      answer: answer,
+      resolved:true
     });
   }
 };

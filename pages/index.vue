@@ -43,9 +43,9 @@
     </div>
 
     <div slot="bottom">
-      <chat-input :inputNode="firstUnresolvedInput"
+      <chat-input :inputNode="firstUnresolvedInput" :options="availableChatOptionsList"
                   @onSubmit="onSubmitInputAnswer">
-        <div slot="options">
+        <div slot="options" class="row p-0 m-0 justify-content-end">
           <!-- MULTIPLE CHOICE BUTTONS -->
           <message-option v-for="item in availableChatOptionsList"
                           :key="item.code"

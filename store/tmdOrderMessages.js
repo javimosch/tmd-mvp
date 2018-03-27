@@ -1,26 +1,26 @@
-import {fetchOrderMessages} from '@/plugins/tmdOrder';
+import { fetchOrderMessages } from '@/plugins/tmdOrder';
 import moment from 'moment';
-import {saveToCache} from '@/plugins/tmdOrder';
+import { saveToCache } from '@/plugins/tmdOrder';
 
 export const state = () => ({
   items: [],
 });
 
 export const getters = {
-  getAll:state=>state.items
+  getAll: state => state.items
 };
 
 export const mutations = {
-  add:(state,{text, from, ...params})=>state.items.push({
+  add: (state, { text, from, ...params }) => state.items.push({
     text,
     from,
     isUser: params.isUser === true,
     at: moment()._d.toISOString()
   }),
-  removeLast(state){
+  removeLast(state) {
     state.items.pop();
   },
-  sync:(s,i)=>s.items=i
+  sync: (s, i) => s.items = i
 };
 
 export const actions = {
@@ -28,14 +28,17 @@ export const actions = {
     commit,
     state
   }, params) {
-    commit('add', {
-      from:'Bot',
-      text:'...'
-    });
-    await wait(1);
-    commit('removeLast');
+
+    if (!params.isUser) {
+      commit('add', {
+        from: 'Bot',
+        text: '...'
+      });
+      await wait(1);
+      commit('removeLast');
+    }
     commit('add', params);
-    console.log('tmdOrderMessages add',params)
+    console.log('tmdOrderMessages add', params)
     await saveToCache({
       messages: state.items
     });
@@ -48,8 +51,8 @@ export const actions = {
   }
 };
 
-function wait(seconds){
-  return new Promise((resolve, reject)=>{
-    setTimeout(resolve, seconds*1000);
+function wait(seconds) {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, seconds * 1000);
   });
 }

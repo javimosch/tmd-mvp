@@ -83,8 +83,8 @@ export default {
   overflow: scroll;
 }
 .ChatView{
-  min-height: 450px;
-  max-height: 450px; 
+  min-height: 400px;
+  max-height: 400px; 
   @media only screen and (min-width: 992px) {
     
   }

@@ -1,15 +1,15 @@
 <template>
 <div :class="'ChatMessage '+(isUser?'isUser':'')">
   <img :src="robot" class="robot" v-show="!isUser"/>
-  <div class="ChatMessageBox">
+  <div :class="'ChatMessageBox '+(isUser?'isUser':'')">
     
-    <div class="ChatMessageFrom">
+    <div v-if="false" class="ChatMessageFrom">
       <slot name="from"></slot>
     </div>
     <div class="ChatMessageText">
       <slot>Cras justo odio</slot>
     </div>
-    <div class="ChatMessageAt">
+    <div v-if="false" class="ChatMessageAt">
       <slot name="at"></slot>
     </div>
   </div>
@@ -67,6 +67,11 @@ export default {
   display: inline-block;
   min-width: 100px;
   max-width: 90%;
+  background-color:$color1;
+}
+.ChatMessageBox.isUser{
+  background-color:$color3;
+  color:$color6;
 }
 .ChatMessage.isUser{
   text-align: right;
@@ -80,6 +85,7 @@ export default {
   padding: 5px!important;
   margin: 0px!important;
   font-size: 14px;
+  font-family: $font1;
 }
 
 .ChatMessageText p.isUser {

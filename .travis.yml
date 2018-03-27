@@ -15,7 +15,7 @@ deploy:
   message: "your message"
   project: tous-mes-droits
 after_deploy:
-  - curl -G --request POST --url "https://api.trello.com/1/cards/tMJ8FJnx/actions/comments" --data-urlencode "text=New Version Deployed commit **$TRAVIS_COMMIT** (Automatic message)" --data-urlencode "key=93290e396fd879aff0da7214d0dc8789" --data-urlencode "token=be774d0f15194165ae6e64a71d16898643ec47c8028866ff42be88be52c429fb"
+  - curl -G --request POST --url "https://api.trello.com/1/cards/tMJ8FJnx/actions/comments" --data-urlencode "text=New deployment commit **$TRAVIS_COMMIT_MESSAGE** (Automatic message)" --data-urlencode "key=93290e396fd879aff0da7214d0dc8789" --data-urlencode "token=be774d0f15194165ae6e64a71d16898643ec47c8028866ff42be88be52c429fb"
 branches:
   only:
   - master

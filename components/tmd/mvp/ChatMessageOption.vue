@@ -1,9 +1,11 @@
 <template>
-	<div class="mt-1 ChatMessageOption">
-    <b-btn :disabled="disabled" variant="secondary">
+    <b-btn :disabled="disabled" variant="secondary" class="ml-2">
       <slot name="text">Option</slot>
     </b-btn>
-  </div>
+    <!--
+	<div class="col p-0 mt-1 ChatMessageOption">
+    
+  </div>-->
 </template>
 <script>
 
@@ -25,6 +27,13 @@ export default {
     
   }
   button{
-    background-color:#3270C0;
+    background-color:$color3!important;
+    color:$color6!important;
+    font-size: 9px;
+    display: inline-block;
+  }
+  button[disabled]{
+    background-color:$color1!important;
+    color:$color5!important;
   }
 </style>

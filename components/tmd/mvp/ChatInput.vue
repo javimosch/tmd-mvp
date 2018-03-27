@@ -2,18 +2,18 @@
 
   <div class="ChatInput">
     <div class="left-side">
-      <div v-show="inputNode">
+      <div v-show="!isInputResolved">
         <input class="form-control"
                @keyup.enter="onSubmit"
                type="text"
                :placeholder="inputNode && inputNode.placeholder||''" />
         
       </div>
-      <div v-show="!inputNode">
+      <div v-show="isInputResolved">
         <slot name="options"></slot>
       </div>
     </div>
-    <button class="submit">
+    <button v-show="submit" class="submit">
         <img class="arrow"
              :src="right_arrow">
       </button>
@@ -27,16 +27,26 @@ import right_arrow from '@/assets/right_arrow.svg';
 export default {
   name: 'ChatInput',
   props: [
-    'inputNode'
+    'inputNode','options'
   ],
   data() {
     return {
-      right_arrow
+      right_arrow,
+      submit:false
+    }
+  },
+  mounted(){
+      setTimeout(()=>this.submit = true,1000);
+  },
+  computed:{
+    isInputResolved(){
+      return !this.inputNode || (this.inputNode && this.inputNode.resolved)
     }
   },
   methods: {
     onSubmit(e) {
       this.$emit('onSubmit', e.target.value)
+      e.target.value = ''
     }
   }
 };
@@ -52,7 +62,9 @@ export default {
     display: inline-block;
     border: 1px solid $color1;
     width: 100%;
-    padding:5px 50px 5px 5px;
+    padding-top: 7px;
+    min-height: 43px;
+    padding-right: 55px;
 }
 .submit {
   position: absolute;
