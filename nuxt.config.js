@@ -31,7 +31,7 @@ module.exports = {
       href: 'https://fonts.googleapis.com/css?family=Montserrat|Nunito'
     }],
     script:[
-      
+      {src:'https://cdnjs.cloudflare.com/ajax/libs/rellax/1.6.2/rellax.min.js'}
     ]
   },
   /*

@@ -1,19 +1,25 @@
-/* width */
-.scrollbar::-webkit-scrollbar {
-    width: 4px;
-}
+/*
 
-/* Track */
-.scrollbar::-webkit-scrollbar-track {
-    background: $color3; 
+.scrollbar::-webkit-scrollbar {
+    width: 10px;
 }
- 
-/* Handle */
 .scrollbar::-webkit-scrollbar-thumb {
     background: $color3; 
 }
 
-/* Handle on hover */
+*/
+
+.scrollbar{
+	overflow: scroll;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    background: $color3; 
+}
+ 
+
+
+
 .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #555; 
 }
