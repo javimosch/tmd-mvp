@@ -21,13 +21,13 @@
 					<CircleWithText bg="rgb(233, 153, 154)" color="white"></CircleWithText>
 				</div>
 				<div class="col align-self-end mt-0">
-					<CircleWithText bg="rgb(253, 170, 76)" color="white"></CircleWithText>
+					<CircleWithText class="asd" data-rellax-speed="-1" bg="rgb(253, 170, 76)" color="white"></CircleWithText>
 				</div>
 				<div class="col align-self-center mt-0">
 					<CircleWithText bg="rgb(233, 153, 154)" color="white"></CircleWithText>
 				</div>
 				<div class="col align-self-start mt-0">
-					<CircleWithText></CircleWithText>
+					<CircleWithText class="asd" data-rellax-speed="1"></CircleWithText>
 				</div>
 				<div class="col align-self-center mt-0">
 					<CircleWithText bg="rgb(233, 153, 154)" color="white"></CircleWithText>
@@ -62,6 +62,7 @@
 		},
 		mounted(){
 			var rellax = new Rellax('.bottom');
+			rellax = new Rellax('.asd');
 		}
 	}
 </script>
