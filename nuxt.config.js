@@ -50,6 +50,7 @@ module.exports = {
     }],
   ],
   env: {
+    nuxtHome: process.env.NUXTHOME,
     loginSalt: '$2a$10$67Bn8fXfK0peYFBhAKCctequ/QSkwtX4DWE5UmG0DQOieGdGysR8S',
     apiUrl: process.env.API_URL || 'http://localhost:3000',
     loginEmail: process.env.NODE_ENV === 'production' ? '' : 'pierre@diagnostical.fr',
