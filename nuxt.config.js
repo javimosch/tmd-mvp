@@ -1,6 +1,8 @@
 const path = require('path');
 const sander = require('sander');
-
+require('dotenv').config({
+  silent:true
+});
 
 
 module.exports = {
@@ -97,7 +99,12 @@ module.exports = {
         }
         let res = sander.readFileSync(p).toString('utf-8');
         res = JSON.parse(res);
-        resolve(res.nodes.filter(i=>(!i.ssr||i.ssr!==false) && i.path!=undefined).map(i=>i.path));
+        res = res.nodes.filter(i=>(!i.ssr||i.ssr!==false) && i.path!=undefined).map(i=>i.path)
+        res = res.concat(res,[
+          '/mockup/1',
+          '/mockup/2'
+        ]);
+        resolve(res);
       })
     }
   },
