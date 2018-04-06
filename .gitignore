@@ -12,8 +12,11 @@ dist
 
 sw.*
 .env
-pages/**
+
 !pages/index.vue
 !pages/lti
 !pages/admin
+!pages/admin/**/*.*
+!pages/admin/**
 !pages/_*
+pages/**
