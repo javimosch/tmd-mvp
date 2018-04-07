@@ -15,7 +15,11 @@ function getStaticRoutes() {
   res = res.nodes.filter(i => (!i.ssr || i.ssr !== false) && i.path != undefined).map(i => i.path)
   res = res.concat([
     '/mockup/1',
-    '/mockup/2'
+    '/mockup/2',
+    'admin/login',
+    'admin/dash',
+    'admin/fields',
+    'admin/benefits'
   ]);
   console.log('STATIC ROUTES', res);
   return res;
