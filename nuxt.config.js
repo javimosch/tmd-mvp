@@ -10,9 +10,10 @@ function getStaticRoutes() {
   if (!sander.existsSync(p)) {
     throw new Error('Not found: ' + p);
   }
-  let res = sander.readFileSync(p).toString('utf-8');
-  res = JSON.parse(res);
-  res = res.nodes.filter(i => (!i.ssr || i.ssr !== false) && i.path != undefined).map(i => i.path)
+  //let res = sander.readFileSync(p).toString('utf-8');
+  //res = JSON.parse(res);
+  //res = res.nodes.filter(i => (!i.ssr || i.ssr !== false) && i.path != undefined).map(i => i.path)
+  let res = [];
   res = res.concat([
     '/mockup/1',
     '/mockup/2',
@@ -125,13 +126,14 @@ module.exports = {
   render: {
     ssr: true
   },
-  generate: {
+  //generate: {
+    /*
     routes: function() {
       return new Promise((resolve, reject) => {
         resolve(getStaticRoutes());
       })
-    }
-  },
+    }*/
+  //},
   /*
    ** Build configuration
    */
