@@ -5,7 +5,7 @@
         <app-header :nav="false"></app-header>
       </div>
     </div>
-    <div class="row">
+    <div class="row  no-gutters">
       <div class="col-sm-12">
       <nuxt/>
       </div>

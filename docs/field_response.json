@@ -1,0 +1,11 @@
+{
+	"order": {
+		//This is a reference to an existing order (with same structure)
+		//e.g: order.createdAt
+	},
+	"field": {
+		//This is a reference to an existing field (with same structure)
+		//e.g: field.name
+	},
+	"value": null //This is the current response written in the chatbox by the user
+}

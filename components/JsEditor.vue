@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  props:["cmMode","value"],
+  props:["cmMode","value",'height'],
   data () {
     return {
       code: this.value||'',
@@ -48,7 +48,13 @@ export default {
   },
   mounted() {
     console.log('this is current codemirror object', this.codemirror)
-    // you can use this.codemirror to do something...
+    if(typeof window!=='undefined'){
+      window.cm = this.codemirror;
+      if(this.height){
+        this.codemirror.setSize(null,this.height);
+        console.log('HEIGH TO ',this.height)
+      }
+    }
   }
 }
 </script>

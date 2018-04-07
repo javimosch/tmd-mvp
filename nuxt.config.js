@@ -1,9 +1,27 @@
 const path = require('path');
 const sander = require('sander');
 require('dotenv').config({
-  silent:true
+  silent: true
 });
 
+
+function getStaticRoutes() {
+  let p = path.join(process.cwd(), 'assets', 'routes.json');
+  if (!sander.existsSync(p)) {
+    throw new Error('Not found: ' + p);
+  }
+  let res = sander.readFileSync(p).toString('utf-8');
+  res = JSON.parse(res);
+  res = res.nodes.filter(i => (!i.ssr || i.ssr !== false) && i.path != undefined).map(i => i.path)
+  res = res.concat([
+    '/mockup/1',
+    '/mockup/2'
+  ]);
+  console.log('STATIC ROUTES', res);
+  return res;
+}
+
+getStaticRoutes();
 
 module.exports = {
   /*
@@ -21,20 +39,23 @@ module.exports = {
       name: 'description',
       content: ''
     }],
-    link: [/*{
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: '/favicon.ico?v3'
-    }*/ {
-      rel: 'stylesheet',
-      href: 'https://use.fontawesome.com/releases/v5.0.8/css/all.css'
-    }, {
-      rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css?family=Montserrat|Nunito'
-    }],
-    script:[
-      {src:'https://cdnjs.cloudflare.com/ajax/libs/rellax/1.6.2/rellax.min.js'}
-    ]
+    link: [
+      /*{
+            rel: 'icon',
+            type: 'image/x-icon',
+            href: '/favicon.ico?v3'
+          }*/
+      {
+        rel: 'stylesheet',
+        href: 'https://use.fontawesome.com/releases/v5.0.8/css/all.css'
+      }, {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Montserrat|Nunito'
+      }
+    ],
+    script: [{
+      src: 'https://cdnjs.cloudflare.com/ajax/libs/rellax/1.6.2/rellax.min.js'
+    }]
   },
   /*
    ** Customize the progress bar color
@@ -50,6 +71,7 @@ module.exports = {
     }],
   ],
   env: {
+    RPC_ENDPOINT: process.env.RPC_ENDPOINT || 'http://localhost:3002/',
     nuxtHome: process.env.NUXTHOME,
     loginSalt: '$2a$10$67Bn8fXfK0peYFBhAKCctequ/QSkwtX4DWE5UmG0DQOieGdGysR8S',
     apiUrl: process.env.API_URL || 'http://localhost:3000',
@@ -57,13 +79,21 @@ module.exports = {
     loginPwd: process.env.NODE_ENV === 'production' ? '' : '041281aaa',
     isProduction: process.env.NODE_ENV === 'production'
   },
-  plugins: [
-    { src: '@/plugins/vue-disable-autocomplete' },
-    { src: '@/plugins/vuejs-noty', ssr: false },
-    { src: '@/plugins/vuex-router-sync.js', ssr: false },
-    { src: '@/plugins/vue-cookie', ssr: false },
-    { src: '@/plugins/codemirror', ssr: false }
-  ],
+  plugins: [{
+    src: '@/plugins/vue-disable-autocomplete'
+  }, {
+    src: '@/plugins/vuejs-noty',
+    ssr: false
+  }, {
+    src: '@/plugins/vuex-router-sync.js',
+    ssr: false
+  }, {
+    src: '@/plugins/vue-cookie',
+    ssr: false
+  }, {
+    src: '@/plugins/codemirror',
+    ssr: false
+  }],
   css: [
     'vuejs-noty/dist/vuejs-noty.css',
     // lib css
@@ -91,21 +121,10 @@ module.exports = {
   render: {
     ssr: true
   },
-  generate:{
-    routes: function(){
-      return new Promise((resolve, reject)=>{
-        let p = path.join(process.cwd(),'assets','routes.json');
-        if(!sander.existsSync(p)){
-          throw new Error('Not found: '+p);
-        }
-        let res = sander.readFileSync(p).toString('utf-8');
-        res = JSON.parse(res);
-        res = res.nodes.filter(i=>(!i.ssr||i.ssr!==false) && i.path!=undefined).map(i=>i.path)
-        res = res.concat(res,[
-          '/mockup/1',
-          '/mockup/2'
-        ]);
-        resolve(res);
+  generate: {
+    routes: function() {
+      return new Promise((resolve, reject) => {
+        resolve(getStaticRoutes());
       })
     }
   },

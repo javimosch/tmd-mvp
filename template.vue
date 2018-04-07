@@ -9,6 +9,9 @@
 		fetch(){
 
 		},
+		data(){
+			return{}
+		},
 		async asyncData(){
 			return {}
 		},

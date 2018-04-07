@@ -1,0 +1,6 @@
+{
+	"name": "benefit_1",
+	"Description": "CAF",
+	"requiredFieldsGroups":["basic"],
+	"requiredFields": ["revenue_extra_caf","revenue_extra_caf"]
+}

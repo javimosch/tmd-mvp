@@ -2,7 +2,7 @@
 <div class="AdminLogin">
   <h3 class="text-center">Backoffice</h3>
   <div class="row justify-content-center">
-    <div class="col-2">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
       <b-btn size="lg"
              class='w-100 mt-4'
              to="/admin/dash"

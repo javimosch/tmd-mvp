@@ -1,0 +1,144 @@
+[{
+	"name": "email",
+	"required": true,
+	"group": "basic_info",
+	"order": 1
+}, {
+	"name": "phone",
+	"required": true,
+	"group": "basic_info",
+	"order": 2
+}, {
+	"name": "address",
+	"required": true,
+	"group": "basic_info",
+	"order": 3
+}, {
+	"name": "revenue",
+	"required": true,
+	"type": "number",
+	"group": "financial_situation",
+	"order": 1,
+}, {
+	"name": "revenue_extra_caf",
+	"internalDescription": "If revenue is greater than",
+	"group": "financial_situation",
+	"order": 3,
+	"conditions": [{
+		"field.name": "revenue",
+		"value": {
+			"$lt": 1400
+		}
+	}]
+}, {
+	"name": "last_year_revenue",
+	"group": "financial_situation",
+	"order": 4
+}, {
+	"order": 1,
+	"group": "location",
+	"name": "etablissement",
+	"label": "Etablissement",
+	"type": "select",
+	"values": [
+		"Paris",
+		"Créteil",
+		"Versailles",
+		"..." //others
+	],
+	"conditions": []
+}, {
+	"order": 2,
+	"group": "location",
+	"name": "ville_de_residence",
+	"label": "Ville de résidence",
+	"conditions": [{
+		"field.name": "etablissement",
+		"value": {
+			"$in": ["Paris", "Créteil", "Versailles"]
+		}
+	}]
+}, {
+	"order": 3,
+	"group": "location",
+	"name": "statut_de_residence",
+	"label": "Statut de résidence",
+	"type": "select",
+	"values": [
+		"Locataire",
+		"Propriétaire"
+	],
+	"conditions": [{
+		"field.name": "ville_de_residence",
+		"value": {
+			"$in": ["Paris", "Créteil", "Versailles"]
+		}
+	}]
+}, {
+	"order": 4,
+	"group": "location",
+	"name": "date_de_signature_du_contrat_de_location",
+	"label": "Date de signature du contrat de location",
+	"conditions": [{
+		"field.name": "statut_de_residence",
+		"value": "Locataire"
+	}]
+}, {
+	"order": 5,
+	"group": "location",
+	"name": "statut_locataire_dun_logement_crous",
+	"label": "Statut locataire d'un logement CROUS",
+	"type": "checkbox",
+	"conditions": [{
+		"field.name": "date_de_signature_du_contrat_de_location",
+		"value": {
+			//R : Entre le 01/04/2017 et le 31/03/2018
+			"$gte": "01/04/2017",
+			"$lte": "31/03/2018"
+		}
+	}]
+}, {
+	"order": 6,
+	"group": "location",
+	"name": "satut_bourse_sur_criteres_sociaux",
+	"label": "Statut bourse sur critères sociaux",
+	"conditions": [{
+		"field.name": "statut_locataire_dun_logement_crous",
+		"value": false
+	}]
+}, {
+	"name": "etablissement extra (only for paris)",
+	"label": "",
+	"helpText": "",
+	"group": "location",
+	"conditions": [{
+		"field.name": "etablissement",
+		"value": {
+			"$eq": "Paris"
+		}
+	}]
+}, {
+	"name": "is_marry",
+	"label": "Btw, are you marry?",
+	"internalDescription": "If revenue is lower than",
+	"group": "civil_situation",
+	"type": "checkbox",
+	"order": 2,
+	"orConditions": [{
+		"field.name": "email",
+		"value": {
+			"$exist": true
+		}
+	}, {
+		"field.name": "phone",
+		"value": {
+			"$exist": true
+		}
+	}],
+	"conditions": [{
+		"field.name": "revenue",
+		"value": {
+			"$gt": 1400
+		}
+	}]
+}]
