@@ -2,18 +2,19 @@
 <div class="Benefits">
   <div class="row justify-content-right">
     <div class="col">
-      
-      <b-btn v-show="this.item._id" variant="danger" size="sm" class="float-right" @click="remove" >Delete&nbsp;<i class="fas fa-trash-alt"></i></b-btn>
-      
+      <b-btn v-show="this.item._id"
+             variant="danger"
+             size="sm"
+             class="float-right"
+             @click="remove">Delete&nbsp;<i class="fas fa-trash-alt"></i></b-btn>
     </div>
   </div>
   <div class="row justify-content-left">
     <div class="col-12 col-sm-8 col-md-4 col-lg-4 mt-3">
-      <BenefitsSelectKey 
-        label="Field selector"
-        placeholder="Search by name (press ENTER)"
-        v-model="item._id"
-                    @change="handleSelectChange"></BenefitsSelectKey>
+      <BenefitsSelectKey label="Select an existing benefit"
+                         placeholder="Search by name (press ENTER)"
+                         v-model="item._id"
+                         @change="handleSelectChange"></BenefitsSelectKey>
     </div>
     <div class="col-12 col-sm-8 col-md-4 col-lg-4 mt-3">
       <label>Name</label>
@@ -25,9 +26,26 @@
     <div class="col-12 col-sm-8 col-md-6 col-lg-6 mt-3">
       <label>Description</label>
       <textarea class="form-control d-block w-100"
-             @change="onNameChange"
-             placeholder=""
-             v-model="item.description"></textarea>
+                @change="onNameChange"
+                placeholder=""
+                v-model="item.description"></textarea>
+    </div>
+    <div class="col-12 col-sm-8 col-md-6 col-lg-6 mt-3">
+      <label>Required fields</label>
+      <ul class="list-group">
+        <li class="list-group-item position-relative"
+            v-for="(field,k) in item.fields"
+            :key="field._id"
+            >
+            <p v-html="field.name" class="p-2 position-absolute"></p>
+            <b-btn class="float-right" @click="removeField(k)"><i class="fas fa-trash-alt"></i></b-btn>
+        </li>
+      </ul>
+      <FieldsSelect class="mt-2"
+                    label=""
+                    placeholder="Select a field to add"
+                    v-model="selectedField"
+                    @change="addField"></FieldsSelect>
     </div>
   </div>
   <div class="row no-gutters">
@@ -49,23 +67,25 @@
 </template>
 
 <script>
-
-import {NotyConfirm} from '@/plugins/noty';
+import { NotyConfirm } from '@/plugins/noty';
 import BenefitsSelectKey from '@/components/tmd/controls/BenefitsSelectKey';
+import FieldsSelect from '@/components/tmd/controls/FieldsSelect';
 import JsEditor from '@/components/JsEditor';
 import { call } from '@/plugins/rpcApi';
+import _ from 'lodash';
 export default {
   layout: 'app',
   name: 'Benefits',
   props: [],
-  async fetch({store}) {
-  },
+  async fetch({store}) {},
   data() {
     return {
+      selectedField: null,
       item: {
         _id: null,
         name: '',
-        code: ''
+        code: '',
+        fields: []
       },
       items: []
     }
@@ -88,24 +108,34 @@ export default {
     }
   },
   methods: {
-    async remove(){
-      if(!this.item._id) return;
-      if(await NotyConfirm('Confirm Delete?')){
-        let r = await call('removeRecord',{
-          model:'benefit',
+    removeField(index){
+      this.item.fields.splice(index,1);
+    },
+    addField(item) {
+      if(this.item.fields.filter(f=>f._id==item._id).length>0) return;
+      this.item.fields.push(_.clone(item))
+      this.selectedField = null
+    },
+    async remove() {
+      if (!this.item._id) {
+        return
+      }
+      if (await NotyConfirm('Confirm Delete?')) {
+        let r = await call('removeRecord', {
+          model: 'benefit',
           _id: this.item._id
-        });
-        if(r!==false){
-          console.info(r);
-          Object.assign(this.item,{
-            _id:null,
-            name:'',
-            code:''
-          });
+        })
+        if (r !== false) {
+          console.info(r)
+          Object.assign(this.item, {
+            _id: null,
+            name: '',
+            code: ''
+          })
         }
       }
     },
-    async handleSelectChange() {
+    async handleSelectChange(data) {
       if (!this.item._id) {
         return Object.assign(this.item, {
           name: '',
@@ -113,25 +143,31 @@ export default {
             name: ''
           }, null, 2)
         })
-      } else {
-        let data = await this.$store.dispatch('adminBenefits/fetch', this.item._id)
+      }
+
+      if (data) {
         if (!data.code) {
           data.code = '{}'
         }
-        Object.assign(this.item,{
-        	description:'',
-        	name:''
+        Object.assign(this.item, {
+          description: '',
+          name: ''
         }, data)
       }
     },
+    savePayload() {
+      let p = Object.assign({}, this.item)
+      p.fields = p.fields.map(f => f._id)
+      return p
+    },
     async save() {
-      this.autoSetName();
+      this.autoSetName()
       try {
         JSON.parse(this.item.code)
       } catch (err) {
         return this.$noty.warning('Invalid json')
       }
-      const {err, doc} = await this.$store.dispatch('adminBenefits/save', this.item)
+      const {err, doc} = await this.$store.dispatch('adminBenefits/save', this.savePayload())
       if (err) {
         return this.$noty.warning('Unable to save: ' + err, {
           killer: true,
@@ -139,17 +175,19 @@ export default {
           layout: 'bottomRight'
         })
       } else {
-        Object.assign(this.item, doc)
-        return this.$noty.info('Saved',{
-          killer:true,
-          timeout:1000
+        Object.assign(this.item, {
+          _id:doc._id
         });
+        return this.$noty.info('Saved', {
+          killer: true,
+          timeout: 1000
+        })
       }
     },
     onNameChange() {
-      this.autoSetName();
+      this.autoSetName()
     },
-    autoSetName(){
+    autoSetName() {
       try {
         if (!this.item.code) {
           this.item.code = '{}'
@@ -165,12 +203,11 @@ export default {
   },
   components: {
     BenefitsSelectKey,
+    FieldsSelect,
     JsEditor
   },
   created() {},
-  mounted() {
-    
-  }
+  mounted() {}
 }
 
 </script>

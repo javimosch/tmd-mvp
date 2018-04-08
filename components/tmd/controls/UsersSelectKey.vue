@@ -1,9 +1,9 @@
 <template>
-<div class="FieldsSelect">
+<div class="UsersSelectKey">
   <label v-if="label"
          v-html="label"></label>
   <SelectKey @onError="(err)=>$noty.warning(err)"
-             model="benefit"
+             model="user"
              descriptionField="name"
              :descriptionSearch="['name']"
              :value="value"
@@ -21,7 +21,7 @@ import { call } from '@/plugins/rpcApi';
 import SimpleSelect from '@/components/controls/SimpleSelect';
 import SelectKey from '@/components/controls/SelectKey';
 export default {
-  name: 'BenefitsSelectKey',
+  name: 'UsersSelectKey',
   props: [
     'value',
     'label',
@@ -32,17 +32,10 @@ export default {
     return {
       columns: [
         {
-          label: 'Name',
+          label: 'email',
           field: 'text',
           filterOptions: {
             enabled: true
-          }
-        },
-        {
-          label: 'Description',
-          field: 'description',
-          filterOptions: {
-            enabled: false
           }
         }
       ]
@@ -59,22 +52,22 @@ export default {
       console.warn('searchByIdFn');
         return await call('findOne', {
           _id: id,
-          model: 'benefit',
-          populate:['fields']
+          model: 'user',
+          //populate:['fields']
         });
     },
     async searchAllFn() {
       let arr = await call('findPaginate', {
-        model: 'benefit',
+        model: 'user',
         select: [
           '_id',
-          'name',
+          'email',
           //'code'
         ],
         //extractFromJsonField:['code',['group']],
         transform: [
           '_id:_id',
-          'name:text',
+          'email:text',
           //'code:code',
           //'group:group'
         ]
@@ -102,5 +95,5 @@ export default {
 </script>
 
 <style lang="scss" scoped="">
-.FieldsSelect {}
+.UsersSelectKey {}
 </style>

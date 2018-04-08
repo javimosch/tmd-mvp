@@ -22,11 +22,10 @@ function getStaticRoutes() {
     'admin/fields',
     'admin/benefits'
   ]);
-  console.log('STATIC ROUTES', res);
   return res;
 }
 
-getStaticRoutes();
+//getStaticRoutes();
 
 module.exports = {
   /*

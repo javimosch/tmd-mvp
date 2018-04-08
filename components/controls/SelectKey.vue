@@ -59,7 +59,8 @@ export default {
     'model',
     'descriptionField',
     'descriptionSearch',
-    'searchAllFn'
+    'searchAllFn',
+    'searchByIdFn'
   ],
   fetch() {},
   watch: {
@@ -95,7 +96,7 @@ export default {
     toggleModal(v) {
       this.modal = v
       this.backdrop = v
-      if (!v) {
+      if (!v && this.item && this.original) {
         this.item[this.descriptionField] = this.original[this.descriptionField]
       }
     },
@@ -113,14 +114,21 @@ export default {
       this.hasSelection = false
     },
     async findById(id) {
-      return await call('findOne', {
-          _id: id,
-          model: this.model
-        })
+      if (this.searchByIdFn) {
+        return await this.searchByIdFn(id)
+      } else {
+        /*
+        console.warn('no searchByIdFn, using default')
+        return await call('findOne', {
+            _id: id,
+            model: this.model
+          })
+          */
+      }
     },
     async onRowClick(info) {
       try {
-        let item = await this.findById(info.row.value)
+        let item = await this.findById(info.row._id)
         if (item) {
           return this.select(item)
         }
@@ -176,10 +184,7 @@ export default {
           fields: this.descriptionSearch
         })
         if (docs.length === 1) {
-          item = await call('findOne', {
-            _id: docs[0].value,
-            model: this.model
-          })
+          item = await this.findById(docs[0]._id)
           this.select(item)
         } else {
 

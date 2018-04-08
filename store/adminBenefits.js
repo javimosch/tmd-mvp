@@ -22,7 +22,10 @@ export const actions = {
     state
   }) {
     commit('update', await call('findPaginate',{
-      model:'benefit'
+      model:'benefit',
+      options:{
+        populate:['fields']
+      }
     }));
   },
   async save({

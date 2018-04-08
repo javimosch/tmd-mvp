@@ -12,6 +12,7 @@
              :placeholder="placeholder||''"
              :columns="columns"
              :rows="items"
+             :searchByIdFn="searchByIdFn"
              :searchAllFn="searchAllFn"></SelectKey>
 </div>
 </template>
@@ -56,6 +57,12 @@ export default {
     }
   },
   methods: {
+    async searchByIdFn(id){
+        return await call('findOne', {
+          _id: id,
+          model: 'field',
+        });
+    },
     async searchAllFn() {
       let arr = await call('findPaginate', {
         model: 'field',
@@ -66,7 +73,7 @@ export default {
         ],
         extractFromJsonField:['code',['group']],
         transform: [
-          '_id:value',
+          '_id:_id',
           'name:text',
           'code:code',
           'group:group'

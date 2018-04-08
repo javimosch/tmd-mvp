@@ -1,9 +1,9 @@
 <template>
-<div class="FieldsSelect">
+<div class="FieldGroupsSelectKey">
   <label v-if="label"
          v-html="label"></label>
   <SelectKey @onError="(err)=>$noty.warning(err)"
-             model="benefit"
+             model="user"
              descriptionField="name"
              :descriptionSearch="['name']"
              :value="value"
@@ -21,7 +21,7 @@ import { call } from '@/plugins/rpcApi';
 import SimpleSelect from '@/components/controls/SimpleSelect';
 import SelectKey from '@/components/controls/SelectKey';
 export default {
-  name: 'BenefitsSelectKey',
+  name: 'FieldGroupsSelectKey',
   props: [
     'value',
     'label',
@@ -32,17 +32,10 @@ export default {
     return {
       columns: [
         {
-          label: 'Name',
-          field: 'text',
+          label: 'name',
+          field: 'name',
           filterOptions: {
             enabled: true
-          }
-        },
-        {
-          label: 'Description',
-          field: 'description',
-          filterOptions: {
-            enabled: false
           }
         }
       ]
@@ -59,13 +52,13 @@ export default {
       console.warn('searchByIdFn');
         return await call('findOne', {
           _id: id,
-          model: 'benefit',
-          populate:['fields']
+          model: 'field_group',
+          //populate:['fields']
         });
     },
     async searchAllFn() {
       let arr = await call('findPaginate', {
-        model: 'benefit',
+        model: 'field_group',
         select: [
           '_id',
           'name',
@@ -74,9 +67,7 @@ export default {
         //extractFromJsonField:['code',['group']],
         transform: [
           '_id:_id',
-          'name:text',
-          //'code:code',
-          //'group:group'
+          'name:name',
         ]
       })
       return arr.map(d => {
@@ -102,5 +93,5 @@ export default {
 </script>
 
 <style lang="scss" scoped="">
-.FieldsSelect {}
+.FieldGroupsSelectKey {}
 </style>

@@ -5,18 +5,16 @@
 			<div class="col-lg-6 col-sm-12 left m-0 p-0">
 				<slot name="left"></slot>
 			</div>
-			<div class="col-lg-6 col-sm-12 right m-0 p-0">
+			<div class="col-lg-6 col-sm-12 right m-0 p-0" :style="rightStyle">
 				<slot name="right"></slot>
 			</div>
 		</div>
-    
-
 	</div>
 </template>
 <script>
 	export default {
 		name: 'TwoSidesDiv',
-		props:[],
+		props:['rightBackgroundColor'],
 		fetch(){
 
 		},
@@ -24,7 +22,13 @@
 			return {}
 		},
 		computed:{
-
+			rightStyle(){
+				let rta = '';
+				if(this.rightBackgroundColor){
+					rta+='background-color:'+this.rightBackgroundColor+';'
+				}
+				return rta;
+			}
 		},
 		methods:{
 

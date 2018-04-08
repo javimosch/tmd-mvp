@@ -10,7 +10,7 @@
 <script>
 	export default {
 		name: 'CenterBottomText',
-		props:['color'],
+		props:['color','size','top','lineHeight'],
 		fetch(){
 
 		},
@@ -19,11 +19,20 @@
 		},
 		computed:{
 			h1Style(){
+				let rta = '';
 				if(this.color){
-					return 'color:'+this.color+';'
-				}else{
-					return '';
+					rta+='color:'+this.color+';'
 				}
+				if(this.size){
+					rta+='font-size:'+this.size+';'
+				}
+				if(this.top){
+					rta+='margin-top:'+this.top+';'
+				}
+				if(this.lineHeight){
+					rta+='line-height:'+this.lineHeight+';'
+				}
+				return rta;
 			}
 		},
 		methods:{

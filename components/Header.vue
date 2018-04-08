@@ -9,6 +9,8 @@
 		  	<b-nav-item :active="isActive('admin-chat')" to="/admin/chat">Chat</b-nav-item>
 		    <b-nav-item :active="isActive('admin-fields')" to="/admin/fields">Fields</b-nav-item>
 		    <b-nav-item :active="isActive('admin-benefits')" to="/admin/benefits">Benefits</b-nav-item>
+		    <b-nav-item :active="isActive('admin-users')" to="/admin/users">Users</b-nav-item>
+		    <b-nav-item :active="isActive('admin-orders')" to="/admin/orders">Orders</b-nav-item>
 		    <b-nav-item :active="isActive('admin-settings')" to="/admin/settings">Settings</b-nav-item>
 		    <b-nav-item @click="logout()">Logout</b-nav-item>
 		  </b-nav>
