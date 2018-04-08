@@ -1,29 +1,63 @@
 <template>
 <div class="FieldsSelect">
-  <label>Field selector</label>
+  <label v-if="label"
+         v-html="label"></label>
+  <!--
   <SimpleSelect :value="value"
-  				@input="input"
+          @input="input"
                 @change="change()">
     <option v-for="i in items"
             :key="i.value"
             v-bind:value="i.value"
             v-html="i.text"></option>
   </SimpleSelect>
+-->
+  
+  <SelectKey 
+  @onError="(err)=>$noty.warning(err)"
+  model="field"
+  descriptionField="name"
+  :descriptionSearch="['name']"
+  :value="value"
+  @input="input"
+  @change="change"
+  :placeholder="placeholder||''"
+  :columns="columns"
+  :rows="items"></SelectKey>
 </div>
 
 </template>
 
 <script>
+
 import SimpleSelect from '@/components/controls/SimpleSelect';
+import SelectKey from '@/components/controls/SelectKey';
 export default {
   name: 'FieldsSelect',
-  props: ['value'],
-  async fetch() {
-  	
-  },
+  props: [
+    'value',
+    'label',
+    'placeholder'
+  ],
+  async fetch() {},
   data() {
     return {
-    	selectedValue:''
+      columns: [
+        {
+          label: 'Name',
+          field: 'text',
+          filterOptions: {
+            enabled: true
+          }
+        },
+        {
+          label: 'Group',
+          field: 'group',
+          filterOptions: {
+            enabled: true
+          }
+        }
+      ]
     }
   },
   async asyncData() {
@@ -35,18 +69,20 @@ export default {
     }
   },
   methods: {
-  	input(val){
-  		this.$emit('input',val);
-  	},
-  	change(){
-  		this.$emit('change');
-  	}
+    
+    input(val) {
+      this.$emit('input', val)
+    },
+    change(d) {
+      this.$emit('change',d);
+    }
   },
   components: {
+    SelectKey,
     SimpleSelect
   },
   async created() {
-  	await this.$store.dispatch('adminFields/update');
+    //await this.$store.dispatch('adminFields/update')
   },
   mounted() {}
 }

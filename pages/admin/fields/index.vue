@@ -1,13 +1,23 @@
 <template>
 <div class="Fields">
+  <div class="row justify-content-right">
+    <div class="col">
+      
+      <b-btn v-show="this.item._id" variant="danger" size="sm" class="float-right" @click="remove" >Delete&nbsp;<i class="fas fa-trash-alt"></i></b-btn>
+      
+    </div>
+  </div>
   <div class="row justify-content-left">
     <div class="col-12 col-sm-8 col-md-4 col-lg-4 mt-3">
-      <FieldsSelect v-model="item._id"
-                    @change="handleSelectChange()"></FieldsSelect>
+      <FieldsSelect 
+        label="Field selector"
+        placeholder="Search by name (press ENTER)"
+        v-model="item._id"
+                    @change="handleSelectChange"></FieldsSelect>
     </div>
     <div class="col-12 col-sm-8 col-md-4 col-lg-4 mt-3">
       <label>Name</label>
-      <input class="form-control"
+      <input class="form-control d-block w-75"
              @change="onNameChange"
              placeholder="Field Name"
              v-model="item.name" />
@@ -32,6 +42,8 @@
 </template>
 
 <script>
+
+import {NotyConfirm} from '@/plugins/noty';
 import FieldsSelect from '@/components/tmd/controls/FieldsSelect';
 // import SimpleSelect from '@/components/controls/SimpleSelect';
 import JsEditor from '@/components/JsEditor';
@@ -75,6 +87,23 @@ export default {
     }
   },
   methods: {
+    async remove(){
+      if(!this.item._id) return;
+      if(await NotyConfirm('Confirm Delete?')){
+        let r = await call('removeRecord',{
+          model:'field',
+          _id: this.item._id
+        });
+        if(r!==false){
+          console.info(r);
+          Object.assign(this.item,{
+            _id:null,
+            name:'',
+            code:''
+          });
+        }
+      }
+    },
     async handleSelectChange() {
       if (!this.item._id) {
         return Object.assign(this.item, {
@@ -107,6 +136,10 @@ export default {
         })
       } else {
         Object.assign(this.item, doc)
+        return this.$noty.info('Saved',{
+          killer:true,
+          timeout:1000
+        });
       }
     },
     onNameChange() {
@@ -131,7 +164,9 @@ export default {
     JsEditor
   },
   created() {},
-  mounted() {}
+  mounted() {
+    
+  }
 }
 
 </script>

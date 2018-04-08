@@ -98,6 +98,9 @@ module.exports = {
   }, {
     src: '@/plugins/codemirror',
     ssr: false
+  },{
+    src: '@/plugins/vue-good-table',
+    ssr: false
   }],
   css: [
     'vuejs-noty/dist/vuejs-noty.css',

@@ -22,5 +22,6 @@ export const SimpleModal = styled.div`
     left: 50%;
     margin-left: -39.5%;
     outline:2px solid #ebedf6;
+    overflow: scroll;
 `;
 

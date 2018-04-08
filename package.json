@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "test": "npx tape 'tests/**/*.js' | tap-notify | tap-summary",
-    "dev": "npx run-p dev:nuxt dev:generator",
+    "devv": "npx run-p dev:nuxt dev:generator",
+    "dev": "dev:nuxt",
     "dev:nuxt": "cross-env HOST=0.0.0.0 PORT=3001 nuxt",
     "dev:generator": "npx nodemon --exec npx babel-node generator/index.js --watch assets --watch pages/index.vue --watch components --watch generator -e js,json,vue",
     "prod:generator": "babel-node generator/index.js",
@@ -64,6 +65,7 @@
     "vis": "^4.21.0",
     "vue-codemirror": "^4.0.3",
     "vue-cookie": "^1.1.4",
+    "vue-good-table": "^2.0.5",
     "vue-mixin-tween": "^0.1.3",
     "vue-styled-components": "^1.2.1",
     "vue2-jsoneditor": "^1.0.5",
