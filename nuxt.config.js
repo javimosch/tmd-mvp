@@ -76,12 +76,13 @@ module.exports = {
     }],
   ],
   env: {
+    basicAuthPassword: process.env.basicAuthPassword||'secret',
     RPC_ENDPOINT: process.env.RPC_ENDPOINT || 'http://localhost:3002/',
     nuxtHome: process.env.NUXTHOME,
     loginSalt: '$2a$10$67Bn8fXfK0peYFBhAKCctequ/QSkwtX4DWE5UmG0DQOieGdGysR8S',
     apiUrl: process.env.API_URL || 'http://localhost:3000',
-    loginEmail: process.env.NODE_ENV === 'production' ? '' : 'pierre@diagnostical.fr',
-    loginPwd: process.env.NODE_ENV === 'production' ? '' : '041281aaa',
+    loginEmail: process.env.NODE_ENV === 'production' ? '' : 'arancibiajav@gmail.com',
+    loginPwd: process.env.NODE_ENV === 'production' ? '' : '',
     isProduction: process.env.NODE_ENV === 'production'
   },
   plugins: [{

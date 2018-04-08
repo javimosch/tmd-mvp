@@ -2,10 +2,13 @@
 <div class="AdminLogin">
   <h3 class="text-center">Backoffice</h3>
   <div class="row justify-content-center">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
-      <b-btn size="lg"
-             class='w-100 mt-4'
-             to="/admin/dash"
+    <div class="col-12">
+      <input ref="pwd" class="d-block mx-auto" :value="defaultPassword" type="password" />
+    </div>
+    <div class="col-12">
+      <b-btn size="md"
+             class='mt-4 mx-auto d-block'
+             @click="login"
              variant="primary">Login</b-btn>
     </div>
   </div>
@@ -23,10 +26,16 @@ export default {
     return {}
   },
   computed: {
-
+    defaultPassword(){
+      return process.env.loginPwd||'';
+    }
   },
   methods: {
-
+    login(){
+      if(this.$refs.pwd.value==process.env.basicAuthPassword){
+        this.$router.push('/admin/dash');
+      }
+    }
   },
   components: {
 
@@ -39,4 +48,7 @@ export default {
 
 <style lang="scss" scoped="">
 .AdminLogin {}
+  button,a{
+    max-width:200px;
+  }
 </style>

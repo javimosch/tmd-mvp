@@ -10,13 +10,13 @@
   	<div v-if="error.statusCode===404">
   		<h2 class="text-center">Resource not found</h2>
       <p>You can supply the follow content to support.</p>
-      <textarea class="form-control" v-html="error.toString()"></textarea>
+      <textarea class="form-control" v-html="errorAsString"></textarea>
   	</div>
 
   	<div v-if="error.statusCode===500">
   		<h2 class="text-center">Server error</h2>
       <p>You can supply the follow content to support.</p>
-      <textarea class="form-control" v-html="error.toString()"></textarea>
+      <textarea class="form-control" v-html="errorAsString"></textarea>
   	</div>
 
   	<div v-if="isUnkown(error.statusCode)">
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-
+var errToJSON = require('error-to-json')
 export default {
   props: ['error'],
   layout: 'app-guess',
@@ -58,6 +58,11 @@ export default {
   			this.$router.push('/')
   		}
   	}
+  },
+  computed:{
+    errorAsString(){
+      return JSON.stringify(errToJSON(this.error),null,2);
+    }
   },
   components:{
   	

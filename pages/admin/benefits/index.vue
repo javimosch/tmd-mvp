@@ -19,8 +19,15 @@
       <label>Name</label>
       <input class="form-control d-block w-75"
              @change="onNameChange"
-             placeholder="Field Name"
+             placeholder=""
              v-model="item.name" />
+    </div>
+    <div class="col-12 col-sm-8 col-md-6 col-lg-6 mt-3">
+      <label>Description</label>
+      <textarea class="form-control d-block w-100"
+             @change="onNameChange"
+             placeholder=""
+             v-model="item.description"></textarea>
     </div>
   </div>
   <div class="row no-gutters">
@@ -111,7 +118,10 @@ export default {
         if (!data.code) {
           data.code = '{}'
         }
-        Object.assign(this.item, data)
+        Object.assign(this.item,{
+        	description:'',
+        	name:''
+        }, data)
       }
     },
     async save() {
