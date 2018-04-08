@@ -3,9 +3,9 @@
   <label v-if="label"
          v-html="label"></label>
   <SelectKey @onError="(err)=>$noty.warning(err)"
-             model="field"
+             model="benefit"
              descriptionField="name"
-             :descriptionSearch="['name','group']"
+             :descriptionSearch="['name']"
              :value="value"
              @input="input"
              @change="change"
@@ -38,10 +38,10 @@ export default {
           }
         },
         {
-          label: 'Group',
-          field: 'group',
+          label: 'Description',
+          field: 'description',
           filterOptions: {
-            enabled: true
+            enabled: false
           }
         }
       ]
@@ -51,29 +51,26 @@ export default {
     return {}
   },
   computed: {
-    items() {
-      return this.$store.state.adminFields.items
-    }
+    
   },
   methods: {
     async searchAllFn() {
       let arr = await call('findPaginate', {
-        model: 'field',
+        model: 'benefit',
         select: [
           '_id',
           'name',
-          'code'
+          //'code'
         ],
-        extractFromJsonField:['code',['group']],
+        //extractFromJsonField:['code',['group']],
         transform: [
           '_id:value',
           'name:text',
-          'code:code',
-          'group:group'
+          //'code:code',
+          //'group:group'
         ]
       })
       return arr.map(d => {
-        //d.group = JSON.parse(d.code).group || '';
         return d;
       });
     },
@@ -89,7 +86,6 @@ export default {
     SimpleSelect
   },
   async created() {
-    // await this.$store.dispatch('adminFields/update')
   },
   mounted() {}
 }
