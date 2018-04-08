@@ -1,13 +1,16 @@
 <template>
-<div class="SelectKey" @keyup.esc="toggleModal(false)">
-  <input v-if="false" class="form-control code"
+<div class="SelectKey"
+     @keyup.esc="toggleModal(false)">
+  <input v-if="false"
+         class="form-control code"
          v-model="item._id"
          @keyup.enter="searchByCode" />
   <input :class="inputStyle"
          v-model="item[descriptionField]"
          :placeholder="placeholder||''"
          @keyup.enter="searchByDescription" />
-  <button class="btn btn-primary SearchButton" @click="searchAll"><i class="fas fa-search"></i></button>
+  <button class="btn btn-primary SearchButton"
+          @click="searchAll"><i class="fas fa-search"></i></button>
   <simple-modal-backdrop v-show="backdrop"></simple-modal-backdrop>
   <simple-modal v-show="modal"
                 class="h-75">
@@ -21,10 +24,10 @@
     </div>
     <div class="row no-gutters">
       <div class="col-12">
-      	<input class="form-control mb-2"
-         v-model="item[descriptionField]"
-         :placeholder="placeholder||''"
-         @keyup.enter="searchByDescription" />
+        <input class="form-control mb-2"
+               v-model="item[descriptionField]"
+               :placeholder="placeholder||''"
+               @keyup.enter="searchByDescription" />
       </div>
       <div class="col">
         <vue-good-table @on-row-click="onRowClick"
@@ -55,15 +58,16 @@ export default {
     'value',
     'model',
     'descriptionField',
-    'descriptionSearch'
+    'descriptionSearch',
+    'searchAllFn'
   ],
   fetch() {},
-  watch:{
-  	value(v){
-  		if(!v){
-  			this.unselect();
-  		}
-  	}
+  watch: {
+    value(v) {
+      if (!v) {
+        this.unselect()
+      }
+    }
   },
   data() {
     return {
@@ -91,21 +95,21 @@ export default {
     toggleModal(v) {
       this.modal = v
       this.backdrop = v
-      if(!v){
-      	this.item[this.descriptionField] = this.original[this.descriptionField];
+      if (!v) {
+        this.item[this.descriptionField] = this.original[this.descriptionField]
       }
     },
     select(doc) {
       this.$emit('input', doc._id)
       this.$emit('change', doc)
-      this.item = doc;
-      this.original = _.clone(doc);
+      this.item = doc
+      this.original = _.clone(doc)
       this.hasSelection = true
       this.toggleModal(false)
     },
     unselect() {
       this.item._id = null
-      this.item[this.descriptionField] = '';
+      this.item[this.descriptionField] = ''
       this.hasSelection = false
     },
     async findById(id) {
@@ -124,7 +128,7 @@ export default {
         if (typeof err !== 'string') {
           return console.error(err)
         }
-        this.$emit('onError',err);
+        this.$emit('onError', err)
       }
     },
     async searchByCode() {
@@ -134,27 +138,31 @@ export default {
           if (item) {
             return this.select(item)
           } else {
-          	await this.searchAll();
+            await this.searchAll()
           }
         }
       } catch (err) {
         if (typeof err !== 'string') {
           return console.error(err)
         }
-        this.$emit('onError',err);
+        this.$emit('onError', err)
       }
     },
     async searchAll(docs) {
-    	if(!docs) docs = [];
+      if (!docs) {
+        docs = []
+      }
       if (docs.length > 1) {
         this.rows = docs
         this.unselect()
       } else {
-        this.rows = await call('findPaginate', {
-          model: this.model,
-          select:['_id','name'],
-          transform:['_id:value','name:text']
-        })
+        if (this.searchAllFn) {
+          this.rows = await this.searchAllFn()
+        } else {
+          this.rows = await call('findPaginate', {
+            model: this.model
+          })
+        }
         this.unselect()
       }
       this.toggleModal(true)
@@ -182,7 +190,7 @@ export default {
         if (typeof err !== 'string') {
           return console.error(err)
         }
-        this.$emit('onError',err);
+        this.$emit('onError', err)
       }
     }
   },
@@ -202,8 +210,8 @@ export default {
 
 <style lang="scss" scoped="">
 .SelectKey {
-	position: relative;
-	padding-right:50px;
+  position: relative;
+  padding-right: 50px;
 }
 
 input.code {
@@ -215,18 +223,20 @@ input.selected {
   border: 1px solid green;
   display: inline-block;
 }
-input.description{
-	border-radius: 0.25rem 0px 0px 0.25rem;
+
+input.description {
+  border-radius: 0.25rem 0px 0px 0.25rem;
 }
-.SearchButton{
-	color:white;
-	position: absolute;
-    height: 38px;
-    right: 0px;
-    width: 50px;
-    top: 0px;
-    padding: 0px;
-    margin: 0px;
-    border-radius: 0px 0.25rem 0.25rem 0px;
+
+.SearchButton {
+  color: white;
+  position: absolute;
+  height: 38px;
+  right: 0px;
+  width: 50px;
+  top: 0px;
+  padding: 0px;
+  margin: 0px;
+  border-radius: 0px 0.25rem 0.25rem 0px;
 }
 </style>

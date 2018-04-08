@@ -12,24 +12,23 @@
             v-html="i.text"></option>
   </SimpleSelect>
 -->
-  
-  <SelectKey 
-  @onError="(err)=>$noty.warning(err)"
-  model="field"
-  descriptionField="name"
-  :descriptionSearch="['name']"
-  :value="value"
-  @input="input"
-  @change="change"
-  :placeholder="placeholder||''"
-  :columns="columns"
-  :rows="items"></SelectKey>
+  <SelectKey @onError="(err)=>$noty.warning(err)"
+             model="field"
+             descriptionField="name"
+             :descriptionSearch="['name','group']"
+             :value="value"
+             @input="input"
+             @change="change"
+             :placeholder="placeholder||''"
+             :columns="columns"
+             :rows="items"
+             :searchAllFn="searchAllFn"></SelectKey>
 </div>
 
 </template>
 
 <script>
-
+import { call } from '@/plugins/rpcApi';
 import SimpleSelect from '@/components/controls/SimpleSelect';
 import SelectKey from '@/components/controls/SelectKey';
 export default {
@@ -69,12 +68,32 @@ export default {
     }
   },
   methods: {
-    
+    async searchAllFn() {
+      let arr = await call('findPaginate', {
+        model: 'field',
+        select: [
+          '_id',
+          'name',
+          'code'
+        ],
+        extractFromJsonField:['code',['group']],
+        transform: [
+          '_id:value',
+          'name:text',
+          'code:code',
+          'group:group'
+        ]
+      })
+      return arr.map(d => {
+        //d.group = JSON.parse(d.code).group || '';
+        return d;
+      });
+    },
     input(val) {
       this.$emit('input', val)
     },
     change(d) {
-      this.$emit('change',d);
+      this.$emit('change', d)
     }
   },
   components: {
@@ -82,7 +101,7 @@ export default {
     SimpleSelect
   },
   async created() {
-    //await this.$store.dispatch('adminFields/update')
+    // await this.$store.dispatch('adminFields/update')
   },
   mounted() {}
 }

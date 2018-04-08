@@ -11,7 +11,7 @@
     <div class="col-12 col-sm-8 col-md-4 col-lg-4 mt-3">
       <FieldsSelect 
         label="Field selector"
-        placeholder="Search by name (press ENTER)"
+        placeholder="Search by name or group (press ENTER)"
         v-model="item._id"
                     @change="handleSelectChange"></FieldsSelect>
     </div>

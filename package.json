@@ -7,7 +7,7 @@
   "scripts": {
     "test": "npx tape 'tests/**/*.js' | tap-notify | tap-summary",
     "devv": "npx run-p dev:nuxt dev:generator",
-    "dev": "dev:nuxt",
+    "dev": "yarn dev:nuxt",
     "dev:nuxt": "cross-env HOST=0.0.0.0 PORT=3001 nuxt",
     "dev:generator": "npx nodemon --exec npx babel-node generator/index.js --watch assets --watch pages/index.vue --watch components --watch generator -e js,json,vue",
     "prod:generator": "babel-node generator/index.js",
