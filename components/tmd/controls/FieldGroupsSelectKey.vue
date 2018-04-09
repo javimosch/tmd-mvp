@@ -3,12 +3,13 @@
   <label v-if="label"
          v-html="label"></label>
   <SelectKey @onError="(err)=>$noty.warning(err)"
-             model="user"
+             model="field_group"
              descriptionField="name"
              :descriptionSearch="['name']"
              :value="value"
              @input="input"
              @change="change"
+             @onClear="onClear"
              :placeholder="placeholder||''"
              :columns="columns"
              :rows="[]"
@@ -53,7 +54,7 @@ export default {
         return await call('findOne', {
           _id: id,
           model: 'field_group',
-          //populate:['fields']
+          populate:['fields']
         });
     },
     async searchAllFn() {
@@ -73,6 +74,9 @@ export default {
       return arr.map(d => {
         return d;
       });
+    },
+    onClear(){
+      this.$emit('onClear');
     },
     input(val) {
       this.$emit('input', val)

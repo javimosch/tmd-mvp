@@ -9,6 +9,7 @@
              :value="value"
              @input="input"
              @change="change"
+             @onClear="onClear"
              :placeholder="placeholder||''"
              :columns="columns"
              :rows="[]"
@@ -75,6 +76,9 @@ export default {
       return arr.map(d => {
         return d;
       });
+    },
+    onClear(){
+      this.$emit('onClear');
     },
     input(val) {
       this.$emit('input', val)

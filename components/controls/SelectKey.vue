@@ -9,6 +9,8 @@
          v-model="item[descriptionField]"
          :placeholder="placeholder||''"
          @keyup.enter="searchByDescription" />
+  <button v-show="item._id" class="btn btn-primary ClearButton"
+          @click="unselect"><i class="fas fa-close"></i></button>
   <button class="btn btn-primary SearchButton"
           @click="searchAll"><i class="fas fa-search"></i></button>
   <simple-modal-backdrop v-show="backdrop"></simple-modal-backdrop>
@@ -60,7 +62,8 @@ export default {
     'descriptionField',
     'descriptionSearch',
     'searchAllFn',
-    'searchByIdFn'
+    'searchByIdFn',
+    'populate'
   ],
   fetch() {},
   watch: {
@@ -112,6 +115,7 @@ export default {
       this.item._id = null
       this.item[this.descriptionField] = ''
       this.hasSelection = false
+      this.$emit('onClear');
     },
     async findById(id) {
       if (this.searchByIdFn) {
@@ -181,7 +185,8 @@ export default {
         let docs = await call('findInclude', {
           value: this.item[this.descriptionField],
           model: this.model,
-          fields: this.descriptionSearch
+          fields: this.descriptionSearch,
+          populate: this.populate||[]
         })
         if (docs.length === 1) {
           item = await this.findById(docs[0]._id)
@@ -233,6 +238,17 @@ input.description {
   border-radius: 0.25rem 0px 0px 0.25rem;
 }
 
+.ClearButton{
+  color: white;
+    position: absolute;
+    height: 38px;
+    right: 50px;
+    width: 30px;
+    top: 0px;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 0px 0px 0px 0px;
+}
 .SearchButton {
   color: white;
   position: absolute;

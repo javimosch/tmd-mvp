@@ -35,7 +35,18 @@ export async function call(name, data){
 }
 	catch(err){
 		if(err.response && err.response.data&& err.response.data.err){
-			throw new Error(err.response.data.err);
+			
+			err = err.response.data.err;
+			let msg = err;
+			try{
+				let json = JSON.parse(msg);
+				console.warn(json);
+				if(json.message){
+					msg = json.message;
+				}
+			}catch(err){}
+			throw new Error(msg);
+			
 		}else{
 			throw err;
 		}

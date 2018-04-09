@@ -11,13 +11,13 @@
   </div>
   <div class="row justify-content-left">
     <div class="col-12 col-sm-8 col-md-4 col-lg-4 mt-3">
-      <BenefitsSelectKey label="Select an existing benefit"
+      <BenefitsSelectKey label="Select (leave blank for creation)"
                          placeholder="Search by name (press ENTER)"
                          v-model="item._id"
                          @change="handleSelectChange"></BenefitsSelectKey>
     </div>
     <div class="col-12 col-sm-8 col-md-4 col-lg-4 mt-3">
-      <label>Name</label>
+      <label>Name (*)</label>
       <input class="form-control d-block w-75"
              @change="onNameChange"
              placeholder=""
@@ -31,7 +31,8 @@
                 v-model="item.description"></textarea>
     </div>
     <div class="col-12 col-sm-8 col-md-6 col-lg-6 mt-3">
-      <label>Required fields</label>
+      <label>Required fields (*)</label>
+      <p>Those fields will determine whenever the benefit becomes available for the user or not.</p>
       <ul class="list-group">
         <li class="list-group-item position-relative"
             v-for="(field,k) in item.fields"
@@ -50,7 +51,8 @@
   </div>
   <div class="row no-gutters">
     <div class="col-12 mt-3">
-      <label>JSON</label>
+      <label>Metadata</label>
+      <p>The JSON can contain any metadata and field properties. Properties listed in controls above will have priority over this data.</p>
       <js-editor v-show="isClient"
                  :height="maxHeight"
                  class="text-left"

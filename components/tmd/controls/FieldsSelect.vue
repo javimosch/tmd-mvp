@@ -5,14 +5,16 @@
   <SelectKey @onError="(err)=>$noty.warning(err)"
              model="field"
              descriptionField="name"
-             :descriptionSearch="['name','group']"
+             :descriptionSearch="['name']"
              :value="value"
              @input="input"
              @change="change"
+             @onClear="onClear"
              :placeholder="placeholder||''"
              :columns="columns"
-             :rows="items"
+             :rows="[]"
              :searchByIdFn="searchByIdFn"
+             :populate="['group']"
              :searchAllFn="searchAllFn"></SelectKey>
 </div>
 </template>
@@ -40,7 +42,7 @@ export default {
         },
         {
           label: 'Group',
-          field: 'group',
+          field: 'groupName',
           filterOptions: {
             enabled: true
           }
@@ -52,7 +54,7 @@ export default {
     return {}
   },
   computed: {
-    items() {
+    itemsd() {
       return this.$store.state.adminFields.items
     }
   },
@@ -66,12 +68,14 @@ export default {
     async searchAllFn() {
       let arr = await call('findPaginate', {
         model: 'field',
+        populate:'group',
         select: [
           '_id',
           'name',
-          'code'
+          'code',
+          'groupName'
         ],
-        extractFromJsonField:['code',['group']],
+        //extractFromJsonField:['code',['group']],
         transform: [
           '_id:_id',
           'name:text',
@@ -83,6 +87,9 @@ export default {
         //d.group = JSON.parse(d.code).group || '';
         return d;
       });
+    },
+    onClear(){
+      this.$emit('onClear');
     },
     input(val) {
       this.$emit('input', val)

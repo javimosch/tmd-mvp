@@ -107,7 +107,8 @@ export default {
         model: 'setting',
         query:{
           name: 'default'
-        }
+        },
+        populate:['fieldGroups']
       })
       if(doc){
         Object.assign(this.item, doc)
