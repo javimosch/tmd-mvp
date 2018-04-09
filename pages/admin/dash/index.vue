@@ -6,6 +6,8 @@
 			<li class="list-group-item"><a target="_blank" href="/mockup/2">Slide 2 (3) (Start help text)</a></li>
 			<li class="list-group-item"><a target="_blank" href="/mockup/3">Slide 3 (4) (Number of benefits)</a></li>
 			<li class="list-group-item"><a target="_blank" href="/mockup/4">Slide 4 (5) (Benefits circles display)</a></li>
+			<li class="list-group-item"><a target="_blank" href="/mockup/5">Slide 5 (6) (Benefit details modal)</a></li>
+			<li class="list-group-item"><a target="_blank" href="/mockup/6">Slide 6 (7) (User reply more questions and benefits percentages increases)</a></li>
 		</ul>
 	</div>
 </template>

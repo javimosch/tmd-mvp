@@ -155,6 +155,122 @@
   </div>
 
 
+
+
+<!-- 																	SLIDE 5 -->
+  <div v-show="nro=='5'">
+    <two-sides-div rightBackgroundColor="#EEEEEE">
+      <div slot="left"
+           class="row row align-items-start m-0 p-0">
+        <div class="col align-self-center m-0 p-0">
+          <chat inputPlaceholder="Entre ta réponse...">
+            <ChatMessageBot>
+              <p slot="message">
+                Quelle est ta date de naissance ?
+              </p>
+            </ChatMessageBot>
+           
+            
+          </chat>
+        </div>
+      </div>
+      <div slot="right">
+        <BenefitsCircles ></BenefitsCircles>
+      </div>
+    </two-sides-div>
+    <app-footer></app-footer>
+    <BenefitStatusModal></BenefitStatusModal>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 																	SLIDE 6 -->
+  <div v-show="nro=='6'">
+    <two-sides-div rightBackgroundColor="#EEEEEE">
+      <div slot="left"
+           class="row row align-items-start m-0 p-0">
+        <div class="col align-self-center m-0 p-0">
+          <chat inputPlaceholder="Entre ta réponse...">
+            <ChatMessageBot>
+              <p slot="message">
+                Quelle est ton adresse e-mail ?
+
+              </p>
+            </ChatMessageBot>
+           
+            <ChatMessageUser>
+              <p slot="message">
+                lisa@gmail.com
+              </p>
+            </ChatMessageUser>
+
+            <ChatMessageBot>
+              <p slot="message">
+                Quel est le montant de ton revenu global brut 2016
+
+              </p>
+            </ChatMessageBot>
+             <ChatMessageUser>
+              <p slot="message">
+                16 320 €
+
+              </p>
+            </ChatMessageUser>
+            
+             <ChatMessageBot>
+              <p slot="message">
+                Quel est ton nom de famille ?
+
+
+              </p>
+            </ChatMessageBot>
+            
+          </chat>
+        </div>
+      </div>
+      <div slot="right">
+        <BenefitsCircles >
+        	
+        	<div class="col-lg-6 mt-5">
+      
+      <CircleBenefit :value="92"
+                     text="Bourse sur critères sociaux - CROUS"
+                     price="0 € - 6 500 €">
+        Dossier complété:
+      </CircleBenefit>
+    </div>
+    <div class="col-lg-6 mt-5">
+      <CircleBenefit :value="96" borderColor="#FC5D60"
+                     text="Aide à l’installation AILE"
+                     price="900 €">Dossier complété:</CircleBenefit>
+    </div>
+    <div class="col-lg-6 mt-5">
+      <CircleBenefit :value="94" borderColor="rgb(229, 228, 234)"
+                     text="Aide au logement CAF"
+                     price="1 200 € - 2 500 €">Dossier complété:</CircleBenefit>
+    </div>
+    <div class="col-lg-6 mt-5" >
+      <CircleBenefit :value="88" borderColor="rgb(229, 100, 200)"
+                     text="Aide à la mobilité RATP"
+                     price="750 €">Dossier complété:</CircleBenefit>
+    </div>
+
+        </BenefitsCircles>
+      </div>
+    </two-sides-div>
+    <app-footer></app-footer>
+  </div>
+
   <b-btn @click="nextSlide"
          class="NextButton"
          variant="primary"
@@ -164,6 +280,9 @@
 </template>
 
 <script>
+import CircleBenefit from '@/components/tmd/CircleBenefit';
+import BenefitStatusModal from '@/components/tmd/BenefitStatusModal';
+import { SimpleModal, SimpleModalBackdrop } from '@/styledComponents/modal';
 import ChatOptionButton from '@/components/tmd/ChatOptionButton';
 import ChatMessageBot from '@/components/tmd/ChatMessageBot';
 import ChatMessageUser from '@/components/tmd/ChatMessageUser';
@@ -215,7 +334,11 @@ export default {
     ChatMessageBot,
     ChatMessageUser,
     ChatOptionButton,
-    BenefitsCircles
+    BenefitsCircles,
+    SimpleModal,
+    SimpleModalBackdrop,
+    BenefitStatusModal,
+    CircleBenefit
   },
   created() {},
   mounted() {}
@@ -234,5 +357,6 @@ export default {
   position: fixed;
   bottom: 10px;
   right: 10px;
+  z-index: 999999999;
 }
 </style>

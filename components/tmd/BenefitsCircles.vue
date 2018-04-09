@@ -1,7 +1,9 @@
 <template>
 <div class="BenefitsCircles">
   <div class="row mb-5 mt-0">
+    <slot>
     <div class="col-lg-6 mt-5">
+      
       <CircleBenefit :value="68"
                      text="Bourse sur critères sociaux - CROUS"
                      price="0 € - 6 500 €">
@@ -23,6 +25,7 @@
                      text="Aide à la mobilité RATP"
                      price="750 €">Dossier complété:</CircleBenefit>
     </div>
+  </slot>
   </div>
 </div>
 
