@@ -2,6 +2,7 @@
 	<div class="ChatContent scrollbar">
 		<div class="row m-0 p-0">
 			<div class="col m-2 mr-4 p-0">
+				<slot>
 				<ChatMessageBot>
 					<p slot="message">
 						Bonjour, je m’appelle Chloé ! 
@@ -29,6 +30,10 @@ Je vais t’aider à trouver toutes les aides financières auxquelles tu as droi
 						Enchantée Julie ! Très joli prénom d’ailleurs ;)
 					</p>
 				</ChatMessageBot>
+				</slot>
+
+				
+					<slot name="options"></slot>
 				
 
 			</div>
@@ -76,5 +81,6 @@ Je vais t’aider à trouver toutes les aides financières auxquelles tu as droi
 		min-height: 390px;
 	    max-height: 390px;
 	 }
+	 
 }
 </style>

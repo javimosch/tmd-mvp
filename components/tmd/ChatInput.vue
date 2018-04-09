@@ -2,7 +2,7 @@
 	<div class="ChatInput row align-items-center m-0">
 		<div class="col align-self-center p-0 m-0">
 			<div class="ChatInputControlWrapper ml-2">
-				<input class="ChatInputControl" placeholder="Input"/>
+				<input class="ChatInputControl" :placeholder="inputPlaceholder||''"/>
 			</div>
 		</div>
 		<div class="col-2 align-self-center p-0 m-0">
@@ -16,7 +16,7 @@
 	import RightArrow from '@/assets/right_arrow.svg';
 	export default {
 		name: 'ChatInput',
-		props:[],
+		props:['inputPlaceholder'],
 		fetch(){
 
 		},

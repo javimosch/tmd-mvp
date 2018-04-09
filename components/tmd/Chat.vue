@@ -1,7 +1,14 @@
 <template>
 	<div class="Chat pt-4">
-		<ChatContent></ChatContent>
-		<ChatBottom></ChatBottom>
+		<ChatContent>
+			<slot>
+			</slot>
+			<div slot="options" >
+				<slot name="options"  >
+				</slot>
+			</div>
+		</ChatContent>
+		<ChatBottom :inputPlaceholder="inputPlaceholder"></ChatBottom>
 	</div>
 </template>
 <script>
@@ -9,7 +16,7 @@
 	import ChatBottom from '@/components/tmd/ChatBottom';
 	export default {
 		name: 'Chat',
-		props:[],
+		props:['inputPlaceholder'],
 		fetch(){
 
 		},
@@ -43,5 +50,6 @@
 	@media only screen and (min-width: 992px) {
 	    min-height: 500px;
 	 }
+	 
 }
 </style>

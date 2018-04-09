@@ -1,13 +1,13 @@
 <template>
 	<div class="ChatBottom">
-		<ChatInput></ChatInput>
+		<ChatInput :inputPlaceholder="inputPlaceholder"></ChatInput>
 	</div>
 </template>
 <script>
 import ChatInput from '@/components/tmd/ChatInput';
 	export default {
 		name: 'ChatBottom',
-		props:[],
+		props:['inputPlaceholder'],
 		fetch(){
 
 		},
