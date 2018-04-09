@@ -148,13 +148,7 @@
         </div>
       </div>
       <div slot="right">
-        <CenterBottomText top="150px;"
-                          size="45px"
-                          lineHeight="55px"
-                          color="#B7B7B7">
-          368
-          <br> Aides disponibles
-        </CenterBottomText>
+        <BenefitsCircles ></BenefitsCircles>
       </div>
     </two-sides-div>
     <app-footer></app-footer>
@@ -176,6 +170,7 @@ import ChatMessageUser from '@/components/tmd/ChatMessageUser';
 import Partners from '@/components/tmd/landing/Partners';
 import StartHeader from '@/components/tmd/StartHeader';
 import CirclesSection from '@/components/tmd/CirclesSection';
+import BenefitsCircles from '@/components/tmd/BenefitsCircles';
 import CenterBottomText from '@/components/tmd/CenterBottomText';
 import Chat from '@/components/tmd/Chat';
 import MHeader from '@/components/tmd/Header';
@@ -219,7 +214,8 @@ export default {
     Partners,
     ChatMessageBot,
     ChatMessageUser,
-    ChatOptionButton
+    ChatOptionButton,
+    BenefitsCircles
   },
   created() {},
   mounted() {}
