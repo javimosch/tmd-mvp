@@ -67,9 +67,13 @@ export default {
   ],
   fetch() {},
   watch: {
-    value(v) {
+    async value(v) {
       if (!v) {
+        this.$emit('watch:clear',v);
         this.unselect()
+      }else{
+        this.$emit('watch:update',v);
+        this.select(await this.findById(v));
       }
     }
   },
@@ -118,17 +122,7 @@ export default {
       this.$emit('onClear');
     },
     async findById(id) {
-      if (this.searchByIdFn) {
         return await this.searchByIdFn(id)
-      } else {
-        /*
-        console.warn('no searchByIdFn, using default')
-        return await call('findOne', {
-            _id: id,
-            model: this.model
-          })
-          */
-      }
     },
     async onRowClick(info) {
       try {
@@ -211,6 +205,9 @@ export default {
   created() {
     if (!this.descriptionSearch) {
       throw new Error('descriptionSearch required');
+    }
+    if(!this.searchByIdFn){
+     throw new Error('searchByIdFn required'); 
     }
   },
   mounted() {}

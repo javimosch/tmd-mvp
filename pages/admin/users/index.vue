@@ -1,5 +1,8 @@
 <template>
 <div class="Users">
+
+  
+
   <div v-show="this.item._id"
        class="row justify-content-right">
     <div class="col">
@@ -36,6 +39,7 @@
 import { NotyConfirm } from '@/plugins/noty';
 import { call } from '@/plugins/rpcApi';
 import UsersSelectKey from '@/components/tmd/controls/UsersSelectKey';
+import UsersListView from '@/components/tmd/controls/UsersListView';
 export default {
   layout: 'app',
   name: 'Users',
@@ -95,7 +99,8 @@ export default {
     }
   },
   components: {
-    UsersSelectKey
+    UsersSelectKey,
+    UsersListView
   },
   created() {},
   mounted() {}

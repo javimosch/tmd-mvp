@@ -1,11 +1,8 @@
 <template>
-	<div class="ChatMessageBot">
+	<div class="ChatMessageUser">
 		<div class="row no-gutters">
-			<div class="col-1 align-self-end">
-				<img :src="GirlBot" class="BotIcon mr-1"/>
-			</div>
 			<div class="col">
-				<ChatMessage>
+				<ChatMessage :isUser="true">
 					<div slot="message">
 						<slot name="message"></slot>
 					</div>
@@ -18,7 +15,7 @@
 	import GirlBot from '@/assets/girlbot.svg';
 	import ChatMessage from '@/components/tmd/ChatMessage';
 	export default {
-		name: 'ChatMessageBot',
+		name: 'ChatMessageUser',
 		props:[],
 		fetch(){
 
@@ -51,7 +48,7 @@
 	}
 </script>
 <style lang="scss" scoped>
-.ChatMessageBot{
+.ChatMessageUser{
 	
 }
 .BotIcon{

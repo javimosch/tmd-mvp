@@ -4,8 +4,8 @@
          v-html="label"></label>
   <SelectKey @onError="(err)=>$noty.warning(err)"
              model="user"
-             descriptionField="name"
-             :descriptionSearch="['name']"
+             descriptionField="email"
+             :descriptionSearch="['email']"
              :value="value"
              @input="input"
              @change="change"
@@ -50,7 +50,6 @@ export default {
   },
   methods: {
     async searchByIdFn(id){
-      console.warn('searchByIdFn');
         return await call('findOne', {
           _id: id,
           model: 'user',

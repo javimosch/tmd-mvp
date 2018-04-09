@@ -4,36 +4,32 @@
 			<div class="col m-2 mr-4 p-0">
 				<ChatMessageBot>
 					<p slot="message">
-						Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum 
-						Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
-						Lorem IpsumLorem Ipsum
+						Bonjour, je m’appelle Chloé ! 
+Je vais t’aider à trouver toutes les aides financières auxquelles tu as droit
+
 					</p>
 				</ChatMessageBot>
 
 				<ChatMessageBot>
 					<p slot="message">
-						Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum 
+						D’ailleurs, comment t’appelles-tu ?
 					</p>
 				</ChatMessageBot>
+				
+
+
+				<ChatMessageUser :isUser="true">
+					<p slot="message">
+						Julie
+					</p>
+				</ChatMessageUser>
+
 				<ChatMessageBot>
 					<p slot="message">
-						Lorem IpsumLore
+						Enchantée Julie ! Très joli prénom d’ailleurs ;)
 					</p>
 				</ChatMessageBot>
-				<ChatMessageBot>
-					<p slot="message">
-						Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum 
-						Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
-						Lorem IpsumLorem Ipsum
-					</p>
-				</ChatMessageBot>
-				<ChatMessageBot>
-					<p slot="message">
-						Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum 
-						Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
-						Lorem IpsumLorem Ipsum
-					</p>
-				</ChatMessageBot>
+				
 
 			</div>
 		</div>
@@ -41,6 +37,7 @@
 </template>
 <script>
 	import ChatMessageBot from '@/components/tmd/ChatMessageBot';
+	import ChatMessageUser from '@/components/tmd/ChatMessageUser';
 	export default {
 		name: 'ChatContent',
 		props:[],
@@ -57,7 +54,8 @@
 
 		},
 		components:{
-			ChatMessageBot
+			ChatMessageBot,
+			ChatMessageUser
 		},
 		created(){
 

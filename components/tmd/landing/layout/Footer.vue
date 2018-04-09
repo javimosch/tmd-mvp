@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="Footer">
 		<div class="row">
 		<footer class="w-100">
 			<div class="container">
@@ -26,6 +26,9 @@
   }
 </script>
 <style lang="scss" scoped>
+.Footer{
+	margin-top:200px;
+}
 footer{
 	position:relative;
 	margin-top:100px;
@@ -52,7 +55,7 @@ footer:before{
 .credits{
     color: $color5;
     height: 150px;
-    background: $color1;
+    background: $color6;
     text-align: right;
     line-height: 150px;
     padding-right: 50px;

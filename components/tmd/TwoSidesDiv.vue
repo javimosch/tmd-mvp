@@ -1,6 +1,6 @@
 <template>
 	<div class="TwoSidesDiv">
-
+		<slot name="child"></slot>
 		<div class="row justify-content-center m-0 p-0">
 			<div class="col-lg-6 col-sm-12 left m-0 p-0">
 				<slot name="left"></slot>
@@ -45,6 +45,9 @@
 	}
 </script>
 <style lang="scss" scoped>
+.TwoSidesDiv{
+	position: relative;
+}
 	.left{
 		background: transparent;
 	}

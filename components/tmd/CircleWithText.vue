@@ -1,6 +1,6 @@
 <template>
-	<div class="CircleWithText" >
-		<div class="Circle" :style="style">
+	<div class="CircleWithText" :style="CircleWithTextStyle">
+		<div class="Circle" :style="CircleStyle">
 			<slot>Bourse étudiante CROUS</slot>
 		</div>
 	</div>
@@ -8,7 +8,7 @@
 <script>
 	export default {
 		name: 'CircleWithText',
-		props:['bg','color'],
+		props:['bg','color','size','border'],
 		fetch(){
 
 		},
@@ -16,15 +16,29 @@
 			return {}
 		},
 		computed:{
-			style(){
-				let res = '';
+			CircleWithTextStyle(){
+				let style = '';
+				if(this.size){
+					style+=` width:${this.size};`;
+				}
+				return style;
+			},
+			CircleStyle(){
+				let style = '';
 				if(this.bg){
-					res+='background-color:'+this.bg+';'
+					style+='background-color:'+this.bg+';'
 				}
 				if(this.color){
-					res+='color:'+this.color+';'
+					style+='color:'+this.color+';'
 				}
-				return res;
+				if(this.border){
+					style+='border:'+this.border+';'
+				}
+				if(this.size){
+					style+=` width:${this.size};`;
+					style+=` height:${this.size};`;
+				}
+				return style;
 			}
 		},
 		methods:{

@@ -6,7 +6,7 @@
 <script>
 import ChatInput from '@/components/tmd/ChatInput';
 	export default {
-		name: 'ChatContent',
+		name: 'ChatBottom',
 		props:[],
 		fetch(){
 
