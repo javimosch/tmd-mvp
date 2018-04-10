@@ -418,6 +418,7 @@ import MHeader from '@/components/tmd/Header';
 import TwoSidesDiv from '@/components/tmd/TwoSidesDiv';
 import AppFooter from '@/components/tmd/landing/layout/Footer';
 export default {
+  layout:'public',
   name: 'MockupPage',
   props: [],
   fetch() {},

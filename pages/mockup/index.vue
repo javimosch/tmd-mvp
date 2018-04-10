@@ -19,6 +19,7 @@
 	import MHeader from '@/components/tmd/Header';
 	import TwoSidesDiv from '@/components/tmd/TwoSidesDiv';
 	export default {
+		layout:'public',
 		name: 'MockupPage',
 		props:[],
 		fetch(){
