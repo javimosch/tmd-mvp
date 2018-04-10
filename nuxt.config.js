@@ -42,6 +42,10 @@ module.exports = {
       hid: 'description',
       name: 'description',
       content: ''
+    },{
+      hid: 'og:description',
+      name: 'og:description',
+      content: ''
     }],
     link: [
       /*{
@@ -59,6 +63,8 @@ module.exports = {
     ],
     script: [{
       src: 'https://cdnjs.cloudflare.com/ajax/libs/rellax/1.6.2/rellax.min.js'
+    },{
+      src:'https://js.stripe.com/v3/'
     }]
   },
   /*

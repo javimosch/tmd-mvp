@@ -392,6 +392,55 @@
     <app-footer></app-footer>
     <OrderCheckout></OrderCheckout>
   </div>
+
+
+   <!--     ####################################### SLIDE 9 -->
+  <!--    ####################################### SLIDE 9 -->
+  <!--    ####################################### SLIDE 9 -->
+  <!--    ####################################### SLIDE 9 -->
+  <!--    ####################################### SLIDE 9 -->
+  <div v-show="nro=='9'">
+    <two-sides-div rightBackgroundColor="#EEEEEE">
+      <div slot="left"
+           class="row row align-items-start m-0 p-0">
+        <div class="col align-self-center m-0 p-0">
+          <chat inputPlaceholder="Entre ta réponse..." :hideInput="false">
+            
+          </chat>
+        </div>
+      </div>
+      <div slot="right">
+        
+      </div>
+    </two-sides-div>
+    <app-footer></app-footer>
+    <OrderCheckoutInfo></OrderCheckoutInfo>
+  </div>
+
+   <!--     ####################################### SLIDE 10 -->
+  <!--    ####################################### SLIDE 10 -->
+  <!--    ####################################### SLIDE 10 -->
+  <!--    ####################################### SLIDE 10 -->
+  <!--    ####################################### SLIDE 10 -->
+  <div v-show="nro=='10'">
+    <two-sides-div rightBackgroundColor="#EEEEEE">
+      <div slot="left"
+           class="row row align-items-start m-0 p-0">
+        <div class="col align-self-center m-0 p-0">
+          <chat inputPlaceholder="Entre ta réponse..." :hideInput="false">
+            
+          </chat>
+        </div>
+      </div>
+      <div slot="right">
+        
+      </div>
+    </two-sides-div>
+    <app-footer></app-footer>
+    <OrderCheckoutPayment></OrderCheckoutPayment>
+  </div>
+
+
   <b-btn @click="nextSlide"
          class="NextButton"
          variant="primary"
@@ -402,6 +451,8 @@
 
 <script>
 import CircleBenefit from '@/components/tmd/CircleBenefit';
+import OrderCheckoutPayment from '@/components/tmd/OrderCheckoutPayment';
+import OrderCheckoutInfo from '@/components/tmd/OrderCheckoutInfo';
 import OrderCheckout from '@/components/tmd/OrderCheckout';
 import BenefitStatusModal from '@/components/tmd/BenefitStatusModal';
 import { SimpleModal, SimpleModalBackdrop } from '@/styledComponents/modal';
@@ -436,7 +487,7 @@ export default {
         let url = location.href.replace(location.origin, '')
         let number = url.substring(url.lastIndexOf('/') + 1)
         number = parseInt(number, 10) + 1
-        if (number > 11) {
+        if (number > 10) {
           number = 1
         }
         this.$router.push('/mockup/' + number)
@@ -462,7 +513,9 @@ export default {
     SimpleModalBackdrop,
     BenefitStatusModal,
     CircleBenefit,
-    OrderCheckout
+    OrderCheckout,
+    OrderCheckoutInfo,
+    OrderCheckoutPayment
   },
   created() {},
   mounted() {}

@@ -10,6 +10,8 @@
 			<li class="list-group-item"><a target="_blank" href="/mockup/6">Slide 6 (7) (User reply more questions and benefits percentages increases)</a></li>
 			<li class="list-group-item"><a target="_blank" href="/mockup/7">Slide 7 (8) (Chatbot stops requesting questions, Continue button)</a></li>
 			<li class="list-group-item"><a target="_blank" href="/mockup/8">Slide 8 (9) (Order checkout)</a></li>
+			<li class="list-group-item"><a target="_blank" href="/mockup/9">Slide 9 (10) (Order checkout Information modal)</a></li>
+			<li class="list-group-item"><a target="_blank" href="/mockup/10">Slide 10 (11) (Order checkout Payment modal)</a></li>
 		</ul>
 	</div>
 </template>

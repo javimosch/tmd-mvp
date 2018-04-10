@@ -25,3 +25,18 @@ export const SimpleModal = styled.div`
     overflow: scroll;
 `;
 
+export const AbsoluteModal = styled.div`
+    top:10%;
+    padding: 2em;
+    min-height: 200px;
+    min-width: 80%;
+    background: white;
+    z-index: 10;
+    width: 75%;
+    position: absolute;
+    left: 50%;
+    margin-left: -39.5%;
+    outline:2px solid #ebedf6;
+    overflow: scroll;
+`;
+
