@@ -111,6 +111,9 @@ module.exports = {
   {
     src: '@/plugins/vue-toggle-button',
     ssr: false
+  },{
+    src:'@/plugins/vue-progress-path',
+    ssr:false
   }],
   css: [
     'vuejs-noty/dist/vuejs-noty.css',

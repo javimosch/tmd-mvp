@@ -43,13 +43,16 @@ export default {
 </script>
 
 <style lang="scss" scoped="">
-.DashboardTodoItem {}
+.DashboardTodoItem {
+  max-width: 300px;
+}
 	.TodoIcon{
 		font-size:30px;
 		color:$color3;
 	}
 	.TodoText{
 		color: $color5;
+    font-size:14px;
 	}
 	
 	.TodoText.completed{

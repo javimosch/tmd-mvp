@@ -1,8 +1,8 @@
 <template>
 <div class="DashboardTodos p-5">
-  <div class="row row align-items-start m-0 p-0">
+  <div class="row row align-items-start justify-content-center m-0 p-0">
     <div class="col align-self-center m-0 p-0">
-    	<ul class="list-group">
+    	<ul class="list-group mx-auto d-block">
     		
     		<DashboardTodoItem :done="false" text="Upload ID Document"></DashboardTodoItem>
     		<DashboardTodoItem :done="true" text="Payment completed"></DashboardTodoItem>
@@ -50,15 +50,7 @@ export default {
 
 <style lang="scss" scoped="">
 .DashboardTodos {}
-	.TodoIcon{
-		font-size:30px;
-		color:$color3;
-	}
-	.TodoText{
-		color: $color5;
-	}
-	
-	.TodoText.completed{
-		color: grey;
-	}
+  ul{
+    max-width: 300px;
+  }
 </style>
