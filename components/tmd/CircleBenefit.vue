@@ -1,8 +1,11 @@
 <template>
 <div class="CircleBenefit">
+  <img class="CheckedImage" v-show="passed" :src="CheckedImage"/>
   <div class="Circle"
        ref="el">
+
     <div class="CircleContent">
+      
       <div class="CircleContentMiddle"
            :style="ContentStyle">
         <p>Dossier complété:</p>
@@ -26,10 +29,11 @@ if (typeof window !== 'undefined') {
   require('jquery-circle-progress')
   $ = require('jquery')
 }
-
+import CheckedImage from '@/assets/checked.svg'
 export default {
   name: 'CircleBenefit',
   props: [
+    'passed',
     'text',
     'price',
     'borderColor',
@@ -40,6 +44,11 @@ export default {
     'value'
   ],
   fetch() {},
+  data(){
+    return {
+      CheckedImage
+    }
+  },
   async asyncData() {
     return {}
   },
@@ -114,7 +123,16 @@ export default {
   display: block;
   margin: 0 auto;
   width: 200px;
+      position: relative;
 }
-
+.CheckedImage{
+      position: absolute;
+    width: 160px;
+    border-radius: 100px;
+    padding: 23px 50px 50px 50px;
+    z-index: 9;
+    opacity: 1;
+    left: 20px;
+}
 .BottomText {}
 </style>

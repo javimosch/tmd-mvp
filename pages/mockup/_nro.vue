@@ -40,13 +40,6 @@
     </two-sides-div>
     <app-footer></app-footer>
   </div>
-  
-
-
-
-
-
-
   <!-- 																	SLIDE 3 -->
   <div v-show="nro=='3'">
     <two-sides-div rightBackgroundColor="#EEEEEE">
@@ -76,12 +69,12 @@
             </ChatMessageBot>
             <div slot="options">
               <div class="row no-gutters justify-content-right">
-              	<div class="col-md-8 offset-md-4 mt-2">
-                <ChatOptionButton class="colx">Etudiant</ChatOptionButton>
-                <ChatOptionButton class="colxx">J’ai un emploi</ChatOptionButton>
-                <ChatOptionButton class="col">Retraité</ChatOptionButton>
-                <ChatOptionButton class="colx">Au chômage</ChatOptionButton>
-                <ChatOptionButton class="colx">Autre</ChatOptionButton>
+                <div class="col-md-8 offset-md-4 mt-2">
+                  <ChatOptionButton class="colx">Etudiant</ChatOptionButton>
+                  <ChatOptionButton class="colxx">J’ai un emploi</ChatOptionButton>
+                  <ChatOptionButton class="col">Retraité</ChatOptionButton>
+                  <ChatOptionButton class="colx">Au chômage</ChatOptionButton>
+                  <ChatOptionButton class="colx">Autre</ChatOptionButton>
                 </div>
               </div>
             </div>
@@ -100,15 +93,7 @@
     </two-sides-div>
     <app-footer></app-footer>
   </div>
-
-
-
-
-
-
-
-
-<!-- 																	SLIDE 4 -->
+  <!-- 																	SLIDE 4 -->
   <div v-show="nro=='4'">
     <two-sides-div rightBackgroundColor="#EEEEEE">
       <div slot="left"
@@ -120,10 +105,9 @@
                 Quelle est ta date de naissance ?
               </p>
             </ChatMessageBot>
-                        <ChatMessageUser :isUser="true">
+            <ChatMessageUser :isUser="true">
               <p slot="message">
                 3 mars 1994
-
               </p>
             </ChatMessageUser>
             <ChatMessageBot>
@@ -131,7 +115,6 @@
                 Bravo ! A priori tu aurais droit à 4 aides financières. Le montant total pourrait même atteindre 10 650 € sur l’année :)
               </p>
             </ChatMessageBot>
-
             <ChatMessageBot>
               <p slot="message">
                 Pour en être certain à 100 %, j’ai besoin de quelques infos supplémentaires
@@ -142,22 +125,16 @@
                 Quelle est ton adresse mail ?
               </p>
             </ChatMessageBot>
-            
-            
           </chat>
         </div>
       </div>
       <div slot="right">
-        <BenefitsCircles ></BenefitsCircles>
+        <BenefitsCircles></BenefitsCircles>
       </div>
     </two-sides-div>
     <app-footer></app-footer>
   </div>
-
-
-
-
-<!-- 																	SLIDE 5 -->
+  <!-- 																	SLIDE 5 -->
   <div v-show="nro=='5'">
     <two-sides-div rightBackgroundColor="#EEEEEE">
       <div slot="left"
@@ -169,32 +146,17 @@
                 Quelle est ta date de naissance ?
               </p>
             </ChatMessageBot>
-           
-            
           </chat>
         </div>
       </div>
       <div slot="right">
-        <BenefitsCircles ></BenefitsCircles>
+        <BenefitsCircles></BenefitsCircles>
       </div>
     </two-sides-div>
     <app-footer></app-footer>
     <BenefitStatusModal></BenefitStatusModal>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 																	SLIDE 6 -->
+  <!-- 																	SLIDE 6 -->
   <div v-show="nro=='6'">
     <two-sides-div rightBackgroundColor="#EEEEEE">
       <div slot="left"
@@ -204,73 +166,141 @@
             <ChatMessageBot>
               <p slot="message">
                 Quelle est ton adresse e-mail ?
-
               </p>
             </ChatMessageBot>
-           
             <ChatMessageUser>
               <p slot="message">
                 lisa@gmail.com
               </p>
             </ChatMessageUser>
-
             <ChatMessageBot>
               <p slot="message">
                 Quel est le montant de ton revenu global brut 2016
-
               </p>
             </ChatMessageBot>
-             <ChatMessageUser>
+            <ChatMessageUser>
               <p slot="message">
                 16 320 €
-
               </p>
             </ChatMessageUser>
-            
-             <ChatMessageBot>
+            <ChatMessageBot>
               <p slot="message">
                 Quel est ton nom de famille ?
-
-
               </p>
             </ChatMessageBot>
-            
           </chat>
         </div>
       </div>
       <div slot="right">
-        <BenefitsCircles >
-        	
-        	<div class="col-lg-6 mt-5">
-      
-      <CircleBenefit :value="92"
-                     text="Bourse sur critères sociaux - CROUS"
-                     price="0 € - 6 500 €">
-        Dossier complété:
-      </CircleBenefit>
-    </div>
-    <div class="col-lg-6 mt-5">
-      <CircleBenefit :value="96" borderColor="#FC5D60"
-                     text="Aide à l’installation AILE"
-                     price="900 €">Dossier complété:</CircleBenefit>
-    </div>
-    <div class="col-lg-6 mt-5">
-      <CircleBenefit :value="94" borderColor="rgb(229, 228, 234)"
-                     text="Aide au logement CAF"
-                     price="1 200 € - 2 500 €">Dossier complété:</CircleBenefit>
-    </div>
-    <div class="col-lg-6 mt-5" >
-      <CircleBenefit :value="88" borderColor="rgb(229, 100, 200)"
-                     text="Aide à la mobilité RATP"
-                     price="750 €">Dossier complété:</CircleBenefit>
-    </div>
-
+        <BenefitsCircles>
+          <div class="col-lg-6 mt-5">
+            <CircleBenefit :value="92"
+                           text="Bourse sur critères sociaux - CROUS"
+                           price="0 € - 6 500 €">
+              Dossier complété:
+            </CircleBenefit>
+          </div>
+          <div class="col-lg-6 mt-5">
+            <CircleBenefit :value="96"
+                           borderColor="#FC5D60"
+                           text="Aide à l’installation AILE"
+                           price="900 €">Dossier complété:</CircleBenefit>
+          </div>
+          <div class="col-lg-6 mt-5">
+            <CircleBenefit :value="94"
+                           borderColor="rgb(229, 228, 234)"
+                           text="Aide au logement CAF"
+                           price="1 200 € - 2 500 €">Dossier complété:</CircleBenefit>
+          </div>
+          <div class="col-lg-6 mt-5">
+            <CircleBenefit :value="88"
+                           borderColor="rgb(229, 100, 200)"
+                           text="Aide à la mobilité RATP"
+                           price="750 €">Dossier complété:</CircleBenefit>
+          </div>
         </BenefitsCircles>
       </div>
     </two-sides-div>
     <app-footer></app-footer>
   </div>
-
+  <!-- 																	SLIDE 7 -->
+  <div v-show="nro=='7'">
+    <two-sides-div rightBackgroundColor="#EEEEEE">
+      <div slot="left"
+           class="row row align-items-start m-0 p-0">
+        <div class="col align-self-center m-0 p-0">
+          <chat inputPlaceholder="Entre ta réponse..." :hideInput="true">
+            <ChatMessageBot>
+              <p slot="message">
+                Quel est le montant de ton revenu global brut 2016
+              </p>
+            </ChatMessageBot>
+            <ChatMessageUser>
+              <p slot="message">
+                16 320 €
+              </p>
+            </ChatMessageUser>
+            <ChatMessageBot>
+              <p slot="message">
+                Bravo ! Tu vas pouvoir toucher ces 4 aides pour un montant total de 6 950 € !
+              </p>
+            </ChatMessageBot>
+            <ChatMessageBot>
+              <p slot="message">
+                C’est bientôt terminé. Pour que les dossiers soient complets à 100%, il ne reste plus qu’à joindre 3 documents.
+              </p>
+            </ChatMessageBot>
+            <ChatMessageBot>
+              <p slot="message">
+                Pas d’inquiétude, je me charge de toutes les démarches avec chaque organisme ;)
+              </p>
+            </ChatMessageBot>
+            <div slot="bottom">
+            	<div class="row no-gutters justify-content-center">
+            		<div class="col-10 offset-2 m-0 p-0 mt-5">
+            			<b-btn class="w-100 d-block ml-2 mr-2" variant="primary" size="lg">CONTINUER</b-btn>
+            		</div>
+            	</div>
+            </div>
+          </chat>
+        </div>
+      </div>
+      <div slot="right">
+        <BenefitsCircles>
+          <div class="col-lg-6 mt-5">
+            <CircleBenefit :value="98"
+                           :passed="true"
+                           text="Bourse sur critères sociaux - CROUS"
+                           price="0 € - 6 500 €">
+              Dossier complété:
+            </CircleBenefit>
+          </div>
+          <div class="col-lg-6 mt-5">
+            <CircleBenefit :value="96"
+                           :passed="true"
+                           borderColor="#FC5D60"
+                           text="Aide à l’installation AILE"
+                           price="900 €">Dossier complété:</CircleBenefit>
+          </div>
+          <div class="col-lg-6 mt-5">
+            <CircleBenefit :value="94"
+                           :passed="true"
+                           borderColor="rgb(229, 228, 234)"
+                           text="Aide au logement CAF"
+                           price="1 200 € - 2 500 €">Dossier complété:</CircleBenefit>
+          </div>
+          <div class="col-lg-6 mt-5">
+            <CircleBenefit :value="97"
+                           :passed="true"
+                           borderColor="rgb(229, 100, 200)"
+                           text="Aide à la mobilité RATP"
+                           price="750 €">Dossier complété:</CircleBenefit>
+          </div>
+        </BenefitsCircles>
+      </div>
+    </two-sides-div>
+    <app-footer></app-footer>
+  </div>
   <b-btn @click="nextSlide"
          class="NextButton"
          variant="primary"

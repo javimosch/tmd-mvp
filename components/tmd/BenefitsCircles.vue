@@ -4,7 +4,7 @@
     <slot>
     <div class="col-lg-6 mt-5">
       
-      <CircleBenefit :value="68"
+      <CircleBenefit  :value="68"
                      text="Bourse sur critères sociaux - CROUS"
                      price="0 € - 6 500 €">
         Dossier complété:

@@ -7,8 +7,14 @@
 				<slot name="options"  >
 				</slot>
 			</div>
+			
 		</ChatContent>
-		<ChatBottom :inputPlaceholder="inputPlaceholder"></ChatBottom>
+		<ChatBottom :inputPlaceholder="inputPlaceholder" :hideInput="hideInput">
+			<div slot="bottom">
+				<slot name="bottom">
+				</slot>
+			</div>
+		</ChatBottom>
 	</div>
 </template>
 <script>
@@ -16,7 +22,7 @@
 	import ChatBottom from '@/components/tmd/ChatBottom';
 	export default {
 		name: 'Chat',
-		props:['inputPlaceholder'],
+		props:['inputPlaceholder','hideInput'],
 		fetch(){
 
 		},

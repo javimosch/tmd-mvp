@@ -1,13 +1,15 @@
 <template>
 	<div class="ChatBottom">
-		<ChatInput :inputPlaceholder="inputPlaceholder"></ChatInput>
+		<ChatInput v-show="!hideInput" :inputPlaceholder="inputPlaceholder"></ChatInput>
+		<slot name="bottom">
+		</slot>
 	</div>
 </template>
 <script>
 import ChatInput from '@/components/tmd/ChatInput';
 	export default {
 		name: 'ChatBottom',
-		props:['inputPlaceholder'],
+		props:['inputPlaceholder','hideInput'],
 		fetch(){
 
 		},
