@@ -12,6 +12,10 @@
 			<li class="list-group-item"><a target="_blank" href="/mockup/8">Slide 08 : Order checkout.</a></li>
 			<li class="list-group-item"><a target="_blank" href="/mockup/9">Slide 09 : Order checkout Information modal.</a></li>
 			<li class="list-group-item"><a target="_blank" href="/mockup/10">Slide 10 : Order checkout Payment modal.</a></li>
+			<li class="list-group-item"><a target="_blank" href="/mockup/11">Slide 11 : User dashboard.</a></li>
+			<li class="list-group-item"><a target="_blank" href="/mockup/11">Slide 12 : Click todo call to action modal.</a></li>
+			<li class="list-group-item"><a target="_blank" href="/mockup/11">Slide 13 : Click benefit details to see progress.</a></li>
+			<li class="list-group-item"><a target="_blank" href="/mockup/11">Slide 14 : Billing view.</a></li>
 		</ul>
 	</div>
 </template>

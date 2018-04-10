@@ -440,6 +440,7 @@
     <OrderCheckoutPayment></OrderCheckoutPayment>
   </div>
 
+  <DashboardMockups :nro="nro"></DashboardMockups>
 
   <b-btn @click="nextSlide"
          class="NextButton"
@@ -450,6 +451,7 @@
 </template>
 
 <script>
+import DashboardMockups from '@/components/tmd/DashboardMockups';
 import CircleBenefit from '@/components/tmd/CircleBenefit';
 import OrderCheckoutPayment from '@/components/tmd/OrderCheckoutPayment';
 import OrderCheckoutInfo from '@/components/tmd/OrderCheckoutInfo';
@@ -487,7 +489,7 @@ export default {
         let url = location.href.replace(location.origin, '')
         let number = url.substring(url.lastIndexOf('/') + 1)
         number = parseInt(number, 10) + 1
-        if (number > 10) {
+        if (number > 14) {
           number = 1
         }
         this.$router.push('/mockup/' + number)
@@ -515,7 +517,8 @@ export default {
     CircleBenefit,
     OrderCheckout,
     OrderCheckoutInfo,
-    OrderCheckoutPayment
+    OrderCheckoutPayment,
+    DashboardMockups
   },
   created() {},
   mounted() {}

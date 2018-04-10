@@ -62,16 +62,18 @@ export default {
   created() {},
   mounted() {
     if (window.innerWidth > 1024) {
-      new Rellax('.asd')
+      try {
+        new Rellax('.asd')
+      } catch (err) {}
     }
   }
 }
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped="">
 .CirclesSection {
-	margin-top:10px;
+  margin-top: 10px;
   @media only screen and (min-width: 992px) {
     margin-top:200px;
   }
