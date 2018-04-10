@@ -3,7 +3,7 @@
   <simple-modal-backdrop v-show="true"
                          style="background-color:rgba(0,0,0,0.5)"></simple-modal-backdrop>
   <simple-modal v-show="true"
-                class="h-80 pl-5 pr-5 pt-5">
+                class="h-75 pl-5 pr-5 pt-5">
     <h3 class="text-center">
     		Finalisation des dossiers
 
