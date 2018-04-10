@@ -130,7 +130,7 @@ export default {
     width: 160px;
     border-radius: 100px;
     padding: 23px 50px 50px 50px;
-    z-index: 9;
+    z-index: 4;
     opacity: 1;
     left: 20px;
 }

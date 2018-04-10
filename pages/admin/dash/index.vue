@@ -8,6 +8,7 @@
 			<li class="list-group-item"><a target="_blank" href="/mockup/4">Slide 4 (5) (Benefits circles display)</a></li>
 			<li class="list-group-item"><a target="_blank" href="/mockup/5">Slide 5 (6) (Benefit details modal)</a></li>
 			<li class="list-group-item"><a target="_blank" href="/mockup/6">Slide 6 (7) (User reply more questions and benefits percentages increases)</a></li>
+			<li class="list-group-item"><a target="_blank" href="/mockup/7">Slide 7 (8) (Order checkout)</a></li>
 		</ul>
 	</div>
 </template>

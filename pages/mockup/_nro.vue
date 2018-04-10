@@ -223,7 +223,14 @@
     </two-sides-div>
     <app-footer></app-footer>
   </div>
-  <!-- 																	SLIDE 7 -->
+  
+
+
+  <!-- 		#######################################	SLIDE 7 -->
+  <!-- 		#######################################	SLIDE 7 -->
+  <!-- 		#######################################	SLIDE 7 -->
+  <!-- 		#######################################	SLIDE 7 -->
+  <!-- 		#######################################	SLIDE 7 -->
   <div v-show="nro=='7'">
     <two-sides-div rightBackgroundColor="#EEEEEE">
       <div slot="left"
@@ -301,6 +308,90 @@
     </two-sides-div>
     <app-footer></app-footer>
   </div>
+
+  <!-- 		#######################################	SLIDE 8 -->
+  <!-- 		#######################################	SLIDE 8 -->
+  <!-- 		#######################################	SLIDE 8 -->
+  <!-- 		#######################################	SLIDE 8 -->
+  <!-- 		#######################################	SLIDE 8 -->
+  <div v-show="nro=='8'">
+    <two-sides-div rightBackgroundColor="#EEEEEE">
+      <div slot="left"
+           class="row row align-items-start m-0 p-0">
+        <div class="col align-self-center m-0 p-0">
+          <chat inputPlaceholder="Entre ta réponse..." :hideInput="true">
+            <ChatMessageBot>
+              <p slot="message">
+                Quel est le montant de ton revenu global brut 2016
+              </p>
+            </ChatMessageBot>
+            <ChatMessageUser>
+              <p slot="message">
+                16 320 €
+              </p>
+            </ChatMessageUser>
+            <ChatMessageBot>
+              <p slot="message">
+                Bravo ! Tu vas pouvoir toucher ces 4 aides pour un montant total de 6 950 € !
+              </p>
+            </ChatMessageBot>
+            <ChatMessageBot>
+              <p slot="message">
+                C’est bientôt terminé. Pour que les dossiers soient complets à 100%, il ne reste plus qu’à joindre 3 documents.
+              </p>
+            </ChatMessageBot>
+            <ChatMessageBot>
+              <p slot="message">
+                Pas d’inquiétude, je me charge de toutes les démarches avec chaque organisme ;)
+              </p>
+            </ChatMessageBot>
+            <div slot="bottom">
+            	<div class="row no-gutters justify-content-center">
+            		<div class="col-10 offset-2 m-0 p-0 mt-5">
+            			<b-btn class="w-100 d-block ml-2 mr-2" variant="primary" size="lg">CONTINUER</b-btn>
+            		</div>
+            	</div>
+            </div>
+          </chat>
+        </div>
+      </div>
+      <div slot="right">
+        <BenefitsCircles>
+          <div class="col-lg-6 mt-5">
+            <CircleBenefit :value="98"
+                           :passed="true"
+                           text="Bourse sur critères sociaux - CROUS"
+                           price="0 € - 6 500 €">
+              Dossier complété:
+            </CircleBenefit>
+          </div>
+          <div class="col-lg-6 mt-5">
+            <CircleBenefit :value="96"
+                           :passed="true"
+                           borderColor="#FC5D60"
+                           text="Aide à l’installation AILE"
+                           price="900 €">Dossier complété:</CircleBenefit>
+          </div>
+          <div class="col-lg-6 mt-5">
+            <CircleBenefit :value="94"
+                           :passed="true"
+                           borderColor="rgb(229, 228, 234)"
+                           text="Aide au logement CAF"
+                           price="1 200 € - 2 500 €">Dossier complété:</CircleBenefit>
+          </div>
+          <div class="col-lg-6 mt-5">
+            <CircleBenefit :value="97"
+                           :passed="true"
+                           borderColor="rgb(229, 100, 200)"
+                           text="Aide à la mobilité RATP"
+                           price="750 €">Dossier complété:</CircleBenefit>
+          </div>
+        </BenefitsCircles>
+      </div>
+    </two-sides-div>
+    <app-footer></app-footer>
+    <OrderCheckout></OrderCheckout>
+  </div>
   <b-btn @click="nextSlide"
          class="NextButton"
          variant="primary"
@@ -311,6 +402,7 @@
 
 <script>
 import CircleBenefit from '@/components/tmd/CircleBenefit';
+import OrderCheckout from '@/components/tmd/OrderCheckout';
 import BenefitStatusModal from '@/components/tmd/BenefitStatusModal';
 import { SimpleModal, SimpleModalBackdrop } from '@/styledComponents/modal';
 import ChatOptionButton from '@/components/tmd/ChatOptionButton';
@@ -368,7 +460,8 @@ export default {
     SimpleModal,
     SimpleModalBackdrop,
     BenefitStatusModal,
-    CircleBenefit
+    CircleBenefit,
+    OrderCheckout
   },
   created() {},
   mounted() {}

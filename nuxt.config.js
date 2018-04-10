@@ -101,6 +101,10 @@ module.exports = {
   },{
     src: '@/plugins/vue-good-table',
     ssr: false
+  },
+  {
+    src: '@/plugins/vue-toggle-button',
+    ssr: false
   }],
   css: [
     'vuejs-noty/dist/vuejs-noty.css',
