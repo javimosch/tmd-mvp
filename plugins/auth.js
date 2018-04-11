@@ -8,7 +8,9 @@ export async function login(email, password) {
 	if(!res){
 		throw new Error('Invalid credentials')
 	}
-	window.localStorage.setItem('token', res.token);
+	if (typeof window !== 'undefined') {
+		window.localStorage.setItem('token', res.token);
+	}
 	return res.user;
 }
 
