@@ -11,19 +11,22 @@
            src="~/assets/partners/logo_pantheon_sobornne.jpg" />
     </div>
     <div class="col-12 col-md-6 col-lg-3 mt-3">
-      <img class="mx-auto d-block"
-           src="http://via.placeholder.com/250x150" />
+      <img class="mx-auto d-block PartnerLogo"
+           src="~/assets/partners/logo_pantheon_sobornne.jpg" />
     </div>
     <div class="col-12 col-md-6 col-lg-3 mt-3">
-      <img class="mx-auto d-block"
-           src="http://via.placeholder.com/250x150" />
+      <img class="mx-auto d-block PartnerLogo"
+           src="~/assets/partners/logo_pantheon_sobornne.jpg" />
     </div>
     <div class="col-12 col-md-6 col-lg-3 mt-3">
-      <img class="mx-auto d-block"
-           src="http://via.placeholder.com/250x150" />
+      <img class="mx-auto d-block PartnerLogo"
+           src="~/assets/partners/logo_pantheon_sobornne.jpg" />
     </div>
+    <div class="col-12 align-self-center mt-5">
+        <b-btn to="/mockup/2" class="mx-auto d-block mt-4" variant="success" size="lg">Commencer</b-btn>
+      </div>
   </div>
-  <div class="row no-gutters justify-content-center">
+  <div class="row no-gutters justify-content-center" v-if="false">
     <div class="col-lg-12 m-0 p-0 mt-5">
       <div class="partner">
         <img class="image mx-auto d-block"
@@ -31,6 +34,7 @@
       </div>
     </div>
   </div>
+
 </div>
 
 </template>
@@ -82,5 +86,14 @@ h2 {
 .PartnerLogo {
   max-width: 250px;
   max-height: 150px;
+}
+a{
+  max-width: 250px;
+  background: mediumseagreen;
+  font-size:30px;
+  border-radius: 20px;
+}
+a:hover{
+  background: darkseagreen;
 }
 </style>

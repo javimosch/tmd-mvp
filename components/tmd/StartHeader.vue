@@ -102,7 +102,7 @@ h1{
     padding: 20px;
 }
 a{
-	max-width: 200px;
+	max-width: 250px;
 	background: mediumseagreen;
 	font-size:30px;
 	border-radius: 20px;

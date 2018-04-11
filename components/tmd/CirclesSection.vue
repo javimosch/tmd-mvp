@@ -7,29 +7,29 @@
     </div>
     <div class="col col-sm-4 col-lg-2 align-self-center mt-4">
       <CircleWithText class="asd"
-                      data-rellax-speed="0.2"
+                      data-rellax-speed="0.3"
                       bg="rgb(233, 153, 154)"
                       color="white"></CircleWithText>
     </div>
     <div class="col col-sm-4 col-lg-2 align-self-end mt-4">
       <CircleWithText class="asd"
-                      data-rellax-speed="-0.2"
+                      data-rellax-speed="-0.3"
                       bg="rgb(253, 170, 76)"
                       color="white"></CircleWithText>
     </div>
     <div class="col col-sm-4 col-lg-2 align-self-center mt-4">
       <CircleWithText class="asd"
-                      data-rellax-speed="0.2"
+                      data-rellax-speed="0.3"
                       bg="rgb(233, 153, 154)"
                       color="white"></CircleWithText>
     </div>
     <div class="col col-sm-4 col-lg-2 align-self-start mt-4">
       <CircleWithText class="asd"
-                      data-rellax-speed="-0.2"></CircleWithText>
+                      data-rellax-speed="-0.3"></CircleWithText>
     </div>
     <div class="col col-sm-4 col-lg-2 align-self-center mt-4">
       <CircleWithText class="asd"
-                      data-rellax-speed="0.2"
+                      data-rellax-speed="0.3"
                       bg="rgb(233, 153, 154)"
                       color="white"></CircleWithText>
     </div>

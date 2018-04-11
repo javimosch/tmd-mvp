@@ -27,7 +27,7 @@ export default {
       return `TodoText ${this.done?'completed':''} p-0 m-0`
     },
     iconClass(){
-      return `TodoIcon ${this.done?'completed':''}  fas fa-${this.done?'check-':''}square`
+      return `TodoIcon ${this.done?'completed':''}  far fa-${this.done?'check-':''}square`
     }
   },
   methods: {
@@ -48,7 +48,7 @@ export default {
 }
 	.TodoIcon{
 		font-size:30px;
-		color:$color3;
+		color:grey;
 	}
 	.TodoText{
 		color: $color5;

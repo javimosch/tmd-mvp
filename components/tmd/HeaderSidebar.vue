@@ -24,22 +24,17 @@
     but hey, it's pure CSS magic.
     -->
       <ul id="menu">
-        <a href="#">
-          <li>Home</li>
-        </a>
-        <a href="#">
-          <li>About</li>
-        </a>
-        <a href="#">
-          <li>Info</li>
-        </a>
-        <a href="#">
-          <li>Contact</li>
-        </a>
-        <a href="https://erikterwan.com/"
-           target="_blank">
-          <li>Show me more</li>
-        </a>
+        
+        <router-link to="/mockup/11">
+          <li>Dashboard</li>
+        </router-link>
+        <router-link to="/mockup/14">
+          <li>Billing</li>
+        </router-link>
+        <router-link to="/mockup/1">
+          <li>Logout</li>
+        </router-link>
+        
       </ul>
     </div>
   </nav>

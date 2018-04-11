@@ -1,6 +1,13 @@
 <template>
 <div class="MockupPage">
   <mHeader></mHeader>
+
+
+  <!--    ####################################### SLIDE 1 -->
+  <!--    ####################################### SLIDE 1 -->
+  <!--    ####################################### SLIDE 1 -->
+  <!--    ####################################### SLIDE 1 -->
+  <!--    ####################################### SLIDE 1 -->
   <div v-show="nro=='1'">
     <two-sides-div rightBackgroundColor="#EEEEEE">
       <div slot="child">
@@ -20,6 +27,12 @@
     <Partners></Partners>
     <app-footer></app-footer>
   </div>
+
+  <!--    ####################################### SLIDE 2 -->
+  <!--    ####################################### SLIDE 2 -->
+  <!--    ####################################### SLIDE 2 -->
+  <!--    ####################################### SLIDE 2 -->
+  <!--    ####################################### SLIDE 2 -->
   <div v-show="nro=='2'">
     <two-sides-div rightBackgroundColor="#EEEEEE">
       <div slot="left"
@@ -38,9 +51,15 @@
         </CenterBottomText>
       </div>
     </two-sides-div>
-    <app-footer></app-footer>
+    
   </div>
-  <!-- 																	SLIDE 3 -->
+
+
+  <!--    ####################################### SLIDE 3 -->
+  <!--    ####################################### SLIDE 3 -->
+  <!--    ####################################### SLIDE 3 -->
+  <!--    ####################################### SLIDE 3 -->
+  <!--    ####################################### SLIDE 3 -->
   <div v-show="nro=='3'">
     <two-sides-div rightBackgroundColor="#EEEEEE">
       <div slot="left"
@@ -91,9 +110,13 @@
         </CenterBottomText>
       </div>
     </two-sides-div>
-    <app-footer></app-footer>
+    
   </div>
-  <!-- 																	SLIDE 4 -->
+  <!--    ####################################### SLIDE 4 -->
+  <!--    ####################################### SLIDE 4 -->
+  <!--    ####################################### SLIDE 4 -->
+  <!--    ####################################### SLIDE 4 -->
+  <!--    ####################################### SLIDE 4 -->
   <div v-show="nro=='4'">
     <two-sides-div rightBackgroundColor="#EEEEEE">
       <div slot="left"
@@ -132,9 +155,13 @@
         <BenefitsCircles></BenefitsCircles>
       </div>
     </two-sides-div>
-    <app-footer></app-footer>
+    
   </div>
-  <!-- 																	SLIDE 5 -->
+  <!--    ####################################### SLIDE 5 -->
+  <!--    ####################################### SLIDE 5 -->
+  <!--    ####################################### SLIDE 5 -->
+  <!--    ####################################### SLIDE 5 -->
+  <!--    ####################################### SLIDE 5 -->
   <div v-show="nro=='5'">
     <two-sides-div rightBackgroundColor="#EEEEEE">
       <div slot="left"
@@ -153,10 +180,14 @@
         <BenefitsCircles></BenefitsCircles>
       </div>
     </two-sides-div>
-    <app-footer></app-footer>
+    
     <BenefitStatusModal></BenefitStatusModal>
   </div>
-  <!-- 																	SLIDE 6 -->
+  <!--    ####################################### SLIDE 6 -->
+  <!--    ####################################### SLIDE 6 -->
+  <!--    ####################################### SLIDE 6 -->
+  <!--    ####################################### SLIDE 6 -->
+  <!--    ####################################### SLIDE 6 -->
   <div v-show="nro=='6'">
     <two-sides-div rightBackgroundColor="#EEEEEE">
       <div slot="left"
@@ -221,7 +252,7 @@
         </BenefitsCircles>
       </div>
     </two-sides-div>
-    <app-footer></app-footer>
+    
   </div>
   
 
@@ -306,7 +337,6 @@
         </BenefitsCircles>
       </div>
     </two-sides-div>
-    <app-footer></app-footer>
   </div>
 
   <!-- 		#######################################	SLIDE 8 -->
@@ -389,7 +419,7 @@
         </BenefitsCircles>
       </div>
     </two-sides-div>
-    <app-footer></app-footer>
+    
     <OrderCheckout></OrderCheckout>
   </div>
 
@@ -413,7 +443,7 @@
         
       </div>
     </two-sides-div>
-    <app-footer></app-footer>
+    
     <OrderCheckoutInfo></OrderCheckoutInfo>
   </div>
 
@@ -436,16 +466,24 @@
         
       </div>
     </two-sides-div>
-    <app-footer></app-footer>
+    
     <OrderCheckoutPayment></OrderCheckoutPayment>
   </div>
 
   <DashboardMockups :nro="nro"></DashboardMockups>
 
-  <b-btn @click="nextSlide"
+  <b-btn @click="moveSlide(-1)"
+         class="PrevButton"
+         variant="primary"
+         size="xs">Prev slide</b-btn>
+<b-btn to="/mockup"
+         class="IndexButton"
+         variant="primary"
+         size="xs">Index</b-btn>
+  <b-btn @click="moveSlide(1)"
          class="NextButton"
          variant="primary"
-         size="lg">Next slide</b-btn>
+         size="xs">Next slide</b-btn>
 </div>
 
 </template>
@@ -484,13 +522,16 @@ export default {
     }
   },
   methods: {
-    nextSlide() {
+    moveSlide(v) {
       try {
         let url = location.href.replace(location.origin, '')
         let number = url.substring(url.lastIndexOf('/') + 1)
-        number = parseInt(number, 10) + 1
+        number = parseInt(number, 10) + v
         if (number > 14) {
           number = 1
+        }
+        if(number<1){
+          number = 14
         }
         this.$router.push('/mockup/' + number)
       } catch (err) {
@@ -538,5 +579,23 @@ export default {
   bottom: 10px;
   right: 10px;
   z-index: 999999999;
+  opacity:0.4;
+}
+.PrevButton {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 999999999;
+  opacity:0.4;
+}
+.IndexButton:hover,.PrevButton:hover,.NextButton:hover{
+  opacity: 1;
+}
+.IndexButton{
+  opacity:0.4;
+  position: fixed;
+  bottom: 10px;
+  left: 45%;
+  z-index: 999999999; 
 }
 </style>
