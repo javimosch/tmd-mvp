@@ -1,36 +1,15 @@
-import {
-	post,
-	get
-} from '@/plugins/api';
-import bcrypt from 'bcrypt-nodejs';
-//import cookie from 'js-cookie';
-import Cookies from 'universal-cookie';
-
-function removeCookie(name) {
-	if (typeof window !== 'undefined') {
-		const cookie = new Cookies();
-		cookie.remove(name, {
-			domain: window.location.hostname
-		});
-		console.log('Removing cookie', name, 'at', location.hostname, typeof cookie.remove);
-	}
-}
-
-function hashPassword(pwd) {
-	return new Promise((resolve, reject) => {
-		bcrypt.hash(pwd, process.env.loginSalt, null, function(err, hash) {
-			if (err) return reject(err);
-			resolve(hash);
-		});
-	});
-}
+import {call} from '@/plugins/rpcApi';
 
 export async function login(email, password) {
-	password = await hashPassword(password);
-	return await post('/login', {
+	let res =  await call('loginWithEmailAndPassword', {
 		email,
 		password
 	});
+	if(!res){
+		throw new Error('Invalid credentials')
+	}
+	window.localStorage.setItem('token', res.token);
+	return res.user;
 }
 
 export async function logout() {

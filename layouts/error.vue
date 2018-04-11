@@ -53,7 +53,7 @@ export default {
   	},
   	back(){
   		if(this.error.statusCode===401){
-  			this.$router.push('/login')
+  			this.$router.push('/admin/login')
   		}else{
   			this.$router.push('/')
   		}

@@ -23,6 +23,10 @@ export async function call(name, data){
 	let res = await instance.post('rpc/'+name,{
 		n:name,
 		d:data
+	},{
+		headers: {
+    		'Authorization': 'Bearer '+localStorage.getItem('token')
+  		}
 	});
 	if(res.data){
 		let resData = res.data;

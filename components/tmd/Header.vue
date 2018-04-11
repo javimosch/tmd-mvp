@@ -3,7 +3,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col Logo">
-				<img :src="LogoImage" class="LogoImage"/>
+        <router-link class="navbar-brand" to="/">
+				  <img :src="LogoImage" class="LogoImage"/>
+        </router-link>
 			</div>
 		</div>
 	</div>

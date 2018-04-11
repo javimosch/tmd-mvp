@@ -2,10 +2,9 @@
 	<header class="container">
 		<nav class="navbar navbar-light bg-light">
 		  <router-link class="navbar-brand" to="/">
-		    <div v-if="false">
-		    	<span class="p-0 logo"><span class="inverse">Tous</span> Mes Droits</span>
-		    </div>
-		    <img :src="Logo" class="LogoImage"/>
+		    
+		    	<img :src="Logo" class="LogoImage"/>
+			
 		  </router-link>
 		</nav>
 	</header>  

@@ -78,6 +78,7 @@ export default {
     },
     onClear(){
       this.$emit('onClear');
+      this.$emit('clear');
     },
     input(val) {
       this.$emit('input', val)

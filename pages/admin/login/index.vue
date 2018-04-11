@@ -1,9 +1,18 @@
 <template>
-<div class="AdminLogin">
+<div class="AdminLogin container">
   <h3 class="text-center">Backoffice</h3>
   <div class="row justify-content-center">
-    <div class="col-12">
-      <input ref="pwd" class="d-block mx-auto" :value="defaultPassword" type="password" />
+    <div class="col-12 col-lg-12 mt-4">
+      <input class="form-control "
+             v-model="email"
+             placeholder="your email" />
+    </div>
+    <div class="col-12 mt-4">
+      <input ref="pwd"
+             class="d-block mx-auto form-control"
+             :value="defaultPassword"
+             type="password"
+             placeholder="password" />
     </div>
     <div class="col-12">
       <b-btn size="md"
@@ -17,24 +26,45 @@
 </template>
 
 <script>
+import { call } from '@/plugins/rpcApi';
 export default {
   layout: 'app-guess',
   name: 'AdminLogin',
   props: [],
   fetch() {},
+  data() {
+    return {
+      email: ''
+    }
+  },
   async asyncData() {
     return {}
   },
   computed: {
-    defaultPassword(){
-      return process.env.loginPwd||'';
+    defaultPassword() {
+      return process.env.loginPwd || ''
     }
   },
   methods: {
-    login(){
-      if(this.$refs.pwd.value==process.env.basicAuthPassword){
-        this.$router.push('/admin/dash');
+    async login() {
+
+      try {
+        let user = await this.$store.dispatch('auth/login', {
+          email: this.email,
+          pwd: this.$refs.pwd.value
+        })
+        if (user) {
+          this.$router.push('/admin/dash')
+        } else {
+          this.$noty.warning('Invalid credentials', {
+            killer: true,
+            timeout: 5000
+          })
+        }
+      } catch (err) {
+        this.$noty.warning(err.message)
       }
+
     }
   },
   components: {
@@ -48,7 +78,15 @@ export default {
 
 <style lang="scss" scoped="">
 .AdminLogin {}
-  button,a{
-    max-width:200px;
-  }
+
+input {
+  max-width: 300px;
+  margin: 0 auto;
+  display: block;
+}
+
+button,
+a {
+  max-width: 200px;
+}
 </style>

@@ -17,12 +17,17 @@
       <UsersSelectKey label="Select an user to edit"
                       placeholder="Search by name (press ENTER)"
                       v-model="item._id"
-                      @change="onItemSelected"></UsersSelectKey>
+                      @change="onItemSelected" @clear="clear"></UsersSelectKey>
     </div>
     <div class="col-12 col-sm-8 col-md-6 col-lg-6 mt-3">
       <label>Email</label>
       <input class="form-control d-block w-75"
              v-model="item.email" />
+    </div>
+    <div class="col-12 col-sm-8 col-md-6 col-lg-6 mt-3">
+      <label>New password</label>
+      <input class="form-control d-block w-50"
+             v-model="item.password" type="password" />
     </div>
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-3">
       <b-btn size="lg"
@@ -47,7 +52,10 @@ export default {
   fetch() {},
   data() {
     return {
-      item: {}
+      item: {
+        email:'',
+        password:''
+      }
     }
   },
   async asyncData() {
@@ -63,7 +71,8 @@ export default {
     clear(){
     	Object.assign(this.item, {
             _id: null,
-            email: ''
+            email: '',
+            password:''
           });
     },
     async remove() {
@@ -83,8 +92,8 @@ export default {
     },
     async save() {
       try {
-        let doc = await call('saveRecord', Object.assign({}, this.item, {
-          model: 'user'
+        let doc = await call('saveUser', Object.assign({}, this.item, {
+          //model: 'user'
         }))
         console.info(doc);
         this.clear();
