@@ -10,6 +10,7 @@ export async function login(email, password) {
 	}
 	if (typeof window !== 'undefined') {
 		window.localStorage.setItem('token', res.token);
+		window.localStorage.setItem('isLogged', 1);
 	}
 	return res.user;
 }

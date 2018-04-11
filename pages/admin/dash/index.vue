@@ -1,10 +1,22 @@
 <template>
 	<div class="Dashboard container">
-		<router-link class="text-center d-block"  to="/mockup">View mockups</router-link>
-		<b-btn @click="checkLogged">Is logged?</b-btn>
+		
+		
+		<div class="row">
+			<div class="col-12">
+				<router-link class="text-center d-block"  to="/mockup">View mockups</router-link>
+			</div>
+			<div class="col-12">
+				<b-btn @click="checkLogged">Is logged?</b-btn>
+			</div>
+			<div class="col-12">
+				
+			</div>
+		</div>
 	</div>
 </template>
 <script>
+import ApiLatencyChart from '@/components/ApiLatencyChart';
 import {call} from '@/plugins/rpcApi';
 	export default {
 		middleware:['auth'],
@@ -27,7 +39,7 @@ import {call} from '@/plugins/rpcApi';
 			}
 		},	
 		components:{
-
+			ApiLatencyChart
 		},
 		created(){
 
