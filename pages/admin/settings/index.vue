@@ -17,6 +17,7 @@
 
 <script>
 export default {
+  middleware:['auth'],
   layout: 'app',
   name: 'Settings',
   props: [],

@@ -1,9 +1,11 @@
 export default async function({
 	store,
 	error,
-	client
+	client,
+	ssr,
+	server,isServer,isClient
 }) {
-	if(client!==undefined && client===false) return;
+	if(process.server) return;
 	try{
 		await store.dispatch('auth/update');
 	}catch(err){}

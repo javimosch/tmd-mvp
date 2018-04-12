@@ -35,7 +35,7 @@ import {call} from '@/plugins/rpcApi';
 		methods:{
 			checkLogged(){
 				let self = this;
-				call('getLoggedUser').then(()=>self.$noty.info('Logged!')).catch(err=>self.$noty.warning(err.message))
+				call('tmdGetLoggedUser').then(()=>self.$noty.info('Logged!')).catch(err=>self.$noty.warning(err.message))
 			}
 		},	
 		components:{

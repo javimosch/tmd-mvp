@@ -4,11 +4,14 @@ import {
   setIsLoggedInCache,
   logout
 } from '@/plugins/auth';
-
+import {
+  call
+} from '@/plugins/rpcApi';
 import {
   me as getCurrentUser
 }
 from '@/plugins/user';
+
 
 export const state = () => ({
   isLogged: null,
@@ -43,7 +46,7 @@ export const actions = {
     state
   }) {
 
-    let isLogged =  getIsLoggedFromCache();
+    let isLogged = getIsLoggedFromCache();
 
     if (!!isLogged) {
       let user = state.user;
@@ -61,10 +64,10 @@ export const actions = {
 
 
   },
-
   async logout({
     commit
   }) {
+    window.localStorage.setItem('token', '')
     commit('setUser', null);
     return await logout()
   }

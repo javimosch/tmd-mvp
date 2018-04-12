@@ -5,5 +5,5 @@ export async function count() {
 }
 
 export async function me() {
-	return await call('getLoggedUser');
+	return await call('tmdGetLoggedUser');
 }
