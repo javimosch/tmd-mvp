@@ -20,13 +20,17 @@ export async function sync(){
 export async function call(name, data){
 	data = data || {};
 	try{
+		var headers = {}
+		if (typeof window !== 'undefined') {
+			headers = {
+				'Authorization': 'Bearer ' + localStorage.getItem('token')
+			}
+		}
 	let res = await instance.post('rpc/'+name,{
 		n:name,
 		d:data
 	},{
-		headers: {
-    		'Authorization': 'Bearer '+localStorage.getItem('token')
-  		}
+		headers: headers
 	});
 	if(res.data){
 		let resData = res.data;
