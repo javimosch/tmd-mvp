@@ -1,23 +1,9 @@
 <template>
 <div class="VerticalLanding">
-  <TwoSidesDiv rightBackgroundColor="#EEEEEE">
-    <div slot="child">
-      <StartHeader></StartHeader>
-    </div>
-    <div slot="left"
-         class="row row align-items-start m-0 p-0">
-    </div>
-    <div slot="right">
-    </div>
-  </TwoSidesDiv>
-  <div class="row mt-5 p-5 justify-content-center">
-    <div class="col-lg-12 m-0 mt-5 p-0">
-      <CirclesSection></CirclesSection>
-    </div>
-  </div>
+  <StartHeader></StartHeader>
+  <CirclesSection></CirclesSection>
   <CenteredFakeChat></CenteredFakeChat>
   <Partners></Partners>
-
 </div>
 
 </template>

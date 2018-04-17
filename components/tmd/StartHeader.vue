@@ -46,17 +46,22 @@ Recevez l’argent directement sur votre compte
 					</CircleWithText>
 				</div>
 			</div>
-			<div class="col-12 align-self-center mt-0">
+			
+			<div class="col-12 align-self-center mt-0" v-if="false">
 				<b-btn to="/mockup/2" class="mx-auto d-block mt-4" variant="success" size="lg">Commencer</b-btn>
 			</div>
-			<div class="col-12 align-self-center mt-0">
-			
+
+			<div class="col-12 align-self-center mt-5" v-if="true">
+				<img :src="ArrowDown" class="ArrowDown pulse animated infinite mt-5 mx-auto d-block" />
 			</div>
+			
+
 		</div>
 		
 	</div>
 </template>
 <script>
+import ArrowDown from '@/assets/arrows/arrow-down.svg'
 import CircleWithText from '@/components/tmd/CircleWithText';
 	
 	export default {
@@ -64,6 +69,11 @@ import CircleWithText from '@/components/tmd/CircleWithText';
 		props:[],
 		fetch(){
 
+		},
+		data(){
+			return{
+				ArrowDown
+			}
 		},
 		async asyncData(){
 			return {}
@@ -88,12 +98,10 @@ import CircleWithText from '@/components/tmd/CircleWithText';
 <style lang="scss" scoped>
 
 .StartHeader{
-	position: absolute;
-	top:0px;
-	left:0px;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
+	
+}
+.ArrowDown{
+	max-width: 50px;
 }
 h1{
 	max-width:700px;
