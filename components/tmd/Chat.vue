@@ -54,7 +54,7 @@
 	min-height: 300px;
 	position: relative;
 	@media only screen and (min-width: 992px) {
-	    min-height: 500px;
+	    min-height: 400px;
 	 }
 	 
 }

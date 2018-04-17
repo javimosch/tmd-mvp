@@ -2,7 +2,7 @@
 	<div class="StartHeader">
 		<div class="row m-0 p-0 justify-content-center">
 			<div class="col-12 align-self-center mt-0">
-				<h1 class="text-center mx-auto d-block mt-lg-5">Trouvez toutes les aides financières auxquelles vous avez droit
+				<h1 class="text-center mx-auto d-block ">Trouvez toutes les aides financières auxquelles vous avez droit
 </h1>
 			</div>
 			<div class="col-12">
@@ -108,9 +108,11 @@ import CircleWithText from '@/components/tmd/CircleWithText';
 }
 h1{
 	max-width:700px;
-    line-height: 45px;
+    line-height: 40px;
+    font-size:35px;
     color: $color3;
-    padding: 20px;
+    padding: 15px;
+    margin:0px;
 }
 a{
 	max-width: 250px;

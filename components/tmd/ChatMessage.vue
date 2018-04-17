@@ -46,7 +46,6 @@
 </script>
 <style lang="scss" scoped>
 .ChatMessage{
-
 	min-width: 50px;
 	max-width: 400px;
 	background-color:rgb(229, 228, 234);
@@ -62,7 +61,13 @@
 	text-align: right;
 }
 p{
-	padding:20px;
+	font-size: 12px;
+
+padding-top: 8px;
+padding-bottom: 8px;
+padding-right: 12px;
+padding-left: 12px;
+	
 	color:$color5;
 	margin:0px;
 }

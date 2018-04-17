@@ -22,6 +22,7 @@ import Logo from '@/assets/logo.png'
 <style lang="scss" scoped>
 .navbar{
 	background-color:transparent!important;
+	padding:0px;
 }
 .inverse{
 	color:$color3;
@@ -32,6 +33,7 @@ import Logo from '@/assets/logo.png'
 }
 .LogoImage{
 	max-width:150px;
+	padding:0px;
 }
 .logo{
 	padding:10px 0px;

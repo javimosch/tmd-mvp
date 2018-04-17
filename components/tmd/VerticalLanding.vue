@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import FloatingCircles from '@/components/tmd/FloatingCircles';
 import Partners from '@/components/tmd/landing/Partners';
 import CenteredFakeChat from '@/components/tmd/CenteredFakeChat';
 import CirclesSection from '@/components/tmd/CirclesSection';
@@ -37,7 +38,8 @@ export default {
   	StartHeader,
   	TwoSidesDiv,
   	Partners,
-    CenteredFakeChat
+    CenteredFakeChat,
+    FloatingCircles
   },
   created() {},
   mounted() {}
