@@ -2,7 +2,7 @@
 	<div class="ChatInput row align-items-center m-0">
 		<div class="col align-self-center p-0 m-0">
 			<div class="ChatInputControlWrapper ml-2">
-				<input class="ChatInputControl" :placeholder="inputPlaceholder||''"/>
+				<input :disabled="inputDisabled" class="ChatInputControl" :placeholder="inputPlaceholder||''"/>
 			</div>
 		</div>
 		<div class="col-2 align-self-center p-0 m-0">
@@ -31,7 +31,9 @@
 			}
 		},
 		computed:{
-
+			inputDisabled(){
+				return this.$store.state.tmdChat.inputDisabled
+			}
 		},
 		methods:{
 

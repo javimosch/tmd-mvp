@@ -21,6 +21,7 @@
 </template>
 <script>
 	export default {
+		middleware:['auth'],
 		layout: 'public',
 		name: 'Mockups',
 		props:[],

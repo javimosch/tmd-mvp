@@ -84,6 +84,7 @@ if (Object.keys(props).length === -0) {
   props.isLanding = false
 }
 export default {
+  middleware:['auth'],
   layout: 'tmd-app',
   name: 'home',
   head() {

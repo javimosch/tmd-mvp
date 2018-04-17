@@ -6,11 +6,13 @@ export const state = () => ({
 	orders: [],
 	messages: [],
 	user: null,
+	inputDisabled:false,
 	state: 'off' //off loading writing waiting
 });
 
 
 export const mutations = {
+	setInputDisabled:(s,disabled)=>s.inputDisabled=disabled,
 	set: (s, params) => {
 		for (var x in params) {
 			s[x] = params[x];

@@ -13,6 +13,7 @@
 import NetworkGraph from '@/components/NetworkGraph';
 import NodeDetails from '@/components/NodeDetails';
 export default {
+  middleware:['auth'],
   components: {
     NetworkGraph,
     NodeDetails

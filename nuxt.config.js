@@ -5,28 +5,6 @@ require('dotenv').config({
 });
 
 
-function getStaticRoutes() {
-  let p = path.join(process.cwd(), 'assets', 'routes.json');
-  if (!sander.existsSync(p)) {
-    throw new Error('Not found: ' + p);
-  }
-  //let res = sander.readFileSync(p).toString('utf-8');
-  //res = JSON.parse(res);
-  //res = res.nodes.filter(i => (!i.ssr || i.ssr !== false) && i.path != undefined).map(i => i.path)
-  let res = [];
-  res = res.concat([
-    '/mockup/1',
-    '/mockup/2',
-    'admin/login',
-    'admin/dash',
-    'admin/fields',
-    'admin/benefits'
-  ]);
-  return res;
-}
-
-//getStaticRoutes();
-
 module.exports = {
   /*
    ** Headers of the page
@@ -86,7 +64,7 @@ module.exports = {
   env: {
     basicAuthPassword: process.env.basicAuthPassword||'secret',
     RPC_ENDPOINT: process.env.RPC_ENDPOINT || 'http://localhost:3002/',
-    nuxtHome: process.env.NUXTHOME,
+    nuxtHome: process.env.NUXTHOME||'/',
     loginSalt: '$2a$10$67Bn8fXfK0peYFBhAKCctequ/QSkwtX4DWE5UmG0DQOieGdGysR8S',
     apiUrl: process.env.API_URL || 'http://localhost:3000',
     loginEmail: process.env.NODE_ENV === 'production' ? '' : 'arancibiajav@gmail.com',
