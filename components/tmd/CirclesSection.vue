@@ -73,6 +73,8 @@ export default {
 
 <style lang="scss" scoped="">
 .CirclesSection {
+  padding-bottom:100px;
+  min-height: 450px;
   padding:100px 0px;
   margin-top: 0px;
   @media only screen and (min-width: 992px) {

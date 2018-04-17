@@ -10,17 +10,10 @@
       <img class="mx-auto d-block PartnerLogo"
            src="~/assets/partners/logo_pantheon_sobornne.jpg" />
     </div>
+    
     <div class="col-12 col-md-6 col-lg-3 mt-3">
       <img class="mx-auto d-block PartnerLogo"
-           src="~/assets/partners/logo_pantheon_sobornne.jpg" />
-    </div>
-    <div class="col-12 col-md-6 col-lg-3 mt-3">
-      <img class="mx-auto d-block PartnerLogo"
-           src="~/assets/partners/logo_pantheon_sobornne.jpg" />
-    </div>
-    <div class="col-12 col-md-6 col-lg-3 mt-3">
-      <img class="mx-auto d-block PartnerLogo"
-           src="~/assets/partners/logo_pantheon_sobornne.jpg" />
+           src="https://static.latribune.fr/590121/french-tech.jpg" />
     </div>
     <div class="col-12 align-self-center mt-5" v-show="showCallToAction">
         <b-btn to="/mockup/2" class="mx-auto d-block mt-4" variant="success" size="lg">Commencer</b-btn>

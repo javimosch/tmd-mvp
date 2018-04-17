@@ -61,7 +61,7 @@
 	text-align: right;
 }
 p{
-	font-size: 12px;
+	font-size: 14px;
 
 padding-top: 8px;
 padding-bottom: 8px;

@@ -39,7 +39,7 @@ footer:before{
     position: absolute;
     width: 100%;
     height: 390px;
-    background: $color3;
+    background: $color5;
     -webkit-transform: skewY(-6deg);
     transform: skewY(-2deg);
     z-index: 0;

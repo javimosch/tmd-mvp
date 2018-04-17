@@ -59,7 +59,7 @@ export default {
   },
   created() {},
   destroyed(){
-    if(state.typed) state.typed.destroy();
+    if(state.typed && state.typed.destroy) state.typed.destroy();
   },
   async mounted() {
     if (process.server) {
@@ -173,7 +173,7 @@ async function addMessage(message, isUser = false, loadingSeconds = 1, startInSe
 function typedMessage(strings, speed = 5, waitToDelete = 1) {
   var selector = '.ChatInputControl'
   return new Promise((resolve, reject) => {
-    var options = state.typed = {
+    var options = {
       strings: strings,
       typeSpeed: speed,
       onComplete: async() => {
@@ -183,7 +183,7 @@ function typedMessage(strings, speed = 5, waitToDelete = 1) {
         resolve()
       }
     }
-    var typed = new Typed(selector, options)
+    var typed = state.typed = new Typed(selector, options)
   })
 }
 
