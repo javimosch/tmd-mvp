@@ -22,7 +22,7 @@
       <img class="mx-auto d-block PartnerLogo"
            src="~/assets/partners/logo_pantheon_sobornne.jpg" />
     </div>
-    <div class="col-12 align-self-center mt-5">
+    <div class="col-12 align-self-center mt-5" v-show="showCallToAction">
         <b-btn to="/mockup/2" class="mx-auto d-block mt-4" variant="success" size="lg">Commencer</b-btn>
       </div>
   </div>
@@ -42,7 +42,7 @@
 <script>
 export default {
   name: 'Partners',
-  props: [],
+  props: ['callToAction'],
   fetch() {},
   data() {
     return {}
@@ -51,7 +51,9 @@ export default {
     return {}
   },
   computed: {
-
+    showCallToAction(){
+      return this.callToAction!==undefined?this.callToAction:true;
+    }
   },
   methods: {
 

@@ -4,7 +4,14 @@
 			<div class="col">
 				<ChatMessage :isUser="true">
 					<div slot="message">
-						<slot name="message"></slot>
+						<div slot="message">
+							<div>
+								<div v-show="!isLoading">
+									<slot name="message"></slot>
+								</div>
+								<LoadingDots v-show="isLoading"></LoadingDots>
+							</div>
+						</div>
 					</div>
 				</ChatMessage>
 			</div>
@@ -14,9 +21,10 @@
 <script>
 	import GirlBot from '@/assets/girlbot.svg';
 	import ChatMessage from '@/components/tmd/ChatMessage';
+	import LoadingDots from '@/components/LoadingDots';
 	export default {
 		name: 'ChatMessageUser',
-		props:[],
+		props:['loading'],
 		fetch(){
 
 		},
@@ -31,13 +39,16 @@
 			}
 		},
 		computed:{
-
+			isLoading(){
+				return this.loading!==undefined?this.loading:false
+			}
 		},
 		methods:{
 
 		},
 		components:{
-			ChatMessage
+			ChatMessage,
+			LoadingDots
 		},
 		created(){
 

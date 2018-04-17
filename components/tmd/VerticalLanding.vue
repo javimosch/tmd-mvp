@@ -1,9 +1,11 @@
 <template>
 <div class="VerticalLanding">
-  <StartHeader></StartHeader>
+  <StartHeader>
+    <CenteredFakeChat></CenteredFakeChat>
+  </StartHeader>
+  
   <CirclesSection></CirclesSection>
-  <CenteredFakeChat></CenteredFakeChat>
-  <Partners></Partners>
+  <Partners :callToAction="false"></Partners>
 </div>
 
 </template>

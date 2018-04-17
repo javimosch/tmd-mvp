@@ -5,6 +5,9 @@
 				<h1 class="text-center mx-auto d-block mt-lg-5">Trouvez toutes les aides financières auxquelles vous avez droit
 </h1>
 			</div>
+			<div class="col-12">
+				<slot></slot>
+			</div>
 			<div class="row m-0 p-0 h-100 justify-content-center asd" data-rellax-speed="0">
 				<div class="col col-md-6 col-lg-3 align-self-start mt-4">
 					<CircleWithText 

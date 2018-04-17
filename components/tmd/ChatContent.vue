@@ -3,6 +3,8 @@
 		<div class="row m-0 p-0">
 			<div class="col m-2 mr-4 p-0">
 				<slot>
+
+					<div v-show="shouldShowMessagesSample">
 				<ChatMessageBot>
 					<p slot="message">
 						Bonjour, je m’appelle Chloé ! 
@@ -30,6 +32,7 @@ Je vais t’aider à trouver toutes les aides financières auxquelles tu as droi
 						Enchantée Julie ! Très joli prénom d’ailleurs ;)
 					</p>
 				</ChatMessageBot>
+			</div>
 				</slot>
 
 				
@@ -45,7 +48,7 @@ Je vais t’aider à trouver toutes les aides financières auxquelles tu as droi
 	import ChatMessageUser from '@/components/tmd/ChatMessageUser';
 	export default {
 		name: 'ChatContent',
-		props:[],
+		props:['showMessagesSample'],
 		fetch(){
 
 		},
@@ -53,7 +56,9 @@ Je vais t’aider à trouver toutes les aides financières auxquelles tu as droi
 			return {}
 		},
 		computed:{
-
+			shouldShowMessagesSample(){
+				return this.showMessagesSample!==undefined?this.showMessagesSample:true
+			}
 		},
 		methods:{
 

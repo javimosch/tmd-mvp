@@ -1,6 +1,6 @@
 <template>
 	<div class="Chat pt-4">
-		<ChatContent>
+		<ChatContent :showMessagesSample="showMessagesSample">
 			<slot>
 			</slot>
 			<div slot="options" >
@@ -22,7 +22,7 @@
 	import ChatBottom from '@/components/tmd/ChatBottom';
 	export default {
 		name: 'Chat',
-		props:['inputPlaceholder','hideInput'],
+		props:['inputPlaceholder','hideInput','showMessagesSample'],
 		fetch(){
 
 		},
