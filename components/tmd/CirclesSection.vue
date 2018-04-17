@@ -1,5 +1,5 @@
 <template>
-<div class="CirclesSection">
+<div class="CirclesSection container">
   <div class="row m-0 p-0 h-100 justify-content-center asd"
        data-rellax-speed="0">
     <div class="col col-sm-4 col-lg-2 align-self-start mt-4">

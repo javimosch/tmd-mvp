@@ -1,5 +1,5 @@
 <template>
-<div class="Partners p-5">
+<div class="Partners container">
   <div class="row no-gutters justify-content-center">
     <div class="col-lg-12 m-0 mt-5 mb-3 p-0">
       <h2 class="text-center">Nos partenaires</h2>

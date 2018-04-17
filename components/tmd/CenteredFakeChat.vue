@@ -58,6 +58,9 @@ export default {
     ChatMessageUser
   },
   created() {},
+  destroyed(){
+    if(state.typed) state.typed.destroy();
+  },
   async mounted() {
     if (process.server) {
       return
@@ -170,7 +173,7 @@ async function addMessage(message, isUser = false, loadingSeconds = 1, startInSe
 function typedMessage(strings, speed = 5, waitToDelete = 1) {
   var selector = '.ChatInputControl'
   return new Promise((resolve, reject) => {
-    var options = {
+    var options = state.typed = {
       strings: strings,
       typeSpeed: speed,
       onComplete: async() => {

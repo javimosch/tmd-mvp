@@ -8,6 +8,18 @@
 			<div class="col-12">
 				<slot></slot>
 			</div>
+
+
+
+			<div class="col-12 align-self-center mt-0" v-if="false">
+				<b-btn to="/mockup/2" class="mx-auto d-block mt-4" variant="success" size="lg">Commencer</b-btn>
+			</div>
+
+			<div class="col-12 align-self-center mt-1 mb-5" v-if="true">
+				<img :src="ArrowDown" class="ArrowDown pulse animated infinite mt-5 mx-auto d-block" />
+			</div>
+
+
 			<div class="row m-0 p-0 h-100 justify-content-center asd" data-rellax-speed="0">
 				<div class="col col-md-6 col-lg-3 align-self-start mt-4">
 					<CircleWithText 
@@ -50,13 +62,6 @@ Recevez l’argent directement sur votre compte
 				</div>
 			</div>
 			
-			<div class="col-12 align-self-center mt-0" v-if="false">
-				<b-btn to="/mockup/2" class="mx-auto d-block mt-4" variant="success" size="lg">Commencer</b-btn>
-			</div>
-
-			<div class="col-12 align-self-center mt-5" v-if="true">
-				<img :src="ArrowDown" class="ArrowDown pulse animated infinite mt-5 mx-auto d-block" />
-			</div>
 			
 
 		</div>
