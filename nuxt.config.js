@@ -46,6 +46,10 @@ module.exports = {
       src: 'https://cdnjs.cloudflare.com/ajax/libs/rellax/1.6.2/rellax.min.js'
     },{
       src:'https://js.stripe.com/v3/'
+    },{
+      src:"https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    },{
+      src:"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     }]
   },
   /*

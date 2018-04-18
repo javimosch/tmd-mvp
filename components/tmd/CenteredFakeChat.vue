@@ -208,7 +208,7 @@ function scrollToBottom() {
 
 <style lang="scss" scoped="">
 .CenteredFakeChat {
-  opacity: 0.7;
+  opacity: 1;
   max-width: 500px;
   margin: 0 auto;
 }

@@ -8,6 +8,10 @@
       <HowWorksSection></HowWorksSection>
   </LandingSection>
 
+  <LandingSection title="Also" :css="'background-color:white;'">
+    <HowWorksSection></HowWorksSection>
+  </LandingSection>
+
   <LandingSection title="Technologies">
     <TechnologiesCards></TechnologiesCards>
   </LandingSection>
@@ -16,8 +20,8 @@
     <HowWorksSection></HowWorksSection>
   </LandingSection>
 
-  <LandingSection title="Benefits" :inverted="true">
-    <CirclesSection></CirclesSection>
+  <LandingSection title="Numbers" :inverted="true">
+    <LandingStats :one="200" :two="1200" :three="1500000"></LandingStats>
   </LandingSection>
 
   
@@ -27,6 +31,7 @@
 </template>
 
 <script>
+import LandingStats from '@/components/LandingStats';
 import HowWorksSection from '@/components/HowWorksSection';
 import TechnologiesCards from '@/components/TechnologiesCards';
 import LandingSection from '@/components/tmd/LandingSection';
@@ -61,7 +66,8 @@ export default {
     FloatingCircles,
     LandingSection,
     TechnologiesCards,
-    HowWorksSection
+    HowWorksSection,
+    LandingStats
   },
   created() {},
   mounted() {}

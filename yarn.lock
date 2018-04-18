@@ -481,6 +481,10 @@ arrify@^1.0.0, arrify@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
 
+asap@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/asap/-/asap-1.0.0.tgz#b2a45da5fdfa20b0496fc3768cc27c12fa916a7d"
+
 asap@~2.0.3:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
@@ -1337,7 +1341,7 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^3.0.5, bluebird@^3.1.1, bluebird@^3.4.7, bluebird@^3.5.1:
+bluebird@^3.0.5, bluebird@^3.1.1, bluebird@^3.3.4, bluebird@^3.4.7, bluebird@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
@@ -4086,6 +4090,18 @@ growly@^1.2.0, growly@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
 
+gsap-promise@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/gsap-promise/-/gsap-promise-2.0.0.tgz#7220c1b13965b129cb263fcfe317a20239c9973d"
+  dependencies:
+    bluebird "^3.3.4"
+    gsap "1.18.2"
+    object-assign "^4.0.1"
+
+gsap@1.18.2:
+  version "1.18.2"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-1.18.2.tgz#e3fb103de837103ab64e4d67302986ca071edecc"
+
 gsap@^1.20.4:
   version "1.20.4"
   resolved "https://registry.yarnpkg.com/gsap/-/gsap-1.20.4.tgz#005fba2a7bfbb3b9d27bd77e1634d2bad365a86a"
@@ -5336,6 +5352,10 @@ locate-path@^2.0.0:
   dependencies:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
+
+lodash-es@^4.17.4:
+  version "4.17.8"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.8.tgz#6fa8c8c5d337481df0bdf1c0d899d42473121e45"
 
 lodash._arraycopy@^3.0.0:
   version "3.0.0"
@@ -7389,6 +7409,12 @@ progress@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.0.tgz#8a1be366bf8fc23db2bd23f10c6fe920b4389d1f"
 
+promise-deferred@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/promise-deferred/-/promise-deferred-2.0.1.tgz#b05398f1a43f6d87be0c97c52040046e83eb5454"
+  dependencies:
+    promise "~6.1.0"
+
 promise-inflight@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
@@ -7402,6 +7428,12 @@ promise@^7.1.1:
   resolved "https://registry.yarnpkg.com/promise/-/promise-7.3.1.tgz#064b72602b18f90f29192b8b1bc418ffd1ebd3bf"
   dependencies:
     asap "~2.0.3"
+
+promise@~6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/promise/-/promise-6.1.0.tgz#2ce729f6b94b45c26891ad0602c5c90e04c6eef6"
+  dependencies:
+    asap "~1.0.0"
 
 prop-types@^15.5.10:
   version "15.6.1"
@@ -8148,6 +8180,10 @@ schema-utils@^0.4.0, schema-utils@^0.4.2, schema-utils@^0.4.5:
   dependencies:
     ajv "^6.1.0"
     ajv-keywords "^3.1.0"
+
+scrollmonitor@^1.2.3:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/scrollmonitor/-/scrollmonitor-1.2.4.tgz#823d04cc1574aa3b71de7cc70ef91ebe633344a0"
 
 scss-tokenizer@^0.2.3:
   version "0.2.3"
@@ -9597,6 +9633,14 @@ vue-no-ssr@^0.2.2:
 vue-router@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.0.1.tgz#d9b05ad9c7420ba0f626d6500d693e60092cc1e9"
+
+vue-scrollmonitor@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/vue-scrollmonitor/-/vue-scrollmonitor-0.1.0.tgz#4f6b7664c675024b0a3c2d2e846c258bda29ab47"
+  dependencies:
+    lodash-es "^4.17.4"
+    promise-deferred "^2.0.1"
+    scrollmonitor "^1.2.3"
 
 vue-server-renderer@^2.5.13:
   version "2.5.13"

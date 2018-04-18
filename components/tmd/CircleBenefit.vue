@@ -87,8 +87,7 @@ export default {
       size: 200,
       fill: {
         startAngle: 90,
-        //color: this.borderColor ? this.borderColor : '#0A45B1',
-        color:'orange'
+        color: this.borderColor ? this.borderColor : '#0A45B1',
       }
     })
 

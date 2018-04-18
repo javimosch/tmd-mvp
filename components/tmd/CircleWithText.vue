@@ -57,8 +57,8 @@
 </script>
 <style lang="scss" scoped>
 .Circle{
-	height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
   display: table-cell;
   text-align: center;
   vertical-align: middle;
@@ -70,6 +70,6 @@
 .CircleWithText{
 	display: block;
 	margin:0 auto;
-	width:100px; 
+	width:150px; 
 }
 </style>

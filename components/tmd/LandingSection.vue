@@ -52,7 +52,7 @@
 	background-color:$color5;
 }
 .LandingSection.inverted{
-	background-color:$color1;
+	background-color:$color3;
 }
 .title{
 	font-size:40px;
