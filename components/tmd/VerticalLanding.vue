@@ -20,8 +20,8 @@
     <HowWorksSection></HowWorksSection>
   </LandingSection>
   
-  <LandingSection title="Numbers" :inverted="true">
-    <LandingStats :one="200" :two="1200" :three="1500000"></LandingStats>
+  <LandingSection title="" :css="'background-color:#212431;'">
+    <LandingStats :one="4000" :two="2000" :three="12000000000"></LandingStats>
   </LandingSection>
   <DropboxSeparatorBar></DropboxSeparatorBar>
   

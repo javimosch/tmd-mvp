@@ -180,10 +180,15 @@ function typedMessage(strings, speed = 5, waitToDelete = 1) {
         await waitSeconds(waitToDelete)
         $(selector).val('')
         typed.destroy();
+        delete window.d[typed.id];
         resolve()
       }
     }
-    var typed = state.typed = new Typed(selector, options)
+    var typed = new Typed(selector, options)
+    typed.id = Date.now();
+    window.d = window.d||{};
+    window.d[typed.id]=typed;
+    state.typed = typed;
   })
 }
 

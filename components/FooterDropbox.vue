@@ -47,7 +47,7 @@ export default {
 <style lang="scss" scoped="">
 .FooterDropbox {
   margin-top: 200px;
-  height: 100px;
+  height: 80px;
   background-color: $lightGrey;
 }
 

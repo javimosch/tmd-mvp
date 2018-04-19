@@ -1,7 +1,7 @@
 <template>
 <div class="PublicLayout">
   <AppHeader></AppHeader>
-  <div class="container p-0 main">
+  <div class=" p-0 main">
     <nuxt/>
   </div>
   <AppFooter></AppFooter>
