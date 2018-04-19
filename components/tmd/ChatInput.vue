@@ -58,15 +58,15 @@
 }
 .ChatInputEnterButton{
 	border-radius:0px 10px 10px 0px;
-	background:$color3;
+	background:$color2;
 	min-height: 50px;
 	position: relative;
 }
 .ChatInputEnterButtonRightArrow{
 	position: absolute;
     left: 37%;
-    top: 30%;
-    width: 20px;
+    top: 35%;
+    width: 15px;
 }
 .ChatInputControl{
 	height: 50px;
@@ -76,6 +76,6 @@
 	border-color:transparent;
 	box-shadow:none;
 	padding: 0px 20px;
-	border: 1px solid $color3;
+	border: 1px solid $color2;
 }
 </style>

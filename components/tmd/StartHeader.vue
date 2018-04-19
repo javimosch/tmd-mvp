@@ -77,7 +77,9 @@ h1{
     color: $color3;
     padding: 15px;
     margin:0px;
-    font-weight: 100;
+    font-weight: 300;
+    letter-spacing: 3px;
+
 }
 a{
 	max-width: 250px;

@@ -53,7 +53,7 @@
 	display:inline-block;
 }
 .ChatMessage.isUser{
-	background-color:$color3;
+	background-color:$color2;
 	float:right;
 }
 .ChatMessage.isUser p{

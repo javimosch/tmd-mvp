@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import LogoImage from '@/assets/logo.png'
+import LogoImage from '@/assets/logo.svg'
 import HSidebar from '@/components/tmd/HeaderSidebar';
 export default {
   name: 'Header',
