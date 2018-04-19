@@ -5,7 +5,9 @@
       <div class="outer">
         <div class="middle">
           <div class="inner">
-            <i class="fab fa-facebook-square TextIcon"></i>
+          	<a href="https://www.facebook.com/Tous-mes-droits-1611136268975764/" target="_blank">
+            	<i class="fab fa-facebook-square TextIcon"></i>
+        	</a>
           </div>
         </div>
       </div>
@@ -17,10 +19,10 @@
             <div class="RightTextWrapper mx-auto">
             	<div class="row no-gutters">
             		<div class="col-6 text-center">
-            			<a class="Text" href="#">Contact</a>
+            			<a class="Text" target="_blank" href="mailto:cyprien.geze@tousmesdroits.com">Contactez-nous</a>
             		</div>
             		<div class="col-6 text-center">
-            			<a class="Text" href="#">Privacy&nbsp;Terms</a>
+            			<a class="Text" href="#">06 75 76 45 93</a>
             		</div>
             	</div>
             	
@@ -81,7 +83,7 @@ export default {
     font-weight: 400;
     line-height: 2.28571;
 }
-.Text:link, .Text:visited {
+.Text:link, .Text:visited,a:link, a:visited {
     text-decoration: none;
     font-family: $atlas;
     font-weight: 300;
