@@ -6,7 +6,7 @@
 <script>
 import VerticalLanding from '@/components/tmd/VerticalLanding'
 export default {
-  layout:'tmd-landing',
+  layout:'public',
   name: 'Root',
   props: [],
   head() {

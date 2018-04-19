@@ -1,54 +1,30 @@
 <template>
 <div class="PublicLayout">
-	<nuxt/>
-  <div id="fb-root"></div>
-  <div class="fb-customerchat"
-       page_id="1611136268975764">
+  <AppHeader></AppHeader>
+  <div class="container p-0 main">
+    <nuxt/>
   </div>
+  <AppFooter></AppFooter>
 </div>
 
 </template>
 
 <script>
+import AppHeader from '@/components/tmd/landing/layout/Header';
+import AppFooter from '@/components/FooterDropbox';
 export default {
   name: 'PublicLayout',
-  props: [],
-  fetch() {},
-  data() {
-    return {}
-  },
-  async asyncData() {
-    return {}
-  },
-  computed: {
-
-  },
-  methods: {
-
-  },
   components: {
-
-  },
-  created() {},
-  mounted() {
-    if (typeof window !== 'undefined') {
-      (function(d, s, id) {
-        var js,
-          fjs = d.getElementsByTagName(s)[0]
-        if (d.getElementById(id)) {
-          return
-        }
-        js = d.createElement(s)
-        js.id = id
-        js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.12&autoLogAppEvents=1'
-        fjs.parentNode.insertBefore(js, fjs)
-      }(document, 'script', 'facebook-jssdk'))
-    }
+    AppHeader,
+    AppFooter
   }
 }
 
 </script>
 
 <style lang="scss" scoped="">
-.PublicLayout {}
+.PublicLayout {
+  min-height: 700px;
+  min-width: 100%;
+}
 </style>

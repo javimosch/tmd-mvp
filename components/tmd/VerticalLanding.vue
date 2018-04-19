@@ -19,11 +19,11 @@
   <LandingSection title="Also" :css="'background-color:white;'">
     <HowWorksSection></HowWorksSection>
   </LandingSection>
-
+  
   <LandingSection title="Numbers" :inverted="true">
     <LandingStats :one="200" :two="1200" :three="1500000"></LandingStats>
   </LandingSection>
-
+  <DropboxSeparatorBar></DropboxSeparatorBar>
   
   <Partners :callToAction="false"></Partners>
 </div>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import DropboxSeparatorBar from '@/components/DropboxSeparatorBar';
 import LandingStats from '@/components/LandingStats';
 import HowWorksSection from '@/components/HowWorksSection';
 import TechnologiesCards from '@/components/TechnologiesCards';
@@ -67,7 +68,8 @@ export default {
     LandingSection,
     TechnologiesCards,
     HowWorksSection,
-    LandingStats
+    LandingStats,
+    DropboxSeparatorBar
   },
   created() {},
   mounted() {}

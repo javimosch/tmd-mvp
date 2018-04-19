@@ -1,5 +1,34 @@
+@font-face {
+    font-family: 'Atlas Grotesk Web';
+    src: url('/fonts/AtlasGroteskWeb-Light.woff2') format('woff2'),
+        url('/fonts/AtlasGroteskWeb-Light.woff') format('woff'),
+        url('/fonts/AtlasGroteskWeb-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Atlas Grotesk Web';
+    src: url('/fonts/AtlasGroteskWeb-Regular.woff2') format('woff2'),
+        url('/fonts/AtlasGroteskWeb-Regular.woff') format('woff'),
+        url('/fonts/AtlasGroteskWeb-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Atlas Grotesk Web';
+    src: url('/fonts/AtlasGroteskWeb-Thin.woff2') format('woff2'),
+        url('/fonts/AtlasGroteskWeb-Thin.woff') format('woff'),
+        url('/fonts/AtlasGroteskWeb-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+
 $font1: 'Nunito', sans-serif; 
 $font2: 'Montserrat', sans-serif;
+$atlas: Atlas Grotesk Web, sans-serif;
 
 body{
 	font-family: 'Montserrat', sans-serif;
