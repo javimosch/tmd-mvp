@@ -1,7 +1,7 @@
 <template>
 	<div class="StartHeader">
 		<div class="row m-0 p-0 justify-content-center">
-			<div class="col-12 align-self-center mt-0">
+			<div class="col-12 align-self-center mt-0 mb-4">
 				<h1 class="text-center mx-auto d-block ">Trouvez toutes les aides auxquelles vous avez droit
 </h1>
 			</div>
@@ -71,12 +71,13 @@ import CircleWithText from '@/components/tmd/CircleWithText';
 	max-width: 30px;
 }
 h1{
-	max-width:700px;
+	max-width:992px;
     line-height: 40px;
     font-size:35px;
     color: $color3;
     padding: 15px;
     margin:0px;
+    font-weight: 100;
 }
 a{
 	max-width: 250px;

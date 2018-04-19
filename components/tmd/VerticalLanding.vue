@@ -3,24 +3,22 @@
   <StartHeader>
     <CenteredFakeChat></CenteredFakeChat>
   </StartHeader>
-
   <HowItWorks></HowItWorks>
-  
-  <LandingSection title="Also" :css="'background-color:white;'">
-    <HowWorksSection></HowWorksSection>
-  </LandingSection>
-  
-  <LandingSection title="" :css="'background-color:#212431;'">
-    <LandingStats :one="4000" :two="2000" :three="12000000000"></LandingStats>
+  <FloatingBenefits></FloatingBenefits>
+  <LandingSection title=""
+                  :css="'background-color:#212431;position:relative;z-index:20;'">
+    <LandingStats :one="4000"
+                  :two="2000"
+                  :three="12000000000"></LandingStats>
   </LandingSection>
   <DropboxSeparatorBar></DropboxSeparatorBar>
-  
   <Partners :callToAction="false"></Partners>
 </div>
 
 </template>
 
 <script>
+import FloatingBenefits from '@/components/FloatingBenefits';
 import HowItWorks from '@/components/HowItWorks';
 import DropboxSeparatorBar from '@/components/DropboxSeparatorBar';
 import LandingStats from '@/components/LandingStats';
@@ -50,10 +48,10 @@ export default {
 
   },
   components: {
-  	CirclesSection,
-  	StartHeader,
-  	TwoSidesDiv,
-  	Partners,
+    CirclesSection,
+    StartHeader,
+    TwoSidesDiv,
+    Partners,
     CenteredFakeChat,
     FloatingCircles,
     LandingSection,
@@ -61,7 +59,8 @@ export default {
     HowWorksSection,
     LandingStats,
     DropboxSeparatorBar,
-    HowItWorks
+    HowItWorks,
+    FloatingBenefits
   },
   created() {},
   mounted() {}
@@ -71,11 +70,13 @@ export default {
 
 <style lang="scss" scoped="">
 .VerticalLanding {}
-article img{
-  margin:0 auto;
-  display:block;
+
+article img {
+  margin: 0 auto;
+  display: block;
 }
-article{
+
+article {
   min-height: 420px;
 }
 </style>

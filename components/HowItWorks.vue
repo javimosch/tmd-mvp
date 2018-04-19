@@ -1,6 +1,6 @@
 <template>
 	<div class="HowItWorks mt-5 mb-5">
-		<LandingSection :css="'background-color:white;'">
+		<LandingSection :css="'background-color:white;'" class="Parallax" data-rellax-speed="-2">
 				<div class="row">
 					<div class="col-12 col-md-4">
 						<div class="mx-auto d-block">
@@ -29,6 +29,7 @@
 	import Image2 from '@/assets/howitworks_icon_2.svg';
 	import Image3 from '@/assets/howitworks_icon_3.svg';
 	import LandingSection from '@/components/tmd/LandingSection';
+	import {startParallax} from '@/plugins/parallax'
 	export default {
 		name: 'HowItWorks',
 		props:[],
@@ -58,13 +59,19 @@
 
 		},
 		mounted(){
-
+			startParallax('.Parallax')
 		}
 	}
 </script>
 <style lang="scss" scoped>
 .HowItWorks{
 	
+	@media only screen and (min-width: 992px) {
+	    height: 1000px;
+	 }
+	 @media only screen and (min-width: 1400px) {
+	    height: unset;
+	 }
 }
 .IconImage{
 	max-width: 50px;
