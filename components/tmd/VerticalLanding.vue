@@ -4,18 +4,8 @@
     <CenteredFakeChat></CenteredFakeChat>
   </StartHeader>
 
-  <LandingSection title="How it works" :inverted="true">
-      <HowWorksSection></HowWorksSection>
-  </LandingSection>
-
-  <LandingSection title="Also" :css="'background-color:white;'">
-    <HowWorksSection></HowWorksSection>
-  </LandingSection>
-
-  <LandingSection title="Technologies">
-    <TechnologiesCards></TechnologiesCards>
-  </LandingSection>
-
+  <HowItWorks></HowItWorks>
+  
   <LandingSection title="Also" :css="'background-color:white;'">
     <HowWorksSection></HowWorksSection>
   </LandingSection>
@@ -31,6 +21,7 @@
 </template>
 
 <script>
+import HowItWorks from '@/components/HowItWorks';
 import DropboxSeparatorBar from '@/components/DropboxSeparatorBar';
 import LandingStats from '@/components/LandingStats';
 import HowWorksSection from '@/components/HowWorksSection';
@@ -69,7 +60,8 @@ export default {
     TechnologiesCards,
     HowWorksSection,
     LandingStats,
-    DropboxSeparatorBar
+    DropboxSeparatorBar,
+    HowItWorks
   },
   created() {},
   mounted() {}
