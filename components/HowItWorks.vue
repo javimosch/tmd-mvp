@@ -1,6 +1,6 @@
 <template>
 	<div class="HowItWorks mt-5 mb-5">
-		<LandingSection :css="'background-color:white;'" class="Parallax" data-rellax-speed="-2">
+		<LandingSection :css="'background-color:white;'" class="Parallax mt-5" data-rellax-speed="-2">
 				<div class="row">
 					<div class="col-12 col-md-4">
 						<div class="mx-auto d-block">
@@ -67,7 +67,7 @@
 .HowItWorks{
 	
 	@media only screen and (min-width: 992px) {
-	    height: 600px;
+	    min-height: 250px;
 	 }
 	 @media only screen and (min-width: 1400px) {
 	    height: unset;
