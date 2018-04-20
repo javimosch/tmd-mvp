@@ -81,7 +81,7 @@ h1 {
   font-size: 35px;
   color: $color3;
   padding: 15px;
-  margin: 0px;
+  margin: 20px auto 20px auto;
   font-weight: 300;
   letter-spacing: 3px;
 }

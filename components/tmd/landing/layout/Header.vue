@@ -32,7 +32,7 @@ import Logo from '@/assets/logo.svg'
 	
 }
 .LogoImage{
-	max-width:150px;
+	max-width:100px;
 	padding:0px;
 }
 .logo{
