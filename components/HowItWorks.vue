@@ -67,7 +67,7 @@
 .HowItWorks{
 	
 	@media only screen and (min-width: 992px) {
-	    height: 1000px;
+	    height: 600px;
 	 }
 	 @media only screen and (min-width: 1400px) {
 	    height: unset;

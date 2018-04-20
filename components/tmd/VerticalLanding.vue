@@ -4,7 +4,7 @@
     <CenteredFakeChat></CenteredFakeChat>
   </StartHeader>
   <HowItWorks></HowItWorks>
-  <FloatingBenefits></FloatingBenefits>
+  
   <LandingSection title=""
                   :css="'background-color:#212431;position:relative;z-index:20;'">
     <LandingStats :one="4000"
