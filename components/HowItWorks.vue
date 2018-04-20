@@ -1,7 +1,7 @@
 <template>
 	<div class="HowItWorks mt-5 mb-5">
 		<LandingSection :css="'background-color:white;'" class="Parallax mt-5" data-rellax-speed="-2">
-				<div class="row">
+				<div class="row no-gutters">
 					<div class="col-12 col-md-4">
 						<div class="mx-auto d-block">
 							<img :src="Image1" class="IconImage IconImage1 mx-auto d-block"/>
@@ -85,7 +85,7 @@
 .IconImage3{
 }
 .Text{
-	color:$grey;
+	color:$grey2;
 	font-weight: 100;
 }
 
