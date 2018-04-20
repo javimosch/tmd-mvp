@@ -6,7 +6,7 @@
   <HowItWorks></HowItWorks>
   
   <LandingSection title=""
-                  :css="'background-color:#212431;position:relative;z-index:20;'">
+                  :css="'background-color:dimgrey;position:relative;z-index:20;'">
     <LandingStats :one="4000"
                   :two="2000"
                   :three="12000000000"></LandingStats>
