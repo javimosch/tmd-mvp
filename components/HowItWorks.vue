@@ -78,6 +78,7 @@
 	min-height: 100px;
 }
 .IconImage1{
+	max-width: 60px;
 }
 .IconImage2{
 }
