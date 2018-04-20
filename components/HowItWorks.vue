@@ -85,6 +85,7 @@
 }
 .Text{
 	color:$grey;
+	font-weight: 100;
 }
 
 </style>
