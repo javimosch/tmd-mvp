@@ -64,7 +64,7 @@
 	-vendor-animation-duration: 0.5s;
 }
 .BotIcon{
-	max-width: 32px;
+	max-width: 40px;
 	position: relative;
 }
 </style>
