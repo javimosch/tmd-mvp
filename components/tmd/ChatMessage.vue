@@ -47,7 +47,7 @@
 <style lang="scss" scoped>
 .ChatMessage{
 	min-width: 50px;
-	max-width: 400px;
+	max-width: 70%;
 	background-color:rgb(229, 228, 234);
 	border-radius: 20px;
 	display:inline-block;
