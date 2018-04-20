@@ -74,7 +74,7 @@ export default {
 }
 
 h2 {
-  color: $color5;
+  color: $grey;
 }
 
 .image {
