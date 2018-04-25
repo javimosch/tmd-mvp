@@ -3,13 +3,12 @@
 		<div class="col align-self-center p-0 m-0">
 			<div class="ChatInputControlWrapper ml-2">
 				<input :disabled="inputDisabled" class="ChatInputControl" :placeholder="inputPlaceholder||''"/>
-			</div>
-		</div>
-		<div class="col-2 align-self-center p-0 m-0">
-			<div class="ChatInputEnterButton mr-2">
+				<div class="ChatInputEnterButton mr-2">
 				<img class="ChatInputEnterButtonRightArrow" :src="RightArrow" >
 			</div>
+			</div>
 		</div>
+		
 	</div>
 </template>
 <script>
@@ -54,28 +53,37 @@
 	height: 100%;
 }
 .ChatInputControlWrapper{
-
+	position: relative;
 }
 .ChatInputEnterButton{
-	border-radius:0px 10px 10px 0px;
+	
 	background:$color2;
-	min-height: 50px;
-	position: relative;
+	border-radius: 40px;
+    background: #157DF2;
+    min-height: 40px;
+    display: block;
+    position: absolute;
+    z-index: 9999999999999999;
+    right: 0px;
+    width: 40px;
+    transform: rotate(-90deg);
+    top: 5px;
 }
 .ChatInputEnterButtonRightArrow{
 	position: absolute;
-    left: 37%;
-    top: 35%;
-    width: 15px;
+    left: 25%;
+    top: 22%;
+    width: 20px;
+    height: 23px;
 }
 .ChatInputControl{
 	height: 50px;
 	width:100%;
-	border-radius:10px 0px 0px 10px;
+	border-radius:25px;
 	outline:0px;
 	border-color:transparent;
 	box-shadow:none;
-	padding: 0px 20px;
+	padding: 0px 50px 0px 20px;
 	border: 1px solid $color2;
 }
 </style>

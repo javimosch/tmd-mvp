@@ -323,6 +323,43 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+amp-create-callback@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/amp-create-callback/-/amp-create-callback-1.0.1.tgz#51bb6f1491545d86e9bf236caff514bbb4578310"
+
+amp-each@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/amp-each/-/amp-each-1.0.1.tgz#0d6c8a33bf499c8b3de62322457c78b9eda5c00f"
+  dependencies:
+    amp-create-callback "^1.0.0"
+    amp-keys "^1.0.0"
+
+amp-has@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/amp-has/-/amp-has-1.0.1.tgz#dcc58a090a4c6fc4947cdb6e8c410ed9ff5202c6"
+
+amp-index-of@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/amp-index-of/-/amp-index-of-1.1.0.tgz#d1d798ea57da552b021365b85b1e38ddf993b1c1"
+  dependencies:
+    amp-is-number "^1.0.0"
+
+amp-is-number@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/amp-is-number/-/amp-is-number-1.0.1.tgz#f430d2e65d1bbd2cc41dbd9afb7f03d3e328a314"
+
+amp-is-object@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/amp-is-object/-/amp-is-object-1.0.1.tgz#0a8cb5956b9112a16a73677e8cbad37bba247702"
+
+amp-keys@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/amp-keys/-/amp-keys-1.0.1.tgz#b721fb831da79881504f4eb44a39ed930a5bb129"
+  dependencies:
+    amp-has "^1.0.0"
+    amp-index-of "^1.0.0"
+    amp-is-object "^1.0.0"
+
 animejs@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/animejs/-/animejs-2.2.0.tgz#35eefdfc535b81949c9cb06f0b3e60c02e6fdc80"
@@ -370,6 +407,10 @@ ansi-styles@^3.2.0:
 ansicolors@~0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/ansicolors/-/ansicolors-0.2.1.tgz#be089599097b74a5c9c4a84a0cdbcdb62bd87aef"
+
+any-promise@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/any-promise/-/any-promise-0.1.0.tgz#830b680aa7e56f33451d4b049f3bd8044498ee27"
 
 any-promise@^1.0.0:
   version "1.3.0"
@@ -6520,6 +6561,10 @@ pako@~1.0.5:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.6.tgz#0101211baa70c4bca4a0f63f2206e97b7dfaf258"
 
+paper@^0.11.5:
+  version "0.11.5"
+  resolved "https://registry.yarnpkg.com/paper/-/paper-0.11.5.tgz#d662de67bce8218c287bfe17586d099d2cc48040"
+
 parallel-transform@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/parallel-transform/-/parallel-transform-1.1.0.tgz#d410f065b05da23081fcd10f28854c29bda33b06"
@@ -7482,9 +7527,23 @@ promise-deferred@^2.0.1:
   dependencies:
     promise "~6.1.0"
 
+promise-hopeful@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/promise-hopeful/-/promise-hopeful-1.0.0.tgz#9ffd432df19c36cbeed635916383068f39613685"
+  dependencies:
+    any-promise "^0.1.0"
+
 promise-inflight@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
+
+promise-parallel@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/promise-parallel/-/promise-parallel-1.0.1.tgz#60d70c4abae351759374f4a1625468899baae636"
+  dependencies:
+    amp-each "^1.0.1"
+    any-promise "^0.1.0"
+    promise-hopeful "^1.0.0"
 
 promise-sequential@^1.1.1:
   version "1.1.1"

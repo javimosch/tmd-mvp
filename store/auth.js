@@ -53,7 +53,7 @@ export const actions = {
       if (!user) {
         console.log('Fetching user')
         user = await getCurrentUser();
-        console.log(JSON.stringify(user));
+        //console.log(JSON.stringify(user));
       }
       commit('setUser', user);
       return;
