@@ -4,7 +4,28 @@
     <CenteredFakeChat></CenteredFakeChat>
   </StartHeader>
   <HowItWorks></HowItWorks>
-  
+
+
+ <LandingBenefits></LandingBenefits>
+<!--
+  <LandingSection class="p-5" title="Web Application Technologies" :css="'background-color:white;position:relative;z-index:20;'">
+      <div class="row mb-5">
+        <div class="col-12 d-flex justify-content-center align-items-center" >
+          <ul class="list-group mx-auto d-block" style="max-width: 600px">
+            <li class="list-group-item">
+              <h4>Progresive Web Application</h4>
+              <p>
+                Aujourd'hui, Chrome compte plus d'un milliard d'utilisateurs mensuels et le web mobile représente 8,9 millions de visiteurs uniques par mois aux États-Unis comparé au 3,3 millions pour les applications. Nous utilisons donc de plus en plus nos smartphones mais téléchargeons de moins en moins d'applications. C'est ce paradoxe qui a sans doute motivé les géants du web à développer ce format. Google, Microsoft ou Opera ont déjà tous déclaré que les progressive web apps sont le futur du mobile. 
+              </p>
+            </li>
+            <li class="list-group-item">
+              <h4>BaaS Backend</h4>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </LandingSection>
+  -->
   <LandingSection title=""
                   :css="'background-color:dimgrey;position:relative;z-index:20;'">
     <LandingStats :one="4000"
@@ -18,6 +39,7 @@
 </template>
 
 <script>
+import LandingBenefits from '@/components/LandingBenefits';
 import FloatingBenefits from '@/components/FloatingBenefits';
 import HowItWorks from '@/components/HowItWorks';
 import DropboxSeparatorBar from '@/components/DropboxSeparatorBar';
@@ -60,7 +82,8 @@ export default {
     LandingStats,
     DropboxSeparatorBar,
     HowItWorks,
-    FloatingBenefits
+    FloatingBenefits,
+    LandingBenefits
   },
   created() {},
   mounted() {}

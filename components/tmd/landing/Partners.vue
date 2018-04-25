@@ -8,7 +8,7 @@
   <div class="row PartnersLine no-gutters justify-content-center">
     <div class="col-12 col-md-6 col-lg-3 mt-3 VerticalCenteredChilds">
       <img class="mx-auto d-block PartnerLogo"
-           src="http://www.pariscotejardin.fr/wp-content/2012/12/logo_mairie_de_paris.jpg" />
+           :src="logo1" />
     </div>
     
     <div class="col-12 col-md-6 col-lg-3 mt-3 VerticalCenteredChilds">
@@ -38,12 +38,15 @@
 </template>
 
 <script>
+import logo1 from '@/assets/partners/ille-de-france.svg'
 export default {
   name: 'Partners',
   props: ['callToAction'],
   fetch() {},
   data() {
-    return {}
+    return {
+      logo1
+    }
   },
   async asyncData() {
     return {}

@@ -19,11 +19,11 @@ module.exports = {
     }, {
       hid: 'description',
       name: 'description',
-      content: ''
+      content: "Aide au logement, aides aux étudiants, aides aux personnes agées,  RSA, AAH, simulation apl, crédit d'impôt… Grâce à notre robot intelligent, Lisa, trouvez toutes les aides auxquelles vous avez droit"
     },{
       hid: 'og:description',
       name: 'og:description',
-      content: ''
+      content: "Aide au logement, aides aux étudiants, aides aux personnes agées,  RSA, AAH, simulation apl, crédit d'impôt… Grâce à notre robot intelligent, Lisa, trouvez toutes les aides auxquelles vous avez droit"
     }],
     link: [
       /*{
