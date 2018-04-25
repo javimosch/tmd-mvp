@@ -97,6 +97,14 @@ export default {
         })
         .on('mouseout', function(d, i) {})
         .on('click', function(d, i) {
+          $ma.trackEvent({
+            category:'map_region',
+            action:'click',
+            label:d.properties.nom.toLowerCase().replace(new RegExp(/ /g),''),
+            data:{
+              regionName: d.properties.nom
+            }
+          })
           window.scroll({
             top: 0,
             behavior: 'smooth'

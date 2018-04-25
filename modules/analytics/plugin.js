@@ -114,7 +114,7 @@ AnalyticsPlugin.install = function(Vue, options = {
 			state.routerTrackViews = v
 			log('router toggle',v)
 		},
-		trackEvent: (params, a, l, v) => {
+		trackEvent: (params, a, l, v, data) => {
 			if (!params) {
 				throw new Error('trackEvent: string of object required')
 			}
@@ -127,7 +127,8 @@ AnalyticsPlugin.install = function(Vue, options = {
 					category: category,
 					action: action,
 					label: label,
-					value: value
+					value: value,
+					data: data
 				};
 			}
 
@@ -140,7 +141,7 @@ AnalyticsPlugin.install = function(Vue, options = {
 				eventAction: params.action || '',
 				eventLabel: params.label || '',
 				eventValue: params.value || 0,
-				fieldsObject: params.fieldsObject || {}
+				fieldsObject: params.fieldsObject || params.data ||{}
 			};
 			log('trackEvent goggle ', payload);
 			callMethodSafely(() => window.ga, '', ['send', payload], options.ga !== false)

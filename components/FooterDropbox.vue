@@ -5,7 +5,7 @@
       <div class="outer">
         <div class="middle">
           <div class="inner">
-          	<a href="https://www.facebook.com/Tous-mes-droits-1611136268975764/" target="_blank">
+          	<a @click="trackClick('landing_facebook_button')" href="https://www.facebook.com/Tous-mes-droits-1611136268975764/" target="_blank">
             	<i class="fab fa-facebook-square TextIcon"></i>
         	</a>
           </div>
@@ -19,10 +19,10 @@
             <div class="RightTextWrapper mx-auto">
             	<div class="row no-gutters">
             		<div class="col-6 text-center">
-            			<a class="Text" target="_blank" href="mailto:cyprien.geze@tousmesdroits.com">Contactez-nous</a>
+            			<a @click="trackClick('landing_contact_button')" class="Text" target="_blank" href="mailto:cyprien.geze@tousmesdroits.com">Contactez-nous</a>
             		</div>
             		<div class="col-6 text-center">
-            			<a class="Text" href="tel:+33675764593">06 75 76 45 93</a>
+            			<a @click="trackClick('landing_phone_button')" class="Text" href="tel:+33675764593">06 75 76 45 93</a>
             		</div>
             	</div>
             	
@@ -39,7 +39,12 @@
 
 <script>
 export default {
-  name: 'FooterDropbox'
+  name: 'FooterDropbox',
+  methods:{
+    trackClick(label){
+      $ma.trackEvent("link","click",label)
+    }
+  }
 }
 
 </script>
