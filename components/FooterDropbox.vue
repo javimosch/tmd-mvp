@@ -22,7 +22,7 @@
             			<a class="Text" target="_blank" href="mailto:cyprien.geze@tousmesdroits.com">Contactez-nous</a>
             		</div>
             		<div class="col-6 text-center">
-            			<a class="Text" href="#">06 75 76 45 93</a>
+            			<a class="Text" href="tel:+33675764593">06 75 76 45 93</a>
             		</div>
             	</div>
             	
@@ -46,7 +46,7 @@ export default {
 
 <style lang="scss" scoped="">
 .FooterDropbox {
-  margin-top: 200px;
+  margin-top: 100px;
   height: 80px;
   background-color: $lightGrey;
 }

@@ -7,6 +7,8 @@
 
 
  <LandingBenefits></LandingBenefits>
+
+ <FranceMap></FranceMap>
 <!--
   <LandingSection class="p-5" title="Web Application Technologies" :css="'background-color:white;position:relative;z-index:20;'">
       <div class="row mb-5">
@@ -27,18 +29,20 @@
   </LandingSection>
   -->
   <LandingSection title=""
-                  :css="'background-color:dimgrey;position:relative;z-index:20;'">
+                  :css="'background-color:#383838;position:relative;z-index:20;'">
     <LandingStats :one="4000"
                   :two="2000"
                   :three="12000000000"></LandingStats>
   </LandingSection>
-  <DropboxSeparatorBar></DropboxSeparatorBar>
+  
   <Partners :callToAction="false"></Partners>
 </div>
 
 </template>
 
 <script>
+
+import FranceMap from '@/components/FranceMap';
 import LandingBenefits from '@/components/LandingBenefits';
 import FloatingBenefits from '@/components/FloatingBenefits';
 import HowItWorks from '@/components/HowItWorks';
@@ -83,7 +87,8 @@ export default {
     DropboxSeparatorBar,
     HowItWorks,
     FloatingBenefits,
-    LandingBenefits
+    LandingBenefits,
+    FranceMap
   },
   created() {},
   mounted() {}

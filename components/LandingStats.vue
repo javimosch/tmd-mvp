@@ -1,5 +1,5 @@
 <template>
-<div class="LandingStats pt-5 pb-5">
+<div class="LandingStats ">
   <ScrollContainer @change="change">
     <ScrollItem id="LandingStats">
       <div class="row no-gutters justify-content-center">
@@ -91,7 +91,9 @@ export default {
 </script>
 
 <style lang="scss" scoped="">
-.LandingStats {}
+.LandingStats {
+  padding:100px 0px;
+}
 
 h2,
 p {

@@ -20,7 +20,7 @@
 	</div>
 </template>
 <script>
-	import GirlBot from '@/assets/girlbot.svg';
+	import GirlBot from '@/assets/girlbot.png';
 	import ChatMessage from '@/components/tmd/ChatMessage';
 	import LoadingDots from '@/components/LoadingDots';
 	export default {
@@ -61,10 +61,10 @@
 </script>
 <style lang="scss" scoped>
 .ChatMessageBot{
-	-vendor-animation-duration: 0.5s;
+	-vendor-animation-duration: 2.5s;
 }
 .BotIcon{
-	max-width: 40px;
+	max-width: 43px;
 	position: relative;
 }
 </style>

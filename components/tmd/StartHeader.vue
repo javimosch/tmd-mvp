@@ -1,7 +1,7 @@
 <template>
 <div class="StartHeader">
   <div class="row m-0 p-0 justify-content-center">
-    <div class="col-12 align-self-center mt-0 mb-4">
+    <div class="col-12 align-self-center mt-0 mb-0">
       <h1 class="text-center mx-auto d-block ">Trouvez toutes les aides auxquelles vous avez droit
 </h1>
     </div>
@@ -79,9 +79,9 @@ h1 {
   max-width: 992px;
   line-height: 40px;
   font-size: 35px;
-  color: $color3;
+  color: $color2;
   padding: 15px;
-  margin: 20px auto 20px auto;
+  margin: 20px auto 50px auto;
   font-weight: 300;
   letter-spacing: 3px;
 }

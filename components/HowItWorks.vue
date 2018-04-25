@@ -1,5 +1,5 @@
 <template>
-	<div class="HowItWorks mt-5 mb-5">
+	<div class="HowItWorks">
 		<LandingSection :css="'background-color:white;'" class="Parallax mt-5" data-rellax-speed="-2">
 				<div class="row no-gutters">
 					<div class="col-12 col-md-4">
@@ -65,6 +65,7 @@
 </script>
 <style lang="scss" scoped>
 .HowItWorks{
+	margin: 100px 0px;
 	
 	@media only screen and (min-width: 992px) {
 	    min-height: 250px;
@@ -81,6 +82,7 @@
 	max-width: 60px;
 }
 .IconImage2{
+	max-width: 45px;
 }
 .IconImage3{
 }

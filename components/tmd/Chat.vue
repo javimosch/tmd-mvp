@@ -1,5 +1,5 @@
 <template>
-	<div class="Chat pt-4">
+	<div class="Chat ">
 		<ChatContent :showMessagesSample="showMessagesSample">
 			<slot>
 			</slot>

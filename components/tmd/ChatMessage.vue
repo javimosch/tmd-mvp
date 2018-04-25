@@ -51,6 +51,7 @@
 	background-color:rgb(229, 228, 234);
 	border-radius: 20px;
 	display:inline-block;
+	
 }
 .ChatMessage.isUser{
 	background-color:$color2;

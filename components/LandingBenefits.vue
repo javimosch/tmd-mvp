@@ -19,14 +19,16 @@
           <div class="col-3">
             <div class="IconWrapper d-flex align-items-center">
               <img class="Icon"
+                   v-if="!item.iconText"
                    :src="item.icon" />
+                <span class="IconSpan" v-html="item.iconText" v-show="item.iconText"></span>
             </div>
           </div>
           <div class="col d-flex align-items-center">
           	<div>
             	<p class="m-0"
                v-html="item.text"></p>
-               <p class="Subtitle" v-html="item.subtitle||'&nbsp;'"></p>
+               <p class="Subtitle" v-show="item.subtitle" v-html="item.subtitle||'&nbsp;'"></p>
            </div>
           </div>
         </div>
@@ -82,64 +84,67 @@ export default {
     }))
 
     this.items = [
-      {
-        text: 'Bourse&nbsp;étudiante&nbsp;sur&nbsp;critères&nbsp;sociaux',
-        subtitle:'CROUS',
-        icon: '/benefitsIcons/11.png'
-      },
-      {
-        text: 'Aide&nbsp;au&nbsp;logement&nbsp;APL&nbsp;/&nbsp;ALS',
-        subtitle:'CAF',
-        icon: '/benefitsIcons/2.png'
-      },
-      {
-        text: 'Aide&nbsp;à&nbsp;l\'installation&nbsp;-&nbsp;AILE',
-        subtitle:'Ville de Paris',
-        icon: '/benefitsIcons/9.png'
-      },
-      {
-        text: 'Bourse&nbsp;au&nbsp;mérite&nbsp;',
-        subtitle:'Région&nbsp;Ile-de-France',
-        icon: '/benefitsIcons/9.png'
-      },
-      {
-        text: 'Aide&nbsp;complémentaire&nbsp;santé',
-        subtitle:'Assurance maladie',
-        icon: '/benefitsIcons/7.png'
-      },
-      {
-        text: 'Revenu&nbsp;de&nbsp;Solidarité&nbsp;Active&nbsp;-&nbsp;RSA',
-        subtitle:'CAF',
-        icon: '/benefitsIcons/ass.png'
-      },
-      {
-        text: 'Revenu&nbsp;de&nbsp;Solidarité&nbsp;Active&nbsp;-&nbsp;RSA',
-        subtitle:'CAF',
-        icon: '/benefitsIcons/6.png'
-      },
-      {
-        text: 'Chèque&nbsp;Energie',
-        subtitle:'',
-        icon: '/benefitsIcons/checkeenergie.png'
-      },
-      {
-        text: 'Allocation&nbsp;de&nbsp;personnes&nbsp;âgées',
-        subtitle:'ASPA',
-        icon: '/benefitsIcons/aspa.png'
-      },
-      {
-        text: 'Allocation&nbsp;de&nbsp;solidarité&nbsp;spécifique',
-        icon: '/benefitsIcons/2.png'
-      },
-      {
-        text: 'Allocations&nbsp;chômage',
-        icon: '/benefitsIcons/1.png'
-      },
-      {
-        text: 'Pass&nbsp;culture',
-        icon: '/benefitsIcons/1.png'
-      }
-    ]
+  {
+    text: "Bourse&nbsp;étudiante",
+    subtitle:"CROUS",
+    icon: "/benefitsIcons/1-crous.png"
+  },
+  {
+    text: "Aide&nbsp;au&nbsp;logement&nbsp;-&nbsp;APL&nbsp;/&nbsp;ALS",
+    subtitle:"CAF",
+    icon: "/benefitsIcons/2-caf-apl.jpg"
+  },
+  {
+    text: "Aide&nbsp;à&nbsp;l\"installation&nbsp;-&nbsp;AILE",
+    subtitle:"Ville&nbsp;de&nbsp;Paris",
+    icon: "/benefitsIcons/3-mairie-de-paris.png"
+  },
+  {
+    text: "Bourse&nbsp;au&nbsp;mérite&nbsp;",
+    subtitle:"Région&nbsp;Ile-de-France",
+    icon: "/benefitsIcons/4-ille-de-france.png"
+  },
+  {
+    text: "Aide&nbsp;complémentaire&nbsp;santé",
+    subtitle:"Assurance&nbsp;maladie",
+    icon: "/benefitsIcons/5-acs.png"
+  },
+  {
+    text: "Revenu&nbsp;de&nbsp;Solidarité&nbsp;Active&nbsp;-&nbsp;RSA",
+    subtitle:"CAF",
+    icon: "/benefitsIcons/6-rsa.png"
+  },
+  {
+    text: "Chèque&nbsp;Energie",
+    subtitle:"Etat",
+    icon: "/benefitsIcons/7-cheque-energie.jpg"
+  },
+  {
+    text: "Allocation&nbsp;personnes&nbsp;âgées&nbsp;-&nbsp;ASPA",
+    subtitle:"CNAV",
+    icon: "/benefitsIcons/8-aspa.jpg"
+  },
+  {
+    text: "Allocation&nbsp;de&nbsp;solidarité&nbsp;spécifique",
+    subtitle:"Pôle&nbsp;Emploi",
+    icon: "/benefitsIcons/9-pole-emploi-ass.jpg"
+  },
+  {
+    text: "Pass&nbsp;culture",
+    subtitle:"Etat",
+    icon: "/benefitsIcons/10-pass-culture.png"
+  },
+  {
+    text: "Allocation&nbsp;aux&nbsp;adultes&nbsp;handicapés",
+    subtitle:"CAF&nbsp;-&nbsp;AAH",
+    icon: "/benefitsIcons/11-aah.jpg"
+  },
+  {
+    text: "Plus&nbsp;de&nbsp;6&nbsp;000&nbsp;aides...",
+    subtitle:"Etat,&nbsp;régions,&nbsp;départements,&nbsp;villes",
+    iconText: "6000"
+  },
+]
 
   }
 }
@@ -156,9 +161,8 @@ export default {
 }
 .LandingBenefits {
   background-color: $color3;
-  min-height: 600px;
-  margin-bottom: 50px;
-  padding: 70px 0px 100px 0px;
+  margin-bottom: 0px;
+  padding: 70px 0px 90px 0px;
 }
 .Subtitle{
 	color:$grey;
@@ -170,18 +174,18 @@ h2{
 	font-size:40px;
 }
 .Icon {
-  max-width: 20px;
+  max-width: 30px;
   margin: 0 auto;
   display: block;
 }
 
 .IconWrapper {
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
   margin: 0 auto;
   display: block;
   background: white;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .ItemBlock {
@@ -191,8 +195,8 @@ h2{
   min-width: 300px;
   max-width: 300px;
   @media only screen and (min-width: 992px) {
-    min-width: 300px;
-    max-width: 300px;
+    min-width: 350px;
+    max-width: 350px;
   }
   border: 0px solid snow;
 }
@@ -209,5 +213,8 @@ h2{
 p {
   color: white;
   font-size: 12px;
+  @media only screen and (min-width: 992px) {
+    font-size: 14px;
+  }
 }
 </style>

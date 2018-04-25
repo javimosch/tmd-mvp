@@ -1,7 +1,7 @@
 <template>
 <div class="Partners container">
-  <div class="row no-gutters justify-content-center">
-    <div class="col-lg-12 m-0 mt-5 mb-3 p-0">
+  <div class="row no-gutters justify-content-center ">
+    <div class="col-lg-12 m-0 mt-5 mb-- p-0">
       <h2 class="text-center">Ils nous soutiennent</h2>
     </div>
   </div>
@@ -70,7 +70,7 @@ export default {
 
 <style lang="scss" scoped="">
 .Partners {
-  
+  margin-top:100px;
 }
 .PartnersLine{
 
