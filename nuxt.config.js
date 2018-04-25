@@ -4,6 +4,7 @@ require('dotenv').config({
   silent: true
 });
 
+let package = JSON.parse(sander.readFileSync('./package.json'));
 
 module.exports = {
   /*
@@ -64,8 +65,15 @@ module.exports = {
     '@nuxtjs/font-awesome', ['nuxt-sass-resources-loader', {
       resources: path.join(process.cwd(), 'assets/scss/main.scss')
     }],
+    ['~/modules/analytics', {}]
   ],
   env: {
+    ANALYTICS_GA_UA_ID: process.env.ANALYTICS_GA_UA_ID || 'UA-60303213-10',
+    ANALYTICS_FB_PAGE_ID: process.env.ANALYTICS_FB_PAGE_ID || '1611136268975764',
+    ANALYTICS_FB_APP_ID: process.env.ANALYTICS_FB_APP_ID || '210982476153562',
+    ANALYTICS_APP_VERSION: package.version,
+    appName: package.name,
+    appVersion: package.version,
     basicAuthPassword: process.env.basicAuthPassword||'secret',
     RPC_ENDPOINT: process.env.RPC_ENDPOINT || 'http://localhost:3002/',
     nuxtHome: process.env.NUXTHOME||'/',

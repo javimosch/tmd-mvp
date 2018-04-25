@@ -91,7 +91,13 @@ export default {
     FranceMap
   },
   created() {},
-  mounted() {}
+  mounted() {
+    if(process.server) return;
+
+
+
+    
+  }
 }
 
 </script>
