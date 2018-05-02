@@ -1,6 +1,6 @@
 <template>
 <div class="FranceMap d-none d-sm-block">
-  <div class="row">
+  <div class="row no-gutters">
     <div class="col-12 col-md-12">
       <h2 class="text-center"
           v-html="defaulText"></h2>
