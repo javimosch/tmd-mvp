@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       value: '',
-      defaulText:'Découvrez les dans votre région'
+      defaulText:'Découvrez les aides dans votre région'
     }
   },
   async asyncData() {
