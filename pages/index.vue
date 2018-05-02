@@ -11,14 +11,15 @@ export default {
   props: [],
   head() {
     return {
-      title: 'Tousmesdroits - Vertical Landing',
+      //title: 'Tousmesdroits - Vertical Landing',
+      /*
       meta: [
         {
           hid: 'description',
           name: 'description',
           content: 'Tousmesdroits description'
         }
-      ]
+      ]*/
     }
   },
   fetch() {},

@@ -3,6 +3,8 @@
   <div class="row">
     <div class="col-12 col-md-12">
       <h2 class="text-center"
+          v-html="defaulText"></h2>
+      <h2 class="text-center"
           v-html="value||'&nbsp;'"></h2>
     </div>
     <div class="col-12 col-md-12 d-flex justify-content-center p-relative">
@@ -22,7 +24,8 @@ export default {
   fetch() {},
   data() {
     return {
-      value: ''
+      value: '',
+      defaulText:'Découvrez les dans votre région'
     }
   },
   async asyncData() {
@@ -92,7 +95,7 @@ export default {
         .attr('stroke', 'white')
         .style("cursor", "pointer")
         .on('mouseover', function(d, i) {
-          self.value = d.properties.value
+          self.value = d.properties.value + ' aides'
           
         })
         .on('mouseout', function(d, i) {})
@@ -120,92 +123,92 @@ function data() {
     {
       'code': '11',
       'nom': 'Île-de-France',
-      'benefits_text': '1 250 aides disponibles'
+      'benefits_text': '1 250'
     },
     {
       'code': '24',
       'nom': 'Centre-Val de Loire',
-      'benefits_text': '240 aides disponibles'
+      'benefits_text': '240'
     },
     {
       'code': '27',
       'nom': 'Bourgogne-Franche-Comté',
-      'benefits_text': '260 aides disponibles'
+      'benefits_text': '260'
     },
     {
       'code': '28',
       'nom': 'Normandie',
-      'benefits_text': '310 aides disponibles'
+      'benefits_text': '310'
     },
     {
       'code': '32',
       'nom': 'Hauts-de-France',
-      'benefits_text': '630 aides disponibles'
+      'benefits_text': '630'
     },
     {
       'code': '44',
       'nom': 'Grand Est',
-      'benefits_text': '570 aides disponibles'
+      'benefits_text': '570'
     },
     {
       'code': '52',
       'nom': 'Pays de la Loire',
-      'benefits_text': '390 aides disponibles'
+      'benefits_text': '390'
     },
     {
       'code': '53',
       'nom': 'Bretagne',
-      'benefits_text': '330 aides disponibles'
+      'benefits_text': '330'
     },
     {
       'code': '75',
       'nom': 'Nouvelle-Aquitaine',
-      'benefits_text': '590 aides disponibles'
+      'benefits_text': '590'
     },
     {
       'code': '01',
       'nom': 'Guadeloupe',
-      'benefits_text': '80 aides disponibles'
+      'benefits_text': '80'
     },
     {
       'code': '02',
       'nom': 'Martinique',
-      'benefits_text': '90 aides disponibles'
+      'benefits_text': '90'
     },
     {
       'code': '03',
       'nom': 'Guyane',
-      'benefits_text': '90 aides disponibles'
+      'benefits_text': '90'
     },
     {
       'code': '04',
       'nom': 'La Réunion',
-      'benefits_text': '140 aides disponibles'
+      'benefits_text': '140'
     },
     {
       'code': '06',
       'nom': 'Mayotte',
-      'benefits_text': '80 aides disponibles'
+      'benefits_text': '80'
     },
     {
       'code': '76',
       'nom': 'Occitanie',
-      'benefits_text': '580 aides disponibles'
+      'benefits_text': '580'
     },
     {
       'code': '84',
       'nom': 'Auvergne-Rhône-Alpes',
-      'benefits_text': '820 aides disponibles'
+      'benefits_text': '820'
     },
     {
       'code': '93',
       'nom': 'Provence-Alpes-Côte d’Azur',
-      'benefits_text': '530 aides disponibles'
+      'benefits_text': '530'
     },
     {
       'code': '94',
       'nom': 'Corse',
-      'benefits_text': '130 aides disponibles'
+      'benefits_text': '130'
     }
   ]
 }
