@@ -2,7 +2,7 @@
 <div class="StartHeader">
   <div class="row m-0 p-0 justify-content-center">
     <div class="col-12 align-self-center mt-0 mb-0">
-      <h1 class="text-center mx-auto d-block ">Trouvez toutes les aides auxquelles vous avez droit
+      <h1 class="text-center mx-auto d-block ">Obtenez toutes vos aides en quelques clics
 </h1>
     </div>
     <div class="col-12">
