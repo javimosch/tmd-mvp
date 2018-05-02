@@ -1,6 +1,6 @@
 <template>
 	<div class="HowItWorks">
-		<LandingSection :css="'background-color:white;'" class="Parallax mt-5" data-rellax-speed="-2">
+		<LandingSection :css="'background-color:white;'" class="Parallax " data-rellax-speed="-2">
 				<div class="row no-gutters">
 					<div class="col-12 col-md-4">
 						<div class="mx-auto d-block">
@@ -65,7 +65,7 @@
 </script>
 <style lang="scss" scoped>
 .HowItWorks{
-	margin: 100px 0px;
+	margin: 20px 0px;
 	
 	@media only screen and (min-width: 992px) {
 	    min-height: 250px;

@@ -1,9 +1,11 @@
 <template>
 <div class="VerticalLanding">
   <StartHeader>
-    <CenteredFakeChat></CenteredFakeChat>
+    <HowItWorks></HowItWorks>  
   </StartHeader>
-  <HowItWorks></HowItWorks>
+  
+  <CenteredFakeChat class="mt-5 mb-5"></CenteredFakeChat>
+  
 
 
  <LandingBenefits></LandingBenefits>
