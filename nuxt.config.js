@@ -11,7 +11,7 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: 'Tous Mes Droits - Aide logement, étudiants, personnes agées',
+    title: 'Toutes Mes Aides - Aide logement, Aide étudiants, Aide personnes agées',
     meta: [{
       charset: 'utf-8'
     }, {

@@ -18,7 +18,7 @@
 	</div>
 </template>
 <script>
-	import Logo from '@/assets/logo.png'
+	import Logo from '@/assets/logo.svg'
 	
 
 export default {
