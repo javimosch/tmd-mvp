@@ -259,7 +259,7 @@ function scrollToBottom() {
 .RightColumn {
   background-color: #F7F9FA;
   padding: 50px;
-  min-height: 440px;
+  min-height: 640px;
 }
 
 .RightText {
