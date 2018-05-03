@@ -3,6 +3,7 @@
   <div class="row row align-items-start m-0 p-0">
     <div class="col align-self-center m-0 p-0">
       <Chat ref="chat"
+            class="ChatWrapper"
             :showMessagesSample="false">
         <div v-for="(item,key) in messages"
              :key="key">
@@ -20,6 +21,10 @@
           </ChatMessageUser>
         </div>
       </Chat>
+    </div>
+    <div class="col align-self-center m-0 p-0">
+      <p class="RightText">Discutez avec Lisa !
+        <br> Elle vous donnera toutes les aides auxquelles vous avez droit et se chargera des démarches...</p>
     </div>
   </div>
 </div>
@@ -135,7 +140,6 @@ Par exemple, avez-vous un travail en parallèle de vos études ?`, false, 0.2)
 
       await addMessage('Merci beaucoup, c\'est top !', true, 0.5, 0.5)
 
-
     }, 40000)
 
   }
@@ -173,13 +177,13 @@ async function addMessage(message, isUser = false, loadingSeconds = 1, startInSe
     isUser: isUser,
     text: message
   })
-  
+
   if (!isUser) {
     await scrollToBottom()
     await waitSeconds(loadingSeconds)
     state.messages[state.messages.length - 1].loading = false
     await scrollToBottom()
-  }else{
+  } else {
     await scrollToBottom()
   }
 }
@@ -233,7 +237,17 @@ function scrollToBottom() {
 <style lang="scss" scoped="">
 .CenteredFakeChat {
   opacity: 1;
-  max-width: 500px;
+  max-width: 900px;
   margin: 0 auto;
+}
+
+.ChatWrapper {
+  max-width: 500px;
+}
+
+.RightText {
+  padding: 20px;
+  line-height: 25px;
+  font-weight: 600;
 }
 </style>
