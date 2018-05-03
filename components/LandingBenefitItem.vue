@@ -12,7 +12,7 @@
                 v-show="item.iconText"></span>
         </div>
       </div>
-      <div class="col d-flex align-items-center">
+      <div class="col d-flex align-items-center" v-if="false">
         <div>
           <p class="m-0 Title"
              v-html="item.text"></p>
