@@ -19,12 +19,24 @@
 						</a>
 					</div>
 					<div class="col-12 col-md-4">
-						<a href="#recevez-l-argent">
+						<a href="#
+">
 						<div class="mx-auto d-block">
 							<img :src="Image2" class="IconImage IconImage3 mx-auto d-block"/>
 						</div>
 						<h3 class="Text3 Text text-center">Recevez l'argent</h3>
 						</a>
+					</div>
+				</div>
+				<div class="row no-gutters justify-content-center align-items-center">
+					<div class="col-12 col-md-4 align-self-center">
+						<p class="HoverText">Discutez avec notre robot intelligent, Lisa. Elle trouvera toutes les aides auxquelles vous avez droit parmi plus de 6 000 aides disponibles.</p>
+					</div>
+					<div class="col-12 col-md-4 align-self-center">
+						<p class="HoverText">Pour chaque aide, une demande pourra être envoyée au bon organisme, sans que vous n’ayez rien à faire. Aucune paperasse !</p>
+					</div>
+					<div class="col-12 col-md-4 align-self-center">
+						<p class="HoverText">L’argent vous sera versée directement sur votre compte. Des petits frais de dossiers seront alors prélevés sans que vous n’ayez rien à avancer.</p>
 					</div>
 				</div>
 		</LandingSection>
@@ -97,6 +109,11 @@
 .Text{
 	color:$grey2;
 	font-weight: 100;
+}
+.HoverText{
+	text-align: justify;
+	color:$grey;
+	padding:20px 20px;
 }
 
 </style>
