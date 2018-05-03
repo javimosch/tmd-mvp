@@ -83,8 +83,9 @@ Je vais t’aider à trouver toutes les aides financières auxquelles tu as droi
 
 	}
 	@media only screen and (min-width: 992px) {
+		min-height: 500px;
 		max-height: 500px;
-    margin-bottom: 80px;
+    	margin-bottom: 80px;
 	 }
 	 
 }
