@@ -18,6 +18,7 @@
   letter-spacing: 3px;
 
   `"
+  :titleId="'laissez-nous-faire-les-demarches'"
   >
   
     
@@ -45,6 +46,7 @@
   letter-spacing: 3px;
 
   `"
+  :titleId="'recevez-l-argent'"
   >
 
 

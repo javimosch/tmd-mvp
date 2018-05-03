@@ -31,7 +31,7 @@
     </div>
     <div class="col-md-6 RightColumn">
       
-            <h5 class="RightTextTitle">Discutez avec Lisa !</h5>
+            <h5 id="decouvrez-vos-aides" class="RightTextTitle">Discutez avec Lisa !</h5>
             <p class="RightText">
               Elle vous donnera toutes les aides auxquelles vous avez droit et se chargera des démarches...</p>
       
