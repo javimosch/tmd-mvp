@@ -1,10 +1,10 @@
 <template>
 <div class="LandingTransactions p-5">
   <div class="row no-gutters justify-content-center align-items-center">
-  	<div class="col-12 col-md-3 text-center align-self-center">
+  	<div class="col-12 col-md-4 text-center align-self-center">
   		<TinyChat></TinyChat>
   	</div>
-  	<div class="col-12 col-md-9">
+  	<div class="col-12 col-md-8">
   		<div class="list-group Table"
        ref="table">
     <LandingTransactionItem v-for="item in items"
