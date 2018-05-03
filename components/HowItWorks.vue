@@ -19,8 +19,7 @@
 						</a>
 					</div>
 					<div class="col-12 col-md-4">
-						<a href="#
-">
+						<a href="#recevez-l-argent">
 						<div class="mx-auto d-block">
 							<img :src="Image2" class="IconImage IconImage3 mx-auto d-block"/>
 						</div>
