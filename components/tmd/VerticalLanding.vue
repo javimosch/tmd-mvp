@@ -39,7 +39,7 @@
 :titleStyle="`max-width: 992px;
   line-height: 40px;
   font-size: 35px;
-  color:#157DF2;
+  color:#a9a9a9;
   padding: 15px;
   margin: 20px auto 50px auto;
   font-weight: 300;

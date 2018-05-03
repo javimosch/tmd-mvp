@@ -31,8 +31,8 @@
     </div>
     <div class="col-md-6 RightColumn">
       
-            <h5 id="decouvrez-vos-aides" class="RightTextTitle">Discutez avec Lisa !</h5>
-            <p class="RightText">
+            <h5 id="decouvrez-vos-aides" class="RightTextTitle">Découvrez vos aides</h5>
+            <p class="RightText">Discutez avec Lisa !<br>
               Elle vous donnera toutes les aides auxquelles vous avez droit et se chargera des démarches...</p>
       
     </div>
@@ -266,14 +266,19 @@ function scrollToBottom() {
   line-height: 40px;
   font-weight: 400;
   font-size: 20px;
-  color: $color5;
+  color: #a9a9a9;
   max-width: 450px;
+  margin: 20px 0px 0px 0px;
 }
 
 .RightTextTitle {
-  line-height: 40px;
-  font-weight: 600;
-  font-size: 30px;
-  color: $color5;
+    max-width: 992px;
+    line-height: 40px;
+    font-size: 35px;
+    color: #a9a9a9;
+    padding: 0px;
+    margin: 20px 0px 50px 0px;
+    font-weight: 300;
+    letter-spacing: 3px;
 }
 </style>
