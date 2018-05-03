@@ -2,7 +2,9 @@
 	<div :class="sectionClass" :style="sectionStyle">
 		<div class="row no-gutters">
 			<div class="col-12" v-show="title">
-				<h1 class="text-center title p-4 mt-4" v-html="title"></h1>
+				
+					<h1 class="text-center title p-4 mt-4" :style="titleStyleComputed" v-html="title"></h1>
+				
 			</div>
 			<div class="col-12" v-show="text">
 				<p v-html="text"></p>
@@ -14,7 +16,7 @@
 <script>
 	export default {
 		name: 'LandingSection',
-		props:['title','text','css','inverted'],
+		props:['title','text','css','inverted','titleStyle'],
 		fetch(){
 
 		},
@@ -25,6 +27,9 @@
 			return {}
 		},
 		computed:{
+			titleStyleComputed(){
+				return `${this.titleStyle?`${this.titleStyle}`:''}`
+			},
 			sectionClass(){
 				return `LandingSection ${this.inverted?'inverted':''}`
 			},

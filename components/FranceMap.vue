@@ -231,4 +231,7 @@ function data() {
 .map {
   background: transparent;
 }
+h2{
+  color:#a9a9a9;
+}
 </style>

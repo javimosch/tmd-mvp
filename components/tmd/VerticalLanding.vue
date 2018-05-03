@@ -4,9 +4,57 @@
     <HowItWorks></HowItWorks>  
   </StartHeader>
   
-  <CenteredFakeChat class="mt-5 mb-5"></CenteredFakeChat>
+  <CenteredFakeChat ></CenteredFakeChat>
   
+  <LandingSection class="p-5 mb-5 d-none d-lg-block" title="Laissez-nous faire les démarches"
+:css="'background-color:#105BB1;position:relative;min-height: 300px;'"
+:titleStyle="`max-width: 992px;
+  line-height: 40px;
+  font-size: 35px;
+  color:white;
+  padding: 15px;
+  margin: 20px auto 10px auto;
+  font-weight: 300;
+  letter-spacing: 3px;
 
+  `"
+  >
+  
+    
+    <div class="row no-gutters justify-content-center align-items-center">
+      <div class="col-12 col-md-10 mb-4">
+        <p style="font-size:20px;text-align:center;color:white;">Pour chaque aide, une demande pourra être envoyée au bon organisme, sans que vous n’ayez rien à faire.<br> Aucune paperasse !</p>
+      </div>
+      <div class="col-12">
+        <LandingTransactions></LandingTransactions>
+      </div>
+    </div>
+
+    
+  </LandingSection>
+
+  <LandingSection class="p-5 mb-5 d-none d-lg-block" title="Recevez l'argent"
+:css="'background-color:white;position:relative;min-height: 300px;'"
+:titleStyle="`max-width: 992px;
+  line-height: 40px;
+  font-size: 35px;
+  color:#157DF2;
+  padding: 15px;
+  margin: 20px auto 50px auto;
+  font-weight: 300;
+  letter-spacing: 3px;
+
+  `"
+  >
+
+
+
+    <div class="row no-gutters justify-content-center align-items-center">
+      <div class="col-12 col-md-10 mb-4">
+        <p style="font-size:20px;text-align:center;color:darkgrey;font-weight: 400;">L’argent vous sera versée directement sur votre compte. Des petits frais de dossiers seront alors prélevés sans que vous n’ayez rien à avancer.</p>
+      </div>
+    </div>
+  </LandingSection>
 
  <LandingBenefits></LandingBenefits>
 
@@ -44,6 +92,7 @@
 
 <script>
 
+import LandingTransactions from '@/components/LandingTransactions';
 import FranceMap from '@/components/FranceMap';
 import LandingBenefits from '@/components/LandingBenefits';
 import FloatingBenefits from '@/components/FloatingBenefits';
@@ -90,7 +139,8 @@ export default {
     HowItWorks,
     FloatingBenefits,
     LandingBenefits,
-    FranceMap
+    FranceMap,
+    LandingTransactions
   },
   created() {},
   mounted() {

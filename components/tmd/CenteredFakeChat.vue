@@ -1,31 +1,40 @@
 <template>
-<div class="CenteredFakeChat container">
-  <div class="row row align-items-start m-0 p-0">
-    <div class="col align-self-center m-0 p-0">
-      <Chat ref="chat"
-            class="ChatWrapper"
-            :showMessagesSample="false">
-        <div v-for="(item,key) in messages"
-             :key="key">
-          <ChatMessageBot v-show="!item.isUser"
-                          :loading="item.loading"
-                          :class="item.class">
-            <p slot="message"
-               v-html="item.text"></p>
-          </ChatMessageBot>
-          <ChatMessageUser v-show="item.isUser"
-                           :loading="item.loading"
-                           :class="item.class">
-            <p slot="message"
-               v-html="item.text"></p>
-          </ChatMessageUser>
+<div class="CenteredFakeChatWrapper container-fluid m-0 p-0">
+  <div class="row no-gutters">
+    <div class="col-md-6">
+      <div class="CenteredFakeChat container">
+        <div class="row no-gutters align-items-start m-0 p-0">
+          <div class="col align-self-center m-0 p-0">
+            <Chat ref="chat"
+                  class="ChatWrapper"
+                  :showMessagesSample="false">
+              <div v-for="(item,key) in messages"
+                   :key="key">
+                <ChatMessageBot v-show="!item.isUser"
+                                :loading="item.loading"
+                                :class="item.class">
+                  <p slot="message"
+                     v-html="item.text"></p>
+                </ChatMessageBot>
+                <ChatMessageUser v-show="item.isUser"
+                                 :loading="item.loading"
+                                 :class="item.class">
+                  <p slot="message"
+                     v-html="item.text"></p>
+                </ChatMessageUser>
+              </div>
+            </Chat>
+          </div>
+          
         </div>
-      </Chat>
+      </div>
     </div>
-    <div class="col align-self-start m-0 p-0">
-      <h5 class="RightTextTitle">Discutez avec Lisa !</h5>
-      <p class="RightText">
-        Elle vous donnera toutes les aides auxquelles vous avez droit et se chargera des démarches...</p>
+    <div class="col-md-6 RightColumn">
+      
+            <h5 class="RightTextTitle">Discutez avec Lisa !</h5>
+            <p class="RightText">
+              Elle vous donnera toutes les aides auxquelles vous avez droit et se chargera des démarches...</p>
+      
     </div>
   </div>
 </div>
@@ -244,20 +253,27 @@ function scrollToBottom() {
 
 .ChatWrapper {
   max-width: 500px;
+  float:right;
+}
+
+.RightColumn {
+  background-color: #F7F9FA;
+  padding: 50px;
+  min-height: 440px;
 }
 
 .RightText {
-  padding: 10px 0px 40px 60px;
-    line-height: 40px;
-    font-weight: 400;
-    font-size: 20px;
-    color: darkgrey;
+  line-height: 40px;
+  font-weight: 400;
+  font-size: 20px;
+  color: $color5;
+  max-width: 450px;
 }
-.RightTextTitle{
-    padding: 40px 0px 0px 60px;
-    line-height: 40px;
-    font-weight: 600;
-    font-size: 30px;
-    color: darkgrey; 
+
+.RightTextTitle {
+  line-height: 40px;
+  font-weight: 600;
+  font-size: 30px;
+  color: $color5;
 }
 </style>
