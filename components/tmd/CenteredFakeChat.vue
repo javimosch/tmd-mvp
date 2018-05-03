@@ -22,9 +22,10 @@
         </div>
       </Chat>
     </div>
-    <div class="col align-self-center m-0 p-0">
-      <p class="RightText">Discutez avec Lisa !
-        <br> Elle vous donnera toutes les aides auxquelles vous avez droit et se chargera des démarches...</p>
+    <div class="col align-self-start m-0 p-0">
+      <h5 class="RightTextTitle">Discutez avec Lisa !</h5>
+      <p class="RightText">
+        Elle vous donnera toutes les aides auxquelles vous avez droit et se chargera des démarches...</p>
     </div>
   </div>
 </div>
@@ -246,8 +247,17 @@ function scrollToBottom() {
 }
 
 .RightText {
-  padding: 20px;
-  line-height: 25px;
-  font-weight: 600;
+  padding: 10px 0px 40px 60px;
+    line-height: 40px;
+    font-weight: 400;
+    font-size: 20px;
+    color: darkgrey;
+}
+.RightTextTitle{
+    padding: 40px 0px 0px 60px;
+    line-height: 40px;
+    font-weight: 600;
+    font-size: 30px;
+    color: darkgrey; 
 }
 </style>
