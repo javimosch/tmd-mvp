@@ -37,9 +37,7 @@ export default {
       email: ''
     }
   },
-  async asyncData() {
-    return {}
-  },
+  
   computed: {
     defaultPassword() {
       return process.env.loginPwd || ''
