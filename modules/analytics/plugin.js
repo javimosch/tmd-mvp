@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 const safeCallTimeout = 5000;
 
-var state = {
+var state = window.$maState = {
 	userId: '',
 	options: {},
 	routerTrackViews: true
@@ -14,6 +14,12 @@ function log() {
 	var args = Array.prototype.slice.call(arguments);
 	args.unshift('$ma');
 	console.log.apply(this, args);
+}
+
+function hasFacebook(){
+	var res = state.facebook!=false && state.fb!=false && typeof window!=='undefined' && window.FB!==undefined && window.FB.initCalled
+	console.log('$ma: hasFacebook',res)
+	return res;
 }
 
 export default async function({
@@ -29,6 +35,9 @@ export default async function({
 
 
 	app.router.afterEach((to, from) => {
+		if(process.server) return;
+
+
 		try {
 			to = Object.assign({},to)
 			if (!state.routerTrackViews) return;
@@ -36,13 +45,14 @@ export default async function({
 				ga('set', 'page', to.fullPath)
 				ga('send', 'pageview')
 			}
-			if (state.fb !== false && window.FB && window.FB.initCalled) {
-				FB.AppEvents.setUserID(state.userId);
+			if (hasFacebook()) {
+				//FB.AppEvents.setUserID(state.userId);
 				FB.AppEvents.logPageView();
 			}
 			callMixinMethod(state.scope, state.options.mixins, 'trackView', [to.fullPath, to, true]);
 		} catch (err) {
-			console.error('$ma: ',err.stack)
+			window.error = err;
+			console.error('$ma: ',err)
 		}
 	});
 
@@ -152,7 +162,7 @@ AnalyticsPlugin.install = function(Vue, options = {
 
 			let paramsAsString = params.category + (params.action ? '_' + params.action : '') + (params.label ? '_' + params.label : '');
 
-			if (options.fb !== false && window.FB !== 'undefined') {
+			if (hasFacebook()) {
 				var fbParams = {};
 				fbParams[FB.AppEvents.ParameterNames.LEVEL] = paramsAsString;
 				if (params.description) {
@@ -170,19 +180,22 @@ AnalyticsPlugin.install = function(Vue, options = {
 		setUserId: (id) => {
 			log('setUserId', id)
 			if (id) {
+				log('setUserID', id)
 				state.userId = id;
 				if (options.ga !== false) {
-					ga('set', 'userId', id);
 					log('setUserID:ga', id)
+					ga('set', 'userId', id);
+					
 				}
-				if (options.fb !== false && window.FB !== 'undefined') {
-
-					FB.AppEvents.setUserID(state.userId);
+				if (hasFacebook()) {
 					log('setUserID:fb', id)
+					FB.AppEvents.setUserID(state.userId);
+					
 				}
 
 			} else {
-				if (options.fb !== false && window.FB !== 'undefined') {
+				state.userId = null;
+				if (hasFacebook()) {
 					FB.AppEvents.clearUserID()
 					log('setUserId:fb:clear (id was null/undefined/empty)')
 				}
@@ -198,7 +211,8 @@ AnalyticsPlugin.install = function(Vue, options = {
 			if (pick) {
 				props = _.pick(props, pick);
 			}
-			if (options.fb !== false && window.FB !== 'undefined') {
+			if (hasFacebook() && state.userId) {
+				log('setUserProps:fb', props)
 				FB.AppEvents.updateUserProperties(normalizeFacebookUserProperties(props), (res) => {
 					console.log('Analytics: Facebook set user props ', res);
 				});

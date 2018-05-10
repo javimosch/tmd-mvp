@@ -3,12 +3,7 @@
 		
 		
 		<div class="row">
-			<div class="col-12">
-				<router-link class="text-center d-block"  to="/mockup">View mockups</router-link>
-			</div>
-			<div class="col-12">
-				<b-btn @click="checkLogged">Is logged?</b-btn>
-			</div>
+			
 			<div class="col-12">
 				
 			</div>
@@ -33,10 +28,7 @@ import {call} from '@/plugins/rpcApi';
 
 		},
 		methods:{
-			checkLogged(){
-				let self = this;
-				call('tmdGetLoggedUser').then(()=>self.$noty.info('Logged!')).catch(err=>self.$noty.warning(err.message))
-			}
+			
 		},	
 		components:{
 			ApiLatencyChart
@@ -45,7 +37,7 @@ import {call} from '@/plugins/rpcApi';
 
 		},
 		mounted(){
-
+			this.$router.push('/mockup')
 		}
 	}
 </script>

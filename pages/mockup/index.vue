@@ -22,7 +22,7 @@
 <script>
 	export default {
 		middleware:['auth'],
-		layout: 'public',
+		layout: 'app',
 		name: 'Mockups',
 		props:[],
 		fetch(){
