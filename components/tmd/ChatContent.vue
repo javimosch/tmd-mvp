@@ -78,7 +78,11 @@ Je vais t’aider à trouver toutes les aides financières auxquelles tu as droi
 <style lang="scss" scoped>
 .ChatContent{
 	overflow: auto;
-	max-height: 200px;
+	min-height: 300px;
+	max-height: 500px;
+	@media only screen and (min-height: 600px) {
+		min-height: 500px;
+	}
 	@media only screen and (min-width: 768px) {
 
 	}

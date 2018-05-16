@@ -7,7 +7,6 @@
 				<slot name="options"  >
 				</slot>
 			</div>
-			
 		</ChatContent>
 		<ChatBottom :inputPlaceholder="inputPlaceholder" :hideInput="hideInput">
 			<div slot="bottom">

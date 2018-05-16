@@ -35,8 +35,7 @@ import ChatInput from '@/components/tmd/ChatInput';
 </script>
 <style lang="scss" scoped>
 .ChatBottom{
-	bottom:0px;
-	position:absolute;
+	
 	width:100%;
 	height:100px;
 	background-color:transparent;

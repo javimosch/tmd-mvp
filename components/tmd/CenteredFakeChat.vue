@@ -23,18 +23,25 @@
                      v-html="item.text"></p>
                 </ChatMessageUser>
               </div>
+              <div class="row.no-gutters w-100"
+                   v-show="showContinue">
+                <div class="col-12 w-100">
+                  <button slot="options"
+                          @click="continueButtonClick()"
+                          type="button"
+                          class="btn btn-primary btn-lg ContinueButton mx-auto d-block">CONTINUER</button>
+                </div>
+              </div>
             </Chat>
           </div>
-          
         </div>
       </div>
     </div>
     <div class="col-md-6 RightColumn">
-      
-            <h5 id="decouvrez-vos-aides" class="RightTextTitle">Découvrez vos aides</h5>
-            <p class="RightText">Discutez avec Lisa !<br>
-              Elle vous donnera toutes les aides auxquelles vous avez droit et se chargera des démarches...</p>
-      
+      <h5 id="decouvrez-vos-aides"
+          class="RightTextTitle">Découvrez vos aides</h5>
+      <p class="RightText">Discutez avec Lisa !
+        <br> Elle vous donnera toutes les aides auxquelles vous avez droit et se chargera des démarches...</p>
     </div>
   </div>
 </div>
@@ -42,6 +49,7 @@
 </template>
 
 <script>
+import { setGlobalAnchorSmoothScroll } from '@/plugins/scrolling';
 import $ from 'jquery';
 import ChatMessageBot from '@/components/tmd/ChatMessageBot';
 import ChatMessageUser from '@/components/tmd/ChatMessageUser';
@@ -57,6 +65,7 @@ export default {
   fetch() {},
   data() {
     return {
+      showContinue: false,
       messages: []
     }
   },
@@ -67,7 +76,16 @@ export default {
 
   },
   methods: {
-
+    continueButtonClick() {
+      $ma.trackEvent({
+        category: 'button',
+        action: 'click',
+        label: 'demo_chat_continue_button'
+      })
+      $('html, body').animate({
+        scrollTop: $('#laissez-nous-faire-les-demarches').offset().top - 50
+      }, 500)
+    }
   },
   components: {
     Chat,
@@ -99,58 +117,54 @@ export default {
     state.messages = this.messages
 
     cycle(async() => {
-
+      self.showContinue = false
       await clearMessages(self)
+      /*
       await addMessage(`Bonjour, je m’appelle Lisa ! 
-Je vais vous aider à trouver toutes les aides de l'Etat auxquelles vous avez droit`, false, 0.2)
+Je vais vous aider à trouver toutes les aides de l'Etat auxquelles vous avez droit`, false, 1, 0.2)
       await addMessage('D’ailleurs, comment vous appelez-vous ?', false, 0.5, 0.5)
       await addMessage('Chloé', true, 0.5, 0.5) // USER
-      await addMessage('Enchantée Chloé !', false, 2, 0.2)
-      await addMessage('Que faites-vous dans la vie ?', false, 2, 0.2)
+      await addMessage('Enchantée Chloé !', false, 1, 0.2)
+      await addMessage('Que faites-vous dans la vie ?', false, 1, 0.2)
       await addMessage('Je suis étudiante en 1ère année de médecine', true, 0.5, 0.5) // USER
-      await addMessage('Félicitations ! On a tant besoin de médecins :)', false, 2, 0.2)
-      await addMessage('Vous avez sûrement eu des bonnes notes au bac', false, 2, 0.2)
-      await addMessage('Oui mention très bien !', true, 0.5, 0.5) // USER
-      await addMessage('Bravo !', false, 2, 0.2)
-      await addMessage('Et dans quelle Université étudiez-vous aujourd\'hui ?', false, 2, 0.2)
+      await addMessage('Félicitations ! On a tant besoin de médecins :)', false, 1, 0.2)
+      await addMessage('Et dans quelle Université étudiez-vous aujourd\'hui ?', false, 1, 0.2)
       await addMessage('A Paris Descartes', true, 0.5, 0.5) // USER
       await addMessage(`Très bien
-Est-ce que vous résidez à Paris ?`, false, 0.2)
+Est-ce que vous résidez à Paris ?`, false, 1, 0.2)
       await addMessage('Oui, j\'habite au 12 avenue de Laumière', true, 0.5, 0.5) // USER
-      await addMessage(`D'accord, dans le 19ème arrondissement donc`, false, 0.2)
-      await addMessage(`Vivez-vous seule ? En couple ? En collocation ? Chez vos parents ?`, false, 0.2)
+      await addMessage(`D'accord, dans le 19ème arrondissement donc`, false, 1, 0.2)
+      await addMessage(`Vivez-vous seule ? En collocation ? Chez vos parents ?`, false, 1, 0.2)
       await addMessage('Je vis seule', true, 0.5, 0.5) // USER
-      await addMessage(`C'est noté Chloé. Nous allons maintenant parler de votre situation financière`, false, 0.2)
-      await addMessage(`Recevez-vous de l'argent de vos parents ?`, false, 0.2)
+      await addMessage(`C'est noté Chloé. Nous allons maintenant parler de votre situation financière`, false, 1, 0.2)
+      await addMessage(`Recevez-vous de l'argent de vos parents ?`, false, 1, 0.2)
       await addMessage('Oui, 300 € par mois', true, 0.5, 0.5) // USER
-      await addMessage(`D'accord et avez-vous d'autres revenus ? 
-Par exemple, avez-vous un travail en parallèle de vos études ?`, false, 0.2)
-      await addMessage('Non, j\'ai pas le temps', true, 0.5, 0.5) // USER
-      await addMessage(`Oui les études demandent du temps`, false, 0.2)
-      await addMessage(`Est-ce que je peux vous demander les revenus de vos parents ?`, false, 0.2)
+      await addMessage(`D'accord et quels sont les revenus de vos parents ?`, false, 1, 0.2)
       await addMessage('Mon père gagne 1 300 €/mois, ma mère 1 600 €/mois', true, 0.5, 0.5) // USER
-      await addMessage(`D'accord. Ce sont des rémunérations brutes ou nettes ?`, false, 0.2)
+      await addMessage(`D'accord. Ce sont des rémunérations brutes ou nettes ?`, false, 1, 0.2)
       await addMessage('Brut', true, 0.5, 0.5) // USER        
-      await addMessage(`C'est noté`, false, 0.2)
-      await addMessage(`Et où habitent vos parents`, false, 0.2)
+      await addMessage(`C'est noté. Et où habitent vos parents ?`, false, 1, 0.2)
       await addMessage('A Toulouse', true, 0.5, 0.5) // USER
-      await addMessage(`Ah la ville rose !`, false, 0.2)
-      await addMessage(`Avez-vous des frères et soeurs ?`, false, 0.2)
+      await addMessage(`Ah la ville rose !`, false, 1, 0.2)
+      await addMessage(`Avez-vous des frères et soeurs ?`, false, 1, 0.2)
       await addMessage('2 petites soeurs de 12 et 15 ans', true, 0.5, 0.5) // USER
-      await addMessage(`D'accord, et vous Chloé quel âge avez-vous ?`, false, 0.2)
+      await addMessage(`D'accord, et vous Chloé quel âge avez-vous ?`, false, 1, 0.2)
       await addMessage('19 ans', true, 0.5, 0.5) // USER
-      await addMessage(`Merci pour toutes ces informations, je peux déjà vous dire que vous avez droit à 7 aides financières. Le montant total s'élève à 7 768 €`, false, 0.2)
-      await addMessage(`Aide 1 : Bourse étudiante du CROUS = 3 218 €`, false, 0.2)
-      await addMessage(`Aide 2 : Aide au logement de la CAF = 2 450 €`, false, 0.2)
-      await addMessage(`Aide 3 : Bourse au mérite de la région Ile-de-France = 1 000 €`, false, 0.2)
-      await addMessage(`Aide 4 : Aide pour meubler votre logement (AILE) = 900 €`, false, 0.2)
-      await addMessage(`Aide 5 : Aide pour une complémentaire santé = 200 €`, false, 0.2)
-      await addMessage(`Aide 6 : Chloé, vous avez également droit à un logement universitaire CROUS`, false, 0.2)
-      await addMessage(`Aide 7 : Enfin, vous pouvez demander un prêt étudiant de 15 000 € et l'Etat se portera caution`, false, 0.2)
+      await addMessage(`Merci pour toutes ces informations, je peux déjà vous dire que vous avez droit à 5 aides financières. Le montant total s'élève à 6 768 €`, false, 1, 0.2)
+      await addMessage(`Aide 1 : Bourse étudiante du CROUS = 3 218 €`, false, 1, 0.2)
+      await addMessage(`Aide 2 : Aide au logement de la CAF = 2 450 €`, false, 1, 0.2)
+      await addMessage(`Aide 3 : Aide pour meubler votre logement (AILE) = 900 €`, false, 1, 0.2)
+      await addMessage(`Aide 4 : Aide pour une complémentaire santé = 200 €`, false, 1, 0.2)
 
+      await addMessage(`Aide 5 : Chloé, vous avez également droit à un logement universitaire CROUS`, false, 1, 0.2)
       await addMessage('Merci beaucoup, c\'est top !', true, 0.5, 0.5)
-
-    }, 40000)
+      await addMessage('C\'est compliqué de demander l\'AILE ?', true, 0.5, 0.5)
+      await addMessage(`Pas d\’inquiétude, je me charge de toutes les démarches avec chaque organisme`, false, 1, 0.2)
+      */
+      await addMessage(`Il vous suffit de cliquer sur CONTINUER. Vous recevrez directement les 900 € sur votre compte et des frais de dossiers (18 €) seront prélevés une fois que vous aurez reçu l'argent`, false, 1, 0.2)
+      self.showContinue = true
+    }, 40000000)
+    setGlobalAnchorSmoothScroll()
 
   }
 }
@@ -253,7 +267,7 @@ function scrollToBottom() {
 
 .ChatWrapper {
   max-width: 500px;
-  float:right;
+  float: right;
 }
 
 .RightColumn {
@@ -272,13 +286,20 @@ function scrollToBottom() {
 }
 
 .RightTextTitle {
-    max-width: 992px;
-    line-height: 40px;
-    font-size: 35px;
-    color: #a9a9a9;
-    padding: 0px;
-    margin: 20px 0px 50px 0px;
-    font-weight: 300;
-    letter-spacing: 3px;
+  max-width: 992px;
+  line-height: 40px;
+  font-size: 35px;
+  color: #a9a9a9;
+  padding: 0px;
+  margin: 20px 0px 50px 0px;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+
+.ContinueButton {
+  border-radius: 15px;
+  min-width: 230px;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 </style>
