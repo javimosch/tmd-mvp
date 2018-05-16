@@ -10,7 +10,7 @@
 						</a>
 						<a href="#decouvrez-vos-aides" class="HoverDiv_one">
 						
-						<h3 class="Text1 Text text-center">Découvrez vos aides</h3>
+						<h3 class="Text1 Text text-center">Découvrez les aides auxquelles vous avez droit</h3>
 						</a>
 					</div>
 					<div class="col-12 col-md-4 ">
@@ -43,7 +43,7 @@
 						<p class="HoverText HoverText_two">Pour chaque aide, une demande pourra être envoyée au bon organisme, sans que vous n’ayez rien à faire. Aucune paperasse !</p>
 					</div>
 					<div class="col-12 col-md-4 align-self-center">
-						<p class="HoverText HoverText_three">L’argent vous sera versée directement sur votre compte. Des petits frais de dossiers seront alors prélevés sans que vous n’ayez rien à avancer.</p>
+						<p class="HoverText HoverText_three">L'argent vous sera versé directement sur votre compte. Des petits frais de dossiers seront alors prélevés sans que vous n’ayez rien à avancer.</p>
 					</div>
 				</div>
 		</LandingSection>
@@ -142,6 +142,8 @@
 .HoverText_one,.HoverText_two,.HoverText_three{
 	opacity: 0;
 }
-
+a:hover+a h3{
+	text-decoration: underline;
+}
 
 </style>

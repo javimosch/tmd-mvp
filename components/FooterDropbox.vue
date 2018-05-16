@@ -19,7 +19,7 @@
             <div class="RightTextWrapper mx-auto">
             	<div class="row no-gutters">
             		<div class="col-6 text-center">
-            			<a @click="trackClick('landing_contact_button')" class="Text" target="_blank" href="mailto:cyprien.geze@tousmesdroits.com">Contactez-nous</a>
+            			<a @click="trackClick('landing_contact_button')" class="Text" target="_blank" href="mailto:cyprien.geze@toutesmesaides.com">Contactez-nous</a>
             		</div>
             		<div class="col-6 text-center">
             			<a @click="trackClick('landing_phone_button')" class="Text" href="tel:+33675764593">06 75 76 45 93</a>

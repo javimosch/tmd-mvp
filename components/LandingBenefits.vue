@@ -2,7 +2,7 @@
 <div class="LandingBenefits">
   <div class="row no-gutters justify-content-center">
     <div class="col-12 col-sm-12 ">
-      <h2 class="text-center mb-5">Plus de 6 000 aides</h2>
+      <h2 class="text-center mb-5">Découvrez vos aides</h2>
     </div>
   </div>
   <div class="row no-gutters justify-content-center BlocksWrapper">

@@ -126,7 +126,7 @@ module.exports = {
   },
   manifest: {
     display: 'standalone',
-    name: 'tous mes droits',
+    name: 'Toutes Mes Aides',
     lang: 'fr'
   },
   render: {
