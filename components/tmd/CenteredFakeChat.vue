@@ -163,7 +163,8 @@ Est-ce que vous résidez à Paris ?`, false, 1, 0.2)
       
       await addMessage(`Il vous suffit de cliquer sur CONTINUER. Vous recevrez directement les 900 € sur votre compte et des frais de dossiers (18 €) seront prélevés une fois que vous aurez reçu l'argent`, false, 1, 0.2)
       self.showContinue = true
-    }, 40000000)
+      scrollToBottom()
+    }, 40000)
     setGlobalAnchorSmoothScroll()
 
   }
