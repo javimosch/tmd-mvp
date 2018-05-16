@@ -119,7 +119,7 @@ export default {
     cycle(async() => {
       self.showContinue = false
       await clearMessages(self)
-      /*
+      /**/
       await addMessage(`Bonjour, je m’appelle Lisa ! 
 Je vais vous aider à trouver toutes les aides de l'Etat auxquelles vous avez droit`, false, 1, 0.2)
       await addMessage('D’ailleurs, comment vous appelez-vous ?', false, 0.5, 0.5)
@@ -160,7 +160,7 @@ Est-ce que vous résidez à Paris ?`, false, 1, 0.2)
       await addMessage('Merci beaucoup, c\'est top !', true, 0.5, 0.5)
       await addMessage('C\'est compliqué de demander l\'AILE ?', true, 0.5, 0.5)
       await addMessage(`Pas d\’inquiétude, je me charge de toutes les démarches avec chaque organisme`, false, 1, 0.2)
-      */
+      
       await addMessage(`Il vous suffit de cliquer sur CONTINUER. Vous recevrez directement les 900 € sur votre compte et des frais de dossiers (18 €) seront prélevés une fois que vous aurez reçu l'argent`, false, 1, 0.2)
       self.showContinue = true
     }, 40000000)
