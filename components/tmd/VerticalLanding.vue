@@ -53,7 +53,7 @@
 
     <div class="row no-gutters justify-content-center align-items-center">
       <div class="col-12 col-md-10 mb-4">
-        <p style="font-size:20px;text-align:center;color:darkgrey;font-weight: 400;">L’argent vous sera versée directement sur votre compte. Des frais de dossiers seront alors prélevés sans que vous n’ayez rien à avancer.</p>
+        <p style="font-size:20px;text-align:center;color:darkgrey;font-weight: 400;">L’argent vous sera versé directement sur votre compte. Des frais de dossiers seront alors prélevés sans que vous n’ayez rien à avancer.</p>
       </div>
     </div>
   </LandingSection>
