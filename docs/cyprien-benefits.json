@@ -1,0 +1,433 @@
+comulative_conditions -> required_value -> value has double quotes ""VALUE"" expected: "VALUE"
+fields_under_conditions -> required_value -> value has double quotes ""VALUE"" expected: "VALUE"
+attachment_under_condition -> required_value -> value has double quotes ""VALUE"" expected: "VALUE"
+
+
+{
+	"name": "bourse_crous_17_18",
+	"complete_name": "Bourse étudiante sur critères sociaux (CROUS) - 2017-2018 ",
+	"short_name": "Bourse étudiante",
+	"description": "Bourse pour les étudiants, selon leurs revenus",
+
+	"cumulative_conditions":
+	[
+	{
+	"cumulative_condition_field": "email",
+	"required_value": "ok"
+	},
+	{
+	"cumulative_condition_field": "telephone_fixe",
+	"required_value": ""ggiuj""
+	},
+	{
+	"cumulative_condition_field": "telephone_portable",
+	"required_value": "354,0"
+	}
+	],
+
+	"alternative_conditions":
+	[
+	{
+	"alternative_condition_field": "telephone_fixe",
+	"required_value": "32,0",
+	"alternative_number": "1,0"
+	},
+	{
+	"alternative_condition_field": "prenom",
+	"required_value": "yukt",
+	"alternative_number": "1,0"
+	},
+	{
+	"alternative_condition_field": "nom_de_famille",
+	"required_value": "stht",
+	"alternative_number": "1.1"
+	},
+	{
+	"alternative_condition_field": "telephone_portable",
+	"required_value": "tehth",
+	"alternative_number": "1.2"
+	}
+	],
+
+	"required_fields_Groups":
+	[
+	"informations_de_base",
+	"contact"
+	],
+
+	"required_fields":
+	[
+	"email",
+	"nom_de_famille",
+	"telephone_portable",
+	"prenom"
+	],
+
+	"alternative_fields":
+	[
+	{
+	"alternative_field": "telephone_fixe",
+	"alternative_number": "2,0"
+	},
+	{
+	"alternative_field": "telephone_portable",
+	"alternative_number": "2,0"
+	}
+	],
+
+	"fields_under_conditions":
+	[
+	{
+	"field_under_condition": "telephone_fixe",
+	"condition_field": "",
+	"required_value": ""gg""
+	},
+	{
+	"field_under_condition": "prenom",
+	"condition_field": "",
+	"required_value": "32,0"
+	}
+	],
+
+	"required_attachments":
+	[
+	{
+	"required_attachment": "rib",
+	"original_required": "Non",
+	"number_of_copies": 3
+	},
+	{
+	"required_attachment": "justificatif_domicile",
+	"original_required": "Non",
+	"number_of_copies": 8
+	}
+	],
+
+	"alternative_attachments":
+	[
+	{
+	"alternative_attachment": "justificatif_domicile",
+	"original_required": "Non",
+	"number_of_copies": 1,
+	"alternative_number": "2,0"
+	},
+	{
+	"alternative_attachment": "rip",
+	"original_required": "Oui",
+	"number_of_copies": 3,
+	"alternative_number": "2.1"
+	},
+	{
+	"alternative_attachment": "contrat_location_2017_2018",
+	"original_required": "Non",
+	"number_of_copies": 2,
+	"alternative_number": "2.2"
+	}
+	],
+
+	"attachments_under_conditions":
+	[
+	{
+	"attachment_under_condition": "justificatif_domicile",
+	"original_required": "Non",
+	"number_of_copies": 2,
+	"condition_field": "nom_de_famille",
+	"required_value": ""hh""
+	},
+	{
+	"attachment_under_condition": "rip",
+	"original_required": "Oui",
+	"number_of_copies": 3,
+	"condition_field": "telephone_fixe",
+	"required_value": "8,0"
+	}
+	]
+
+},
+
+{
+	"name": "aile_17_18",
+	"complete_name": "Aide à l'Installation au Logement Etudiant - AILE - 2017-2018",
+	"short_name": "AILE",
+	"description": "Pour logement boursiers",
+
+	"cumulative_conditions":
+	[
+	{
+	"cumulative_condition_field": "nom_de_famille",
+	"required_value": ""
+	}
+	],
+
+	"alternative_conditions":
+	[
+	],
+
+	"required_fields_Groups":
+	[
+	],
+
+	"required_fields":
+	[
+	],
+
+	"alternative_fields":
+	[
+	],
+
+	"fields_under_conditions":
+	[
+	],
+
+	"required_attachments":
+	[
+	],
+
+	"alternative_attachments":
+	[
+	],
+
+	"attachments_under_conditions":
+	[
+	]
+
+},
+
+{
+	"name": "caf_17_18",
+	"complete_name": "CAF 2017-2018",
+	"short_name": "CAF",
+	"description": "Aide au logement par la CAF",
+
+	"cumulative_conditions":
+	[
+	{
+	"cumulative_condition_field": "telephone_fixe",
+	"required_value": ""
+	}
+	],
+
+	"alternative_conditions":
+	[
+	],
+
+	"required_fields_Groups":
+	[
+	],
+
+	"required_fields":
+	[
+	],
+
+	"alternative_fields":
+	[
+	],
+
+	"fields_under_conditions":
+	[
+	],
+
+	"required_attachments":
+	[
+	],
+
+	"alternative_attachments":
+	[
+	],
+
+	"attachments_under_conditions":
+	[
+	]
+
+},
+
+{
+	"name": "apl_17_18",
+	"complete_name": "APL 2017-2018",
+	"short_name": "APL",
+	"description": "Aide prioritaire au logement",
+
+	"cumulative_conditions":
+	[
+	{
+	"cumulative_condition_field": "prenom",
+	"required_value": ""
+	}
+	],
+
+	"alternative_conditions":
+	[
+	],
+
+	"required_fields_Groups":
+	[
+	],
+
+	"required_fields":
+	[
+	],
+
+	"alternative_fields":
+	[
+	],
+
+	"fields_under_conditions":
+	[
+	],
+
+	"required_attachments":
+	[
+	],
+
+	"alternative_attachments":
+	[
+	],
+
+	"attachments_under_conditions":
+	[
+	]
+
+},
+
+{
+	"name": "bourse_crous_17_18",
+	"complete_name": "Bourse étudiante sur critères sociaux (CROUS) - 2017-2018 ",
+	"short_name": "Bourse étudiante",
+	"description": "Bourse pour les étudiants, selon leurs revenus",
+
+	"cumulative_conditions":
+	[
+	{
+	"cumulative_condition_field": "email",
+	"required_value": "ok"
+	},
+	{
+	"cumulative_condition_field": "telephone_fixe",
+	"required_value": ""ggiuj""
+	},
+	{
+	"cumulative_condition_field": "telephone_portable",
+	"required_value": "354,0"
+	}
+	],
+
+	"alternative_conditions":
+	[
+	{
+	"alternative_condition_field": "telephone_fixe",
+	"required_value": "32,0",
+	"alternative_number": "1,0"
+	},
+	{
+	"alternative_condition_field": "prenom",
+	"required_value": "yukt",
+	"alternative_number": "1,0"
+	},
+	{
+	"alternative_condition_field": "nom_de_famille",
+	"required_value": "stht",
+	"alternative_number": "1.1"
+	},
+	{
+	"alternative_condition_field": "telephone_portable",
+	"required_value": "tehth",
+	"alternative_number": "1.2"
+	}
+	],
+
+	"required_fields_Groups":
+	[
+	"informations_de_base",
+	"contact"
+	],
+
+	"required_fields":
+	[
+	"email",
+	"nom_de_famille",
+	"telephone_portable",
+	"prenom"
+	],
+
+	"alternative_fields":
+	[
+	{
+	"alternative_field": "telephone_fixe",
+	"alternative_number": "2,0"
+	},
+	{
+	"alternative_field": "telephone_portable",
+	"alternative_number": "2,0"
+	}
+	],
+
+	"fields_under_conditions":
+	[
+	{
+	"field_under_condition": "telephone_fixe",
+	"condition_field": "nom_de_famille",
+	"required_value": ""gg""
+	},
+	{
+	"field_under_condition": "prenom",
+	"condition_field": "nom_de_famille",
+	"required_value": "32,0"
+	}
+	],
+
+	"required_attachments":
+	[
+	{
+	"required_attachment": "rib",
+	"original_required": "Non",
+	"number_of_copies": 3
+	},
+	{
+	"required_attachment": "justificatif_domicile",
+	"original_required": "Non",
+	"number_of_copies": 8
+	}
+	],
+
+	"alternative_attachments":
+	[
+	{
+	"alternative_attachment": "justificatif_domicile",
+	"original_required": "Non",
+	"number_of_copies": 1,
+	"alternative_number": "2,0"
+	},
+	{
+	"alternative_attachment": "rip",
+	"original_required": "Oui",
+	"number_of_copies": 3,
+	"alternative_number": "2.1"
+	},
+	{
+	"alternative_attachment": "contrat_location_2017_2018",
+	"original_required": "Non",
+	"number_of_copies": 2,
+	"alternative_number": "2.2"
+	}
+	],
+
+	"attachments_under_conditions":
+	[
+	{
+	"attachment_under_condition": "justificatif_domicile",
+	"original_required": "Non",
+	"number_of_copies": 2,
+	"condition_field": "nom_de_famille",
+	"required_value": ""hh""
+	},
+	{
+	"attachment_under_condition": "rip",
+	"original_required": "Oui",
+	"number_of_copies": 3,
+	"condition_field": "telephone_fixe",
+	"required_value": "8,0"
+	}
+	]
+
+}
+

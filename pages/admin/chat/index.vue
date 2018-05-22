@@ -1,51 +1,59 @@
 <template>
-<div class="Chat">
+<div class="Chat container">
   <div class="row">
     <div class="col-12">
-      <p>The follow view is intended for development.</p>
-      <span><b>(Nothing to show yet)</b></span>
+      <b-btn to='/admin/chat/test1'>Test 1</b-btn>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12 col-sm-8 col-md-6 col-lg-6 mt-3">
-      <UsersSelectKey label="Select an user"
-                      placeholder="Search by name (press ENTER)"
-                      v-model="item._id"
-                      @change="onUserChange"></UsersSelectKey>
-    </div>
-    <div class="col-12 mt-2">
-      <UserOrdersTable :title="false"
-                       :item="item"></UserOrdersTable>
-    </div>
-    <div class="col-12 mt-2">
-      <b-btn size="lg"
-        :disabled="!isStartButtonEnabled"
-             @click="startChat()"
-             variant="success">Start</b-btn>
-    </div>
-  </div>
-  <hr class="mt-5 mb-5">
-  <TwoSidesDiv rightBackgroundColor="#EEEEEE">
-    <div slot="left"
-         class="row row align-items-start m-0 p-0">
-      <div class="col align-self-center m-0 p-0">
-        <ChatOne></ChatOne>
+  <div class=""
+       v-if="false">
+    <div class="row">
+      <div class="col-12">
+        <p>The follow view is intended for development.</p>
+        <span><b>(Nothing to show yet)</b></span>
       </div>
     </div>
-    <div slot="right">
-      <CenterBottomText color="#212431"
-                        size="20px"
-                        top="150px"
-                        lineHeight="35px">
-        <p>
-          Discutez avec Chloé !
-          <br> Elle trouvera toutes les aides financières
-          <br> auxquelles vous avez droit.
-          <br> Elle fera même les démarches pour vous ;)
-        </p>
-      </CenterBottomText>
+    <div class="row">
+      <div class="col-12 col-sm-8 col-md-6 col-lg-6 mt-3">
+        <UsersSelectKey label="Select an user"
+                        placeholder="Search by name (press ENTER)"
+                        v-model="item._id"
+                        @change="onUserChange"></UsersSelectKey>
+      </div>
+      <div class="col-12 mt-2">
+        <UserOrdersTable :title="false"
+                         :item="item"></UserOrdersTable>
+      </div>
+      <div class="col-12 mt-2">
+        <b-btn size="lg"
+               :disabled="!isStartButtonEnabled"
+               @click="startChat()"
+               variant="success">Start</b-btn>
+      </div>
     </div>
-  </TwoSidesDiv>
+    <hr class="mt-5 mb-5">
+    <TwoSidesDiv rightBackgroundColor="#EEEEEE">
+      <div slot="left"
+           class="row row align-items-start m-0 p-0">
+        <div class="col align-self-center m-0 p-0">
+          <ChatOne></ChatOne>
+        </div>
+      </div>
+      <div slot="right">
+        <CenterBottomText color="#212431"
+                          size="20px"
+                          top="150px"
+                          lineHeight="35px">
+          <p>
+            Discutez avec Chloé !
+            <br> Elle trouvera toutes les aides financières
+            <br> auxquelles vous avez droit.
+            <br> Elle fera même les démarches pour vous ;)
+          </p>
+        </CenterBottomText>
+      </div>
+    </TwoSidesDiv>
+  </div>
 </div>
 
 </template>
@@ -76,8 +84,8 @@ export default {
     return {}
   },
   computed: {
-    isStartButtonEnabled(){
-      return this.item._id&&!tmdChat.isProcessing()
+    isStartButtonEnabled() {
+      return this.item._id && !tmdChat.isProcessing()
     }
   },
   methods: {

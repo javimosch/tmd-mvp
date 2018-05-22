@@ -1,7 +1,7 @@
 <template>
 	
 
-  <div class="container mt-5">
+  <div class="container mt-5" v-if="false">
 
   	<div v-if="error.statusCode===401">
   		<h2 class="text-center">Please, login</h2>
@@ -41,8 +41,10 @@ var errToJSON = require('error-to-json')
 export default {
   props: ['error'],
   layout: 'app-guess',
-  created(){
-    console.warn(this.error);
+  mounted(){
+    console.error('ERROR',this.error);
+    this.$noty.error(this.error.message)
+    this.$noty.warning('Wow, that was unexpected.')
   },
   methods:{
     displayInfo(){

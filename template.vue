@@ -4,6 +4,9 @@
 </template>
 <script>
 	export default {
+		components:{
+
+		},
 		name: 'ComponentName',
 		props:[],
 		fetch(){
@@ -19,9 +22,6 @@
 
 		},
 		methods:{
-
-		},
-		components:{
 
 		},
 		created(){

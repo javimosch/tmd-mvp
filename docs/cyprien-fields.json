@@ -1,0 +1,62 @@
+order value empty, expected: {"order":""} when empty
+
+{
+	"name": "nom_de_famille",
+	"complete_name": "Nom de famille",
+	"short_name": "Nom de famille",
+	"group": "informations_de_base",
+	"order": ,
+	"question": "Quel est votre nom de famille ?",
+	"hint": "Entrez votre nom de famille, avec les éventuels accents ou tirets.",
+	"after_answer": "Très bien, c'est noté",
+	"type": "text"
+},
+
+{
+	"name": "prenom",
+	"complete_name": "Prénom",
+	"short_name": "Prénom",
+	"group": "informations_de_base",
+	"order": 1,
+	"question": "Quel est votre prénom ?",
+	"hint": "Entrez votre prénom avec les éventuels accents ou tirets.",
+	"after_answer": "Enchantée [prenom] !",
+	"type": "text"
+},
+
+{
+	"name": "email",
+	"complete_name": "Adresse e-mail",
+	"short_name": "E-mail",
+	"group": "contact",
+	"order": ,
+	"question": "Quelle est votre adresse e-mail ?",
+	"hint": "Entrez votre adresse e-mail. Celle-ci doit être régulièrement consultée car nous pourrons communiquer avec vous par email.",
+	"after_answer": "Merci",
+	"type": "email"
+},
+
+{
+	"name": "telephone_portable",
+	"complete_name": "Numéro de téléphone (portable)",
+	"short_name": "Numéro de téléphone",
+	"group": "contact",
+	"order": 2,
+	"question": "Quel est votre numéro de téléphone portable ?",
+	"hint": "Entrez votre numéro de téléphone portable.",
+	"after_answer": "Merci [prenom], c'est noté",
+	"type": "phone number"
+},
+
+{
+	"name": "telephone_fixe",
+	"complete_name": "Numéro de téléphone (fixe)",
+	"short_name": "Numéro de téléphone",
+	"group": "contact",
+	"order": 3,
+	"question": "Quel est votre numéro de téléphone fixe ?",
+	"hint": "Entrez votre numéro de téléphone fixe.",
+	"after_answer": "Très bien",
+	"type": "phone number"
+}
+
