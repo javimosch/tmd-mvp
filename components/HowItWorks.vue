@@ -108,7 +108,7 @@
 </script>
 <style lang="scss" scoped>
 .HowItWorks{
-	margin: 20px 0px;
+	margin: 80px 0px;
 	
 	@media only screen and (min-width: 992px) {
 	    min-height: 250px;
@@ -132,11 +132,12 @@
 .Text{
 	color:$grey2;
 	font-weight: 100;
+	padding: 0px 15px 0px 15px;
 }
 .HoverText{
 	text-align: justify;
 	color:$grey;
-	padding:20px 20px;
+	padding:10px 20px;
 }
 
 .HoverText_one,.HoverText_two,.HoverText_three{
@@ -145,5 +146,6 @@
 a:hover+a h3{
 	text-decoration: underline;
 }
+
 
 </style>

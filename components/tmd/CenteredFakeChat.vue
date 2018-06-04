@@ -37,7 +37,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6 RightColumn">
+    <div class="col-md-6 RightColumn">      
       <h5 id="decouvrez-vos-aides"
           class="RightTextTitle">Découvrez vos aides</h5>
       <p class="RightText">Discutez avec Lisa !
@@ -192,7 +192,7 @@ async function addMessage(message, isUser = false, loadingSeconds = 1, startInSe
     ], 25, 0.5)
   } else {
     if (loadingSeconds < 1) {
-      loadingSeconds = 1
+      loadingSeconds = 0.2
     }
   }
 
@@ -213,7 +213,7 @@ async function addMessage(message, isUser = false, loadingSeconds = 1, startInSe
   }
 }
 
-function typedMessage(strings, speed = 2, waitToDelete = 1) {
+function typedMessage(strings, speed = 0.5, waitToDelete = 0.5) {
   var self = this
   var selector = '.ChatInputControl'
   return new Promise((resolve, reject) => {
@@ -242,7 +242,7 @@ function typedMessage(strings, speed = 2, waitToDelete = 1) {
 
 function waitSeconds(s) {
   return new Promise((resolve, reject) => {
-    setTimeout(() => resolve(), s * 1000)
+    setTimeout(() => resolve(), s * 300)
   })
 }
 
@@ -264,6 +264,7 @@ function scrollToBottom() {
   opacity: 1;
   max-width: 900px;
   margin: 0 auto;
+  margin-top: 40px;
 }
 
 .ChatWrapper {
@@ -273,8 +274,10 @@ function scrollToBottom() {
 
 .RightColumn {
   background-color: #F7F9FA;
-  padding: 50px;
-  min-height: 640px;
+  padding: 40px;
+  min-height: 450px;
+  margin-top: 40px;
+  margin-bottom: 25px;
 }
 
 .RightText {

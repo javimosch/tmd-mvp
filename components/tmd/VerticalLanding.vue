@@ -1,11 +1,12 @@
 <template>
 <div class="VerticalLanding">
-  <StartHeader>
-    <HowItWorks></HowItWorks>  
-  </StartHeader>
   
-  <CenteredFakeChat ></CenteredFakeChat>
-  
+  <StartHeader></StartHeader>
+
+  <CenteredFakeChat></CenteredFakeChat>
+
+  <HowItWorks></HowItWorks>  
+
   <LandingSection class="p-5 mb-5 d-none d-lg-block" title="Laissez-nous faire les démarches"
 :css="'background-color:#105BB1;position:relative;min-height: 300px;'"
 :titleStyle="`max-width: 992px;

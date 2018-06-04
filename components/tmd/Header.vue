@@ -58,7 +58,7 @@ export default {
 	max-width: 100px;
 }
 .Header {
-     
+  
 }
 
 

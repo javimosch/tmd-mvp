@@ -44,7 +44,7 @@
 .LoadingDotsP span {
   font-size: 50px;
   animation-name: blink;
-  animation-duration: 1.4s;
+  animation-duration: 0.8s;
   animation-iteration-count: infinite;
   animation-fill-mode: both;
 }

@@ -79,17 +79,17 @@ Je vais t’aider à trouver toutes les aides financières auxquelles tu as droi
 .ChatContent{
 	overflow: auto;
 	min-height: 300px;
-	max-height: 500px;
+	max-height: 450px;
 	@media only screen and (min-height: 600px) {
-		min-height: 500px;
+		min-height: 450px;
 	}
 	@media only screen and (min-width: 768px) {
 
 	}
 	@media only screen and (min-width: 992px) {
-		min-height: 500px;
-		max-height: 500px;
-    	margin-bottom: 80px;
+		min-height: 450px;
+		max-height: 450px;
+    	margin-bottom: 0px;
 	 }
 	 
 }
