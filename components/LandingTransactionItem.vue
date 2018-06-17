@@ -82,7 +82,7 @@ export default {
         translateY: [
 
         {
-            value: '60%',
+            value: '70%',
             duration: 0,
             delay: 2000
         },
@@ -104,7 +104,7 @@ export default {
           },
           {
             value: '11%',
-            duration: 3000,
+            duration: 1500,
             delay: 0
           }
         ],
@@ -122,7 +122,7 @@ export default {
           {
             value: 0.7,
             delay:500,
-            duration: 2500
+            duration: 1500
           },
           {
             value: 0.9,
@@ -146,7 +146,7 @@ export default {
           {
             value: '20deg',
             delay: 4000,
-            duration: 2000
+            duration: 1000
           } // ,
         // {value:'360deg',duration:2000}
         ],
@@ -165,7 +165,7 @@ export default {
   mounted() {
     var self = this
     self.timeoutStart = Date.now()
-    var duration = self.timeout = 8000 // parseInt(Math.random()*10)*1000
+    var duration = self.timeout = 6500 // parseInt(Math.random()*10)*1000
     if (!process.server) {
       setTimeout(() => {
         return
