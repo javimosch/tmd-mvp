@@ -110,9 +110,29 @@ export default {
         ],
         scale: [
           {
+            value: 1.2,
+            delay:2850,
+            duration: 200
+          },
+          {
+            value: 1,
+            delay:0,
+            duration: 200
+          },
+          {
             value: 0.7,
-            delay:3500,
-            duration: 3000
+            delay:500,
+            duration: 2500
+          },
+          {
+            value: 0.9,
+            delay:0,
+            duration: 200
+          },
+          {
+            value: 0.7,
+            delay:0,
+            duration: 200
           }
         ],
         color: [
