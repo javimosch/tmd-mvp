@@ -66,5 +66,6 @@
 .BotIcon{
 	max-width: 43px;
 	position: relative;
+	margin-bottom:-5px;
 }
 </style>

@@ -15,12 +15,14 @@
              variant="success"
              size="lg">Commencer</b-btn>
     </div>
+    <!--
     <div class="col-12 align-self-center mt-1 mb-5"
          v-if="true">
       <img @click="scrollDown"
            :src="ArrowDown"
            class="ArrowDown pulse animated infinite mt-5 mx-auto d-block" />
     </div>
+    -->
   </div>
 </div>
 
@@ -77,11 +79,11 @@ export default {
 
 h1 {
   max-width: 992px;
-  line-height: 40px;
+  line-height: 20px;
   font-size: 35px;
   color: $color2;
   padding: 15px;
-  margin: 20px auto 50px auto;
+  margin: 10px auto 0px auto;
   font-weight: 300;
   letter-spacing: 3px;
 }

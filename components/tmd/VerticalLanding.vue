@@ -1,11 +1,12 @@
 <template>
 <div class="VerticalLanding">
-  <StartHeader>
-    <HowItWorks></HowItWorks>  
-  </StartHeader>
   
-  <CenteredFakeChat ></CenteredFakeChat>
-  
+  <StartHeader></StartHeader>
+
+  <CenteredFakeChat></CenteredFakeChat>
+
+  <HowItWorks></HowItWorks>  
+
   <LandingSection class="p-5 mb-5 d-none d-lg-block" title="Laissez-nous faire les démarches"
 :css="'background-color:#105BB1;position:relative;min-height: 300px;'"
 :titleStyle="`max-width: 992px;
@@ -53,7 +54,7 @@
 
     <div class="row no-gutters justify-content-center align-items-center">
       <div class="col-12 col-md-10 mb-4">
-        <p style="font-size:20px;text-align:center;color:darkgrey;font-weight: 400;">L’argent vous sera versée directement sur votre compte. Des frais de dossiers seront alors prélevés sans que vous n’ayez rien à avancer.</p>
+        <p style="font-size:20px;text-align:center;color:darkgrey;font-weight: 400;">L’argent vous sera versé directement sur votre compte ! Des frais de dossiers seront alors prélevés sans que vous n’ayez rien à avancer.</p>
       </div>
     </div>
   </LandingSection>

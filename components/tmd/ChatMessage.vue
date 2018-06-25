@@ -49,13 +49,15 @@
 	min-width: 50px;
 	max-width: 70%;
 	background-color:rgb(229, 228, 234);
-	border-radius: 20px;
 	display:inline-block;
-	
+	border-radius: 20px 20px 20px 0px;
+	margin-bottom:5px;
+	margin-left:10px;
 }
 .ChatMessage.isUser{
 	background-color:$color2;
 	float:right;
+	border-radius: 20px 20px 0px 20px;
 }
 .ChatMessage.isUser p{
 	color:$color6;

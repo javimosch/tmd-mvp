@@ -72,63 +72,81 @@ export default {
     animatePaper() {
       var self = this
 
-      setTimeout(()=>self.showLines = true,2500)
+      setTimeout(()=>self.showLines = true,3000)
 
       var cssProperties = anime({
         targets: this.$refs.paper,
         // opacity: .5,
-        left: [
+
+
+        translateY: [
+
         {
-            value: '100px',
-            duration: 0
+            value: '70%',
+            duration: 0,
+            delay: 2000
+        },
+        {
+            value: '15%',
+            duration: 600
+        }
+        ],
+        left: [
+          {
+            value: '-150%',
+            duration: 0,
+            delay: 2000
           },
           {
-            value: '100px',
-            duration: 500
+            value: '-85%',
+            duration: 0,
+            delay: 1500
           },
           {
-            value: '-210px',
-            duration: 2000
-            
-          },
-          {
-            value: '150px',
-            duration: this.timeout - 2000
+            value: '11%',
+            duration: 1500,
+            delay: 0
           }
         ],
         scale: [
           {
             value: 1.2,
-            duration: 1000
+            delay:2850,
+            duration: 200
           },
           {
-            value: 1.0,
-            duration: 1000
+            value: 1,
+            delay:0,
+            duration: 200
           },
           {
-            value: 0.5,
-            duration: this.timeout - 2000
+            value: 0.7,
+            delay:500,
+            duration: 1500
+          },
+          {
+            value: 0.9,
+            delay:0,
+            duration: 200
+          },
+          {
+            value: 0.7,
+            delay:0,
+            duration: 200
           }
         ],
         color: [
           {
             value: '#FFF',
-            duration: 1600
-          },
-          {
-            value: '#FFF',
-            duration: 400
-          },
-          {
-            value: '#FFF',
-            duration: this.timeout - 2000
+            duration: this.timeout
           }
         ],
         easing: 'easeInOutQuad',
         rotate: [
           {
-            value: '25deg',
-            duration: 2000
+            value: '20deg',
+            delay: 4000,
+            duration: 1000
           } // ,
         // {value:'360deg',duration:2000}
         ],
@@ -147,7 +165,7 @@ export default {
   mounted() {
     var self = this
     self.timeoutStart = Date.now()
-    var duration = self.timeout = 6000 // parseInt(Math.random()*10)*1000
+    var duration = self.timeout = 6500 // parseInt(Math.random()*10)*1000
     if (!process.server) {
       setTimeout(() => {
         return
@@ -181,6 +199,7 @@ export default {
 <style lang="scss" scoped="">
 .LandingTransactionItem {
   min-height: 100px;
+  width: 650px;
 }
 
 .Icon {
@@ -192,7 +211,7 @@ export default {
 }
 
 .Paper {
-  font-size: 55px;
+  font-size: 50px;
   position: relative;
   color:white;
 }
